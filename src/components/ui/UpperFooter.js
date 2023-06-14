@@ -17,11 +17,13 @@ import Snackbar from "@material-ui/core/Snackbar";
 import ReactPlayer from "react-player";
 
 import CallToAction from "./../ui/CallToAction";
+import AboutUs from "../aboutus/AboutUs";
+import ContactUs from "../contactus/ContactUs";
 
 import revolutionBackground from "./../../assets/repeatingBackground.svg";
 import infoBackground from "./../../assets/infoBackground.svg";
 
-import background from "./../../logistic_assets/cover_image_1.png";
+import background from "./../../assets/images/footage/footage_image.png";
 
 import history from "../../history";
 import AboutUsFormContainer from "./../aboutus/AboutUsFormContainer";
@@ -314,11 +316,12 @@ function UpperFooter(props) {
                   {matchesMD ? (
                     <Grid item>
                       <Button
-                        // component={Link}
-                        // to="/about"
+                        component={Link}
+                        // to="/mobileapps"
+                        to={`/aboutus`}
                         varaint="outlined"
                         className={classes.learnButton}
-                        onClick={() => [setAboutUsOpen(true)]}
+                        onClick={() => <AboutUs />}
                         style={{ color: "white", borderColor: "white" }}
                       >
                         <span style={{ marginRight: 10 }}>Learn More </span>
@@ -380,12 +383,16 @@ function UpperFooter(props) {
                   {matchesMD ? (
                     <Grid item>
                       <Button
-                        // component={Link}
-                        // to="/contact"
+                        component={Link}
+                        // to="/mobileapps"
+                        to={`/contactus`}
                         varaint="outlined"
                         className={classes.learnButton}
+                        onClick={() => <ContactUs />}
+                        // varaint="outlined"
+                        // className={classes.learnButton}
                         style={{ color: "white", borderColor: "white" }}
-                        onClick={() => [setContactUsOpen(true)]}
+                        //onClick={() => [setContactUsOpen(true)]}
                       >
                         <span style={{ marginRight: 10 }}>Learn More </span>
                         <ButtonArrow height={10} width={10} fill="white" />

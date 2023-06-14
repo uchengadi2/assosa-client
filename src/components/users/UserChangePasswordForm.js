@@ -135,8 +135,6 @@ const UserChangePasswordForm = (props) => {
         api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
         const response = await api.patch(`/users/updateMyPassword`, formValues);
 
-        console.log("response:", response);
-
         if (response.status === 200) {
           const token = {
             status: "success",

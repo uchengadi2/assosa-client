@@ -993,7 +993,7 @@ function BookingForm(props) {
             onChange={handleSourcePlaceTypeChange}
             label="Source Place Type"
             style={{ width: matchesMD ? 500 : 300, marginTop: 10 }}
-            {...input}
+            //{...input}
           >
             <MenuItem value={"warehouse"}>Warehouse</MenuItem>
             <MenuItem value={"port"}>Port</MenuItem>

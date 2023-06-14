@@ -53,6 +53,13 @@ import api from "./../../apis/local";
 import { FaLaptopHouse } from "react-icons/fa";
 import OrderPage from "../orders/OrderPage";
 import ProfileLayout from "../ProfileLayout";
+import AboutUs from "../aboutus/AboutUs";
+import Membership from "../membership/Membership";
+import Connection from "../connections/Connection";
+import Events from "../events/Events";
+import Project from "../projects/Project";
+import NoticeBoard from "../noticeboard/NoticeBoard";
+import ContactUs from "../contactus/ContactUs";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -153,7 +160,21 @@ const useStyles = makeStyles((theme) => ({
     height: "45px",
     fontSize: "13px",
     fontWeight: "500px",
-    width: "140px",
+    width: "120px",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.light,
+      color: "white",
+    },
+  },
+  events: {
+    ...theme.typography.estimate,
+    borderRadius: "250px",
+    marginLeft: "3px",
+    marginRight: "2px",
+    height: "45px",
+    fontSize: "13px",
+    fontWeight: "500px",
+    width: "150px",
     "&:hover": {
       backgroundColor: theme.palette.secondary.light,
       color: "white",
@@ -193,7 +214,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "3px",
     marginRight: "2px",
     height: "45px",
-    width: "70px",
+    width: "120px",
     fontSize: "13px",
     fontWeight: "500px",
     "&:hover": {
@@ -517,18 +538,83 @@ const Header = (props) => {
     if (props.token === undefined) {
       return (
         <Fragment>
-          {/* <Button
-            variant="contained"
+          <Button
+            onClick={() => <AboutUs />}
             disableRipple
             component={Link}
-            to="/"
-            // color="secondary"
-            className={classes.checkout}
-            //onClick={() => [setOpenLoginForm(true), history.push("/")]}
-            //onClick={() => [setOpenLoginForm(true)]}
+            // to={`/carts/${props.userId}`}
+            to={`/aboutus`}
+            className={classes.cart}
           >
-            Career
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            About Us
+          </Button>
+          <Button
+            onClick={() => <Membership />}
+            disableRipple
+            component={Link}
+            // to={`/carts/${props.userId}`}
+            to={`/membership`}
+            className={classes.cart}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Membership
+          </Button>
+          {/* <Button
+            onClick={() => <ShowCustomerCart />}
+            disableRipple
+            component={Link}
+            // to={`/carts/${props.userId}`}
+            to={`/carts`}
+            className={classes.checkout}
+          >
+           
+            Connections
           </Button> */}
+          <Button
+            onClick={() => <Events />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/events`}
+            className={classes.events}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Events & Gallery
+          </Button>
+          <Button
+            onClick={() => <Project />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/projects`}
+            className={classes.checkout}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Projects
+          </Button>
+          <Button
+            onClick={() => <NoticeBoard />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/noticeboard`}
+            className={classes.checkout}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Notice Board
+          </Button>
+          <Button
+            onClick={() => <ContactUs />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/contactus`}
+            className={classes.checkout}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Contact Us
+          </Button>
           <Button
             variant="contained"
             // component={Link}
@@ -545,51 +631,82 @@ const Header = (props) => {
     } else {
       return (
         <Fragment>
-          {/* <Button
-            variant="contained"
-            disableRipple
-            component={Link}
-            to="/career"
-            //color="secondary"
-            className={classes.checkout}
-            //onClick={() => [setOpenLoginForm(true), history.push("/")]}
-            //onClick={() => [setOpenLoginForm(true)]}
-          >
-            Career
-          </Button> */}
           <Button
-            onClick={() => <OrderPage />}
+            onClick={() => <AboutUs />}
             disableRipple
             component={Link}
             // to={`/carts/${props.userId}`}
-            to={`/orders`}
+            to={`/aboutus`}
             className={classes.cart}
           >
             {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
-            Learning Center
+            About Us
           </Button>
-
           <Button
-            onClick={() => <ShowCustomerCart />}
+            onClick={() => <Membership />}
             disableRipple
             component={Link}
             // to={`/carts/${props.userId}`}
-            to={`/carts`}
+            to={`/membership`}
+            className={classes.cart}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Membership
+          </Button>
+          <Button
+            onClick={() => <Connection />}
+            disableRipple
+            component={Link}
+            // to={`/carts/${props.userId}`}
+            to={`/connections`}
             className={classes.checkout}
           >
             {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
-            Cart
+            Connections
           </Button>
           <Button
-            onClick={() => <CheckoutPage />}
+            onClick={() => <Events />}
             disableRipple
             component={Link}
             // to={`/checkouts/${props.userId}`}
-            to={`/checkouts`}
+            to={`/events`}
+            className={classes.events}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Events & Gallery
+          </Button>
+          <Button
+            onClick={() => <Project />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/projects`}
             className={classes.checkout}
           >
             {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
-            Checkout
+            Projects
+          </Button>
+          <Button
+            onClick={() => <NoticeBoard />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/noticeboard`}
+            className={classes.checkout}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Notice Board
+          </Button>
+          <Button
+            onClick={() => <ContactUs />}
+            disableRipple
+            component={Link}
+            // to={`/checkouts/${props.userId}`}
+            to={`/contactus`}
+            className={classes.checkout}
+          >
+            {/* <img alt="company logo" src={logo} className={classes.logo} /> */}
+            Contact Us
           </Button>
           <Button
             onClick={() => <ProfileLayout />}
@@ -1215,7 +1332,7 @@ const Header = (props) => {
               >
                 <img alt="company logo" src={logo} className={classes.logo} />
               </Button>
-              <Box
+              {/* <Box
                 sx={{
                   backgroundColor: "white",
                   padding: 10,
@@ -1249,7 +1366,7 @@ const Header = (props) => {
                 >
                   Search
                 </Button>
-              </Box>
+              </Box> */}
 
               {matches ? drawer : tabs}
             </Toolbar>

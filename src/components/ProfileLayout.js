@@ -3,6 +3,8 @@ import { Field, reduxForm } from "redux-form";
 import CallToAction from "./ui/CallToAction";
 import Snackbar from "@material-ui/core/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import UserMembershipForm from "./membership/UserMembershipForm";
+import UpdateUserMembershipForm from "./membership/UpdateUserMembershipForm";
 
 import revolutionBackground from "./../assets/repeatingBackground.svg";
 import infoBackground from "./../assets/infoBackground.svg";
@@ -44,6 +46,44 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     "&:hover": {
       backgroundColor: theme.palette.common.blue,
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: 40,
+      width: 225,
+    },
+  },
+  membershipButton: {
+    ...theme.typography.estimate,
+    borderRadius: 10,
+    height: 40,
+    width: 300,
+    marginLeft: 15,
+    marginTop: 30,
+    marginBottom: 10,
+    fontSize: "1.25rem",
+    backgroundColor: theme.palette.common.green,
+    color: "white",
+    "&:hover": {
+      backgroundColor: theme.palette.common.green,
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: 40,
+      width: 225,
+    },
+  },
+  updateMembershipButton: {
+    ...theme.typography.estimate,
+    borderRadius: 10,
+    height: 40,
+    width: 300,
+    marginLeft: 15,
+    marginTop: 30,
+    marginBottom: 10,
+    fontSize: "1.25rem",
+    backgroundColor: theme.palette.common.grey,
+    color: "white",
+    "&:hover": {
+      backgroundColor: theme.palette.common.grey,
     },
     [theme.breakpoints.down("sm")]: {
       height: 40,
@@ -217,20 +257,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
   },
-
-  // background: {
-  //   backgroundImage: `url(${background})`,
-  //   backgroundPosition: "center",
-  //   backgroundSize: "cover",
-  //   //backgroundAttachment: "fixed",
-  //   backgroundRepeat: "no-repeat",
-  //   height: "60em",
-  //   width: "100%",
-  //   [theme.breakpoints.down("md")]: {
-  //     // backgroundImage: `url(${mobileBackground})`,
-  //     backgroundAttachment: "inherit",
-  //   },
-  // },
 }));
 
 const ProfileLayout = (props) => {
@@ -249,6 +275,8 @@ const ProfileLayout = (props) => {
   const [nameFormOpen, setNameFormOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(null);
   const [updateUser, setUpdateUser] = useState(false);
+  const [membershipInfo, setMembershipInfo] = useState(false);
+  const [updateMembershipInfo, setUpdateMembershipInfo] = useState(false);
 
   const getUserIdFromLocatStorage = () => {
     const tokenString = localStorage.getItem("token");
@@ -327,6 +355,14 @@ const ProfileLayout = (props) => {
     setPasswordFormOpen(false);
   };
 
+  const handleMembershipDialogForm = () => {
+    setMembershipInfo(false);
+  };
+
+  const handleUpdatedMembershipDialogForm = () => {
+    setUpdateMembershipInfo(false);
+  };
+
   const renderChangePasswordForm = () => {
     return (
       <Dialog
@@ -367,6 +403,55 @@ const ProfileLayout = (props) => {
             userId={userId}
             updateUserInfoHandler={updateUserInfoHandler}
             handleMakeChangeNameDialogForm={handleMakeChangeNameDialogForm}
+            handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+            handleFailedSnackbar={handleFailedSnackbar}
+            user={user}
+          />
+        </DialogContent>
+      </Dialog>
+    );
+  };
+
+  const renderMembershipForm = () => {
+    return (
+      <Dialog
+        fullScreen={matchesXS}
+        open={membershipInfo}
+        onClose={() => [setMembershipInfo(false), history.push("/profile")]}
+      >
+        <DialogContent>
+          <UserMembershipForm
+            token={props.token}
+            userId={props.userId}
+            updateUserInfoHandler={updateUserInfoHandler}
+            handleMembershipDialogForm={handleMembershipDialogForm}
+            handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+            handleFailedSnackbar={handleFailedSnackbar}
+            user={user}
+          />
+        </DialogContent>
+      </Dialog>
+    );
+  };
+
+  const renderUpdateMembershipForm = () => {
+    return (
+      <Dialog
+        fullScreen={matchesXS}
+        open={updateMembershipInfo}
+        onClose={() => [
+          setUpdateMembershipInfo(false),
+          history.push("/profile"),
+        ]}
+      >
+        <DialogContent>
+          <UpdateUserMembershipForm
+            token={props.token}
+            userId={props.userId}
+            updateUserInfoHandler={updateUserInfoHandler}
+            handleUpdatedMembershipDialogForm={
+              handleUpdatedMembershipDialogForm
+            }
             handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
             handleFailedSnackbar={handleFailedSnackbar}
             user={user}
@@ -432,9 +517,40 @@ const ProfileLayout = (props) => {
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1">
-                        {user.phoneNumber}
+                        Phone Number: {user.phoneNumber}
                       </Typography>
+                      {user.isAMember && (
+                        <Grid item>
+                          <Typography variant="subtitle1">
+                            Membership Number: {user.membershipNo}
+                          </Typography>
+                        </Grid>
+                      )}
                     </Grid>
+
+                    {!user.isAMember && (
+                      <Grid item>
+                        <Button
+                          variant="contained"
+                          className={classes.membershipButton}
+                          onClick={() => [setMembershipInfo(true)]}
+                        >
+                          Complete Membership Form
+                        </Button>
+                      </Grid>
+                    )}
+
+                    {user.isAMember && (
+                      <Grid item>
+                        <Button
+                          variant="contained"
+                          className={classes.updateMembershipButton}
+                          onClick={() => [setUpdateMembershipInfo(true)]}
+                        >
+                          Update Membership Form
+                        </Button>
+                      </Grid>
+                    )}
 
                     <Grid item>
                       <Button
@@ -473,6 +589,8 @@ const ProfileLayout = (props) => {
             </Grid>
             {renderChangePasswordForm()}
             {renderChangeNameForm()}
+            {renderMembershipForm()}
+            {renderUpdateMembershipForm()}
           </Grid>
         )
       ) : (

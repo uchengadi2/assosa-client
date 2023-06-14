@@ -29,6 +29,13 @@ import CareerPage from "./career/CareerPage";
 
 import OrderPage from "./orders/OrderPage";
 import SearchPage from "./search/SearchPage";
+import AboutUs from "./aboutus/AboutUs";
+import Membership from "./membership/Membership";
+import Connection from "./connections/Connection";
+import Events from "./events/Events";
+import Project from "./projects/Project";
+import NoticeBoard from "./noticeboard/NoticeBoard";
+import ContactUs from "./contactus/ContactUs";
 
 function App() {
   const { token, setToken } = useToken();
@@ -167,6 +174,66 @@ function App() {
             </Route>
             <Route path="/orders">
               <OrderPage
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+            <Route path="/aboutus">
+              <AboutUs
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+            <Route path="/membership">
+              <Membership
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+            <Route path="/connections">
+              <Connection
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+
+            <Route path="/events">
+              <Events
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+
+            <Route path="/projects">
+              <Project
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+
+            <Route path="/noticeboard">
+              <NoticeBoard
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+              />
+            </Route>
+
+            <Route path="/contactus">
+              <ContactUs
                 token={token}
                 userId={userId}
                 setToken={setToken ? setToken : {}}

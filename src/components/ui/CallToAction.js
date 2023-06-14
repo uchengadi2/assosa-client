@@ -10,7 +10,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 
 //import background from "./../../assets/background.jpg";
-import background from "./../../assets/images/footage/footage_image.jpg";
+import background from "./../../assets/images/footage/footage_image.png";
 import mobileBackground from "./../../assets/mobileBackground.jpg";
 import history from "./../../history";
 import BecomePartnerFormContainer from "../partner/BecomePartnerFormContainer";
@@ -104,25 +104,25 @@ export default function CallToAction(props) {
           <Grid item>
             {matchesMD ? (
               <Typography variant="h2">
-                A Learning Platform for the Next Champions!!! <br />{" "}
-                Revolutionary Professionals
+                We Are Old Students Of Adeolu Secondary School!!! <br />{" "}
+                Revolutionary People
               </Typography>
             ) : (
               <Typography variant="h2" style={{ fontSize: "1.5rem" }}>
-                A Learning Platform for the Next Champions!!! <br />{" "}
-                Revolutionary Professionals
+                We Are Old Students Of Adeolu Secondary School!!! <br />{" "}
+                Revolutionary People
               </Typography>
             )}
             {matchesMD ? (
               <Typography variant="subtitle2" style={{ fontSize: "1.5rem" }}>
-                Take advantage of the 21st century
+                {/* Take advantage of the 21st century */}
               </Typography>
             ) : (
               <Typography
                 variant="subtitle2"
                 style={{ fontSize: "1rem", marginTop: 20, marginBottom: 20 }}
               >
-                Take advantage of the 21st century
+                {/* Take advantage of the 21st century */}
               </Typography>
             )}
 

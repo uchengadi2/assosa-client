@@ -23,10 +23,17 @@ import animationData from "./../animations/landinganimation/data";
 import revolutionBackground from "./../assets/repeatingBackground.svg";
 import infoBackground from "./../assets/infoBackground.svg";
 
-import background from "./../assets/images/covers/cover_1_image.jpg";
+import background from "./../assets/images/headers/home.png";
 import UpperFooter from "./ui/UpperFooter";
 import TopCover from "./homePageCards/TopCover";
 import LearningPath from "./homePageCards/LearningPath";
+import HomeAboutUs from "./homePageCards/HomeAboutUs";
+import HomeMembershipSection from "./homePageCards/HomeMembershipSection";
+import HomeProjectSectionSection from "./homePageCards/HomeProjectSectionSection";
+import HomeEventsSection from "./homePageCards/HomeEventsSection";
+import HomeNoticeBoardSection from "./homePageCards/HomeNoticeBoardSection";
+import HomeContactUs from "./homePageCards/HomeContactUs";
+import HomeConnectionsSection from "./homePageCards/HomeConnectionsSection";
 
 //import mobileBackground from "./../../assets/mobileBackground.jpg";
 
@@ -541,7 +548,7 @@ const Marketplace = (props) => {
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
-                      style={{ marginTop: "16rem" }}
+                      style={{ marginTop: "10rem" }}
                       //justifyContent="center"
                       //alignItems="center"
                     >
@@ -551,14 +558,22 @@ const Marketplace = (props) => {
                         }}
                       >
                         {" "}
-                        NextChamp is a learn-by-doing learning platform <br />
+                        We are old students of Adeolu Secondary School, <br />
                       </span>{" "}
-                      <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
-                        that makes professionals from novices
+                      <span style={{ marginLeft: matchesSM ? 20 : 50 }}>
+                        Tolu School Village, Lagos, bonded together
+                      </span>
+                      <br />
+                      <span style={{ marginLeft: matchesSM ? 20 : 90 }}>
+                        to make positive impacts on our
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 20 : 110 }}>
-                        and experts from professionals
+                        Alma Mata, our Community
+                      </span>
+                      <br />
+                      <span style={{ marginLeft: matchesSM ? 20 : 180 }}>
+                        and our Members
                       </span>
                       <br />
                       {/* <span style={{ marginLeft: matchesSM ? 20 : 130 }}></span> */}
@@ -648,8 +663,13 @@ const Marketplace = (props) => {
         </Grid>
         {/* </section> */}
 
-        <TopCover />
-        <LearningPath />
+        <HomeAboutUs />
+        <HomeMembershipSection />
+        <HomeConnectionsSection />
+        <HomeProjectSectionSection />
+        <HomeEventsSection />
+        <HomeNoticeBoardSection />
+        {/* <HomeContactUs /> */}
         {isLoading && (
           <CircularProgress
             size={100}

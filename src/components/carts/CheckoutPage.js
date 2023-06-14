@@ -234,7 +234,6 @@ function CheckoutPage(props) {
   };
 
   const renderCheckoutUpdate = (value) => {
-    console.log("the value of this removed cart is:", value);
     setUpdateCheckout(value);
   };
 

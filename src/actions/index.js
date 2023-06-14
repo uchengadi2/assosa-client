@@ -81,6 +81,25 @@ import {
   FETCH_TRANSACTION,
   DELETE_TRANSACTION,
   EDIT_TRANSACTION,
+  CREATE_MEMBERSHIP,
+  EDIT_MEMBERSHIP,
+  FETCH_MEMBERSHIPS,
+  FETCH_MEMBERSHIP,
+  DELETE_MEMBERSHIP,
+  CREATE_EVENT,
+  EDIT_EVENT,
+  FETCH_EVENT,
+  FETCH_EVENTS,
+  DELETE_EVENT,
+  CREATE_PROJECT,
+  EDIT_PROJECT,
+  FETCH_PROJECT,
+  FETCH_PROJECTS,
+  DELETE_PROJECT,
+  FETCH_NOTICE,
+  FETCH_NOTICES,
+  EDIT_NOTICE,
+  DELETE_NOTICE,
 } from "./types";
 
 //authentication and authorization  operations
@@ -866,5 +885,182 @@ export const deleteTransaction = (id) => {
   return async (dispatch) => {
     await data.delete(`/transactions/${id}`);
     dispatch({ type: DELETE_TRANSACTION, payload: id });
+  };
+};
+
+///////////////////////////////////////////////////////////////////////
+
+//MEMBERSHIP  crud operation
+export const createMembership = (formValues, token) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return async (dispatch) => {
+    const response = await data.post("/membership", formValues);
+
+    dispatch({ type: CREATE_MEMBERSHIP, payload: response.data });
+  };
+};
+
+export const fetchMemberships = (tokens, status, userId) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${tokens}`;
+  return async (dispatch) => {
+    const response = await data.get("/memberships", {
+      params: { status: status, orderedBy: userId },
+    });
+
+    dispatch({ type: FETCH_MEMBERSHIPS, payload: response.data.data.data });
+  };
+};
+
+export const fetchMembership = (id) => {
+  return async (dispatch) => {
+    const response = await data.get(`/memberships/${id}`);
+    dispatch({ type: FETCH_MEMBERSHIP, payload: response.data });
+  };
+};
+
+export const editMembership = (id, formValues) => {
+  return async (dispatch) => {
+    const response = await data.patch(`/memberships/${id}`, formValues);
+    dispatch({ type: EDIT_MEMBERSHIP, payload: response.data });
+  };
+};
+
+export const deleteMembership = (id) => {
+  return async (dispatch) => {
+    await data.delete(`/memberships/${id}`);
+    dispatch({ type: DELETE_MEMBERSHIP, payload: id });
+  };
+};
+
+///////////////////////////////////////////////////////////////////////
+
+//events  crud operation
+export const createEvent = (formValues, token) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return async (dispatch) => {
+    const response = await data.post("/events", formValues);
+
+    dispatch({ type: CREATE_EVENT, payload: response.data });
+  };
+};
+
+export const fetchEvents = (tokens, status, userId) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${tokens}`;
+  return async (dispatch) => {
+    const response = await data.get("/events", {
+      params: { status: status, orderedBy: userId },
+    });
+
+    dispatch({ type: FETCH_EVENTS, payload: response.data.data.data });
+  };
+};
+
+export const fetchEvent = (id) => {
+  return async (dispatch) => {
+    const response = await data.get(`/events/${id}`);
+    dispatch({ type: FETCH_EVENT, payload: response.data });
+  };
+};
+
+export const editEvent = (id, formValues) => {
+  return async (dispatch) => {
+    const response = await data.patch(`/events/${id}`, formValues);
+    dispatch({ type: EDIT_EVENT, payload: response.data });
+  };
+};
+
+export const deleteEvent = (id) => {
+  return async (dispatch) => {
+    await data.delete(`/events/${id}`);
+    dispatch({ type: DELETE_EVENT, payload: id });
+  };
+};
+
+///////////////////////////////////////////////////////////////////////
+
+//projects  crud operation
+export const createProject = (formValues, token) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return async (dispatch) => {
+    const response = await data.post("/projects", formValues);
+
+    dispatch({ type: CREATE_PROJECT, payload: response.data });
+  };
+};
+
+export const fetchProjects = (tokens, status, userId) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${tokens}`;
+  return async (dispatch) => {
+    const response = await data.get("/projects", {
+      params: { status: status, orderedBy: userId },
+    });
+
+    dispatch({ type: FETCH_PROJECTS, payload: response.data.data.data });
+  };
+};
+
+export const fetchProject = (id) => {
+  return async (dispatch) => {
+    const response = await data.get(`/projects/${id}`);
+    dispatch({ type: FETCH_PROJECT, payload: response.data });
+  };
+};
+
+export const editProject = (id, formValues) => {
+  return async (dispatch) => {
+    const response = await data.patch(`/projects/${id}`, formValues);
+    dispatch({ type: EDIT_PROJECT, payload: response.data });
+  };
+};
+
+export const deleteProject = (id) => {
+  return async (dispatch) => {
+    await data.delete(`/projects/${id}`);
+    dispatch({ type: DELETE_PROJECT, payload: id });
+  };
+};
+
+///////////////////////////////////////////////////////////////////////
+
+//NOTICES  crud operation
+
+export const createNotice = (formValues, token) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return async (dispatch) => {
+    const response = await data.post("/noticeboards", formValues);
+
+    dispatch({ type: CREATE_PROJECT, payload: response.data });
+  };
+};
+
+export const fetchNotices = (tokens, status, userId) => {
+  data.defaults.headers.common["Authorization"] = `Bearer ${tokens}`;
+  return async (dispatch) => {
+    const response = await data.get("/noticeboards", {
+      params: { status: status, orderedBy: userId },
+    });
+
+    dispatch({ type: FETCH_NOTICES, payload: response.data.data.data });
+  };
+};
+
+export const fetchNotice = (id) => {
+  return async (dispatch) => {
+    const response = await data.get(`/noticeboards/${id}`);
+    dispatch({ type: FETCH_NOTICE, payload: response.data });
+  };
+};
+
+export const editNotice = (id, formValues) => {
+  return async (dispatch) => {
+    const response = await data.patch(`/noticeboards/${id}`, formValues);
+    dispatch({ type: EDIT_NOTICE, payload: response.data });
+  };
+};
+
+export const deleteNotice = (id) => {
+  return async (dispatch) => {
+    await data.delete(`/noticeboards/${id}`);
+    dispatch({ type: DELETE_NOTICE, payload: id });
   };
 };
