@@ -13,6 +13,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
+import NoticeboardDetails from "./NoticeboardDetails";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
@@ -25,6 +26,7 @@ import ButtonArrow from "../ui/ButtonArrow";
 import theme from "./../ui/Theme";
 import api from "./../../apis/local";
 import { CREATE_RATE, EDIT_RATE } from "../../actions/types";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 //import CheckoutPage from "./CheckoutPage";
 
@@ -145,25 +147,25 @@ function NoticeboardInfo(props) {
           justifyContent="center"
         ></Grid>
 
-        <Typography style={{ width: 300, marginTop: 15 }}>
+        {/* <Typography style={{ width: 300, marginTop: 15 }}>
           <strong>Prerequisites:</strong>&nbsp;
           {prerequisites}&nbsp;
-        </Typography>
+        </Typography> */}
         <br />
         <Typography style={{ width: 300, marginTop: 10 }}>
-          <strong>Who should attend:</strong>&nbsp;
-          {targetAudience}&nbsp;
+          <strong>Target Audience:</strong>&nbsp;
+          <ReactMarkdown>{targetAudience}</ReactMarkdown>
         </Typography>
 
-        {categorySlug && (
+        {props.slug && (
           <Button
             component={Link}
             // to="/mobileapps"
-            // to={`/categories/${categoryId}/${productId}`}
-            to={`/categories/${categorySlug}/${slug}`}
+            //to={`/notices/${slug}`}
+            to={`/notices/${slug}`}
             varaint="outlined"
             className={classes.submitButton}
-            onClick={() => <ProductDetails />}
+            onClick={() => <NoticeboardDetails />}
           >
             {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
             {loading ? (

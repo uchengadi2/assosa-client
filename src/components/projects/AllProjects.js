@@ -20,6 +20,7 @@ import ButtonArrow from "./../ui/ButtonArrow";
 import UserLogin from "./../users/UserLogin";
 import UserSignUp from "./../users/UserSignUp";
 import UserPasswordReset from "./../users/UserPasswordReset";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import api from "./../../apis/local";
 
@@ -457,130 +458,83 @@ export default function AllProjects(props) {
             <Grid item style={{ width: "46.19%", border: "1px dotted grey" }}>
               <CardContent>
                 <Typography variant="h4" color="textSecondary" component="p">
-                  {props.title}
+                  <ReactMarkdown>{props.title}</ReactMarkdown>
                 </Typography>
                 <Typography
                   variant="subtitle1"
                   color="textSecondary"
                   component="p"
                 >
-                  {Str(props.shortDescription).limit(200, "...").get()}
+                  <ReactMarkdown>
+                    {Str(props.headline).limit(500, "...").get()}
+                  </ReactMarkdown>
                 </Typography>
                 <Typography
-                  variant="h4"
+                  variant="h5"
                   color="textSecondary"
                   component="p"
                   style={{ marginTop: 5, marginBottom: 15 }}
                 >
-                  <span style={{ marginLeft: 130 }}>
+                  <span style={{ marginLeft: 10 }}>
                     <strong>
+                      {" "}
+                      Project Estimated Cost:
                       {getCurrencyCode()}
-                      {props.price
-                        ? props.price
+                      {props.estimatedCost
+                        ? props.estimatedCost
                             .toFixed(2)
                             .replace(/\d(?=(\d{3})+\.)/g, "$&,")
                         : 0}
                     </strong>
                   </span>
                 </Typography>
+
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10, marginTop: 20 }}>
-                    <strong>Delivery Method:</strong> &nbsp;
-                    <span>{props.deliveryMethod}</span>
+                    <strong>Project Number:</strong> &nbsp;
+                    <span>{props.projectRefNo}</span>
                   </span>
                 </Typography>
 
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Venue:</strong>
-                    <span>{props.venue}</span>
+                    <strong> Project Duration:</strong>
+                    <span>{props.duration}</span>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Total Course Duration:</strong>
-                    <span>{props.duration} </span>
+                    <strong> Project Status:</strong>
+                    <span>{props.status} </span>
                   </span>
                 </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Coursework:</strong>
-                    <span>{props.lectureDuration}</span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Project:</strong>
-                    <span>{props.projectDuration}</span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Course Track:</strong>
-                    <span>{props.track}</span>
-                  </span>
-                </Typography>
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekday Class Period:</strong>
-                      <span>{props.weekdaySessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekend Class Period:</strong>
-                      <span>{props.weekendSessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
 
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekdays Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekdayStartDateText
-                        ? props.commencementWeekdaysDate.toString()
-                        : props.genericWeekdayStartDateText}
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekends Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekendStartDateText
-                        ? props.commencementWeekendsDate.toString()
-                        : props.genericWeekendStartDateText}
-                    </span>
-                  </Typography>
-                )}
-                <Typography>
+                {/* <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Payment Options:</strong>
-                    <span>{props.paymentOptions}</span>
+                    <strong>Contact Person's Details:</strong>
+                    {props.contactPersonDetails}
                   </span>
-                </Typography>
+                </Typography> */}
+                {/* <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong>Beneficiary:</strong>
+                    <span>{props.beneficiary}</span>
+                  </span>
+                </Typography> */}
               </CardContent>
             </Grid>
 
             <Grid item style={{ width: "26.50%", border: "1px dotted grey" }}>
               <ProjectInfo
-                prerequisites={props.prerequisites}
-                tools={props.tools}
-                targetAudience={props.targetAudience}
-                whatToLearn={props.whatToLearn}
-                venueLink={props.venueLink}
+                title={props.title}
+                headline={props.headline}
+                description={props.description}
+                objective={props.objective}
+                sponsor={props.sponsor}
+                beneficiary={props.beneficiary}
                 categoryId={props.category}
-                productId={props.courseId}
-                slug={props.slug}
-                categorySlug={props.categorySlug}
+                projectId={props.projectId}
+                slug={props.projectId}
               />
             </Grid>
           </Grid>
@@ -603,14 +557,16 @@ export default function AllProjects(props) {
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
                   <Typography variant="h4" color="textSecondary" component="p">
-                    {props.title}
+                    <ReactMarkdown>{props.title}</ReactMarkdown>
                   </Typography>
                   <Typography
                     variant="subtitle1"
                     color="textSecondary"
                     component="p"
                   >
-                    {Str(props.shortDescription).limit(200, "...").get()}
+                    <ReactMarkdown>
+                      {Str(props.headline).limit(200, "...").get()}
+                    </ReactMarkdown>
                   </Typography>
                   <Typography
                     variant="h5"
@@ -618,11 +574,13 @@ export default function AllProjects(props) {
                     component="p"
                     style={{ marginTop: 5, marginBottom: 15 }}
                   >
-                    <span style={{ marginLeft: 130 }}>
+                    <span style={{ marginLeft: 10 }}>
                       <strong>
+                        {" "}
+                        Project Estimated Cost:
                         {getCurrencyCode()}
-                        {props.price
-                          ? props.price
+                        {props.estimatedCost
+                          ? props.estimatedCost
                               .toFixed(2)
                               .replace(/\d(?=(\d{3})+\.)/g, "$&,")
                           : 0}
@@ -633,67 +591,27 @@ export default function AllProjects(props) {
                     <span
                       style={{ fontSize: 15, marginLeft: 10, marginTop: 20 }}
                     >
-                      <strong>Delivery Method:</strong> &nbsp;
-                      <span>{props.deliveryMethod}</span>
+                      <strong>Project Number:</strong> &nbsp;
+                      <span>{props.projectRefNo}</span>
                     </span>
                   </Typography>
 
                   <Typography>
                     <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Venue:</strong>
-                      <span>{props.venue}</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Total Course Duration:</strong>
+                      <strong> Project Duration:</strong>
                       <span>{props.duration}</span>
                     </span>
                   </Typography>
                   <Typography>
                     <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Lectures/Teaching:</strong>
-                      <span>{props.lectureDuration} days</span>
+                      <strong> Status:</strong>
+                      <span>{props.status}</span>
                     </span>
                   </Typography>
-                  <Typography>
+                  {/* <Typography>
                     <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Project:</strong>
-                      <span>{props.projectDuration} days</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Duration:</strong>
-                      <span>{props.sessionDuration} hours per day</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Period:</strong>
-                      <span>{props.sessionPeriod}</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Study Days:</strong>
-                      <span>{props.studyPeriod}</span>
-                    </span>
-                  </Typography>
-
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Start Date:</strong>
-                      <span>
-                        {new Date(props.commencementDate).toDateString()}
-                      </span>
-                    </span>
-                  </Typography>
-
-                  {/* <Typography style={{ marginTop: 10 }}>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Vendor:</strong>
-                      <span>{vendorName}</span>
+                      <strong> Contact Person's Details:</strong>
+                      <span>{props.contactPersonDetails}</span>
                     </span>
                   </Typography> */}
                 </CardContent>
@@ -701,15 +619,15 @@ export default function AllProjects(props) {
 
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <ProjectInfo
-                  prerequisites={props.prerequisites}
-                  tools={props.tools}
-                  targetAudience={props.targetAudience}
-                  whatToLearn={props.whatToLearn}
-                  venueLink={props.venueLink}
+                  title={props.title}
+                  headline={props.headline}
+                  description={props.description}
+                  objective={props.objective}
+                  sponsor={props.sponsor}
+                  beneficiary={props.beneficiary}
                   categoryId={props.category}
-                  productId={props.courseId}
-                  slug={props.slug}
-                  categorySlug={props.categorySlug}
+                  projectId={props.projectId}
+                  slug={props.projectId}
                 />
               </Grid>
             </Grid>

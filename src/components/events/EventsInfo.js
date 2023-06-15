@@ -13,6 +13,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
+import EventDetails from "./EventDetails";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
@@ -145,25 +146,25 @@ function EventsInfo(props) {
           justifyContent="center"
         ></Grid>
 
-        <Typography style={{ width: 300, marginTop: 15 }}>
+        {/* <Typography style={{ width: 300, marginTop: 15 }}>
           <strong>Prerequisites:</strong>&nbsp;
           {prerequisites}&nbsp;
-        </Typography>
+        </Typography> */}
         <br />
-        <Typography style={{ width: 300, marginTop: 10 }}>
+        {/* <Typography style={{ width: 300, marginTop: 10 }}>
           <strong>Who should attend:</strong>&nbsp;
           {targetAudience}&nbsp;
-        </Typography>
+        </Typography> */}
 
-        {categorySlug && (
+        {props.eventId && (
           <Button
             component={Link}
             // to="/mobileapps"
             // to={`/categories/${categoryId}/${productId}`}
-            to={`/categories/${categorySlug}/${slug}`}
+            to={`/events/${props.eventId}`}
             varaint="outlined"
             className={classes.submitButton}
-            onClick={() => <ProductDetails />}
+            onClick={() => <EventDetails />}
           >
             {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
             {loading ? (

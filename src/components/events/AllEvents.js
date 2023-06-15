@@ -463,124 +463,63 @@ export default function AllEvents(props) {
                   variant="subtitle1"
                   color="textSecondary"
                   component="p"
+                  style={{ marginTop: 15 }}
                 >
-                  {Str(props.shortDescription).limit(200, "...").get()}
+                  {Str(props.headline).limit(500, "...").get()}
                 </Typography>
-                <Typography
-                  variant="h4"
-                  color="textSecondary"
-                  component="p"
-                  style={{ marginTop: 5, marginBottom: 15 }}
-                >
-                  <span style={{ marginLeft: 130 }}>
-                    <strong>
-                      {getCurrencyCode()}
-                      {props.price
-                        ? props.price
-                            .toFixed(2)
-                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                        : 0}
-                    </strong>
-                  </span>
-                </Typography>
-                <Typography>
+
+                <Typography style={{ marginTop: 15 }}>
                   <span style={{ fontSize: 14, marginLeft: 10, marginTop: 20 }}>
-                    <strong>Delivery Method:</strong> &nbsp;
-                    <span>{props.deliveryMethod}</span>
+                    <strong>Event Type:</strong> &nbsp;
+                    <span>{props.type}</span>
                   </span>
                 </Typography>
 
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Venue:</strong>
-                    <span>{props.venue}</span>
+                    <strong> Event Number:</strong>
+                    <span>{props.eventNo}</span>
                   </span>
                 </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Total Course Duration:</strong>
-                    <span>{props.duration} </span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Coursework:</strong>
-                    <span>{props.lectureDuration}</span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Project:</strong>
-                    <span>{props.projectDuration}</span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Course Track:</strong>
-                    <span>{props.track}</span>
-                  </span>
-                </Typography>
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekday Class Period:</strong>
-                      <span>{props.weekdaySessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekend Class Period:</strong>
-                      <span>{props.weekendSessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
 
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekdays Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekdayStartDateText
-                        ? props.commencementWeekdaysDate.toString()
-                        : props.genericWeekdayStartDateText}
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekends Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekendStartDateText
-                        ? props.commencementWeekendsDate.toString()
-                        : props.genericWeekendStartDateText}
-                    </span>
-                  </Typography>
-                )}
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Payment Options:</strong>
-                    <span>{props.paymentOptions}</span>
+                    <strong> Event Location:</strong>
+                    <span>{props.location}</span>
                   </span>
                 </Typography>
+                <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong> Event Year:</strong>
+                    <span>{props.year} </span>
+                  </span>
+                </Typography>
+                <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong> Event Date:</strong>
+                    <span>{new Date(props.date).toDateString()} </span>
+                  </span>
+                </Typography>
+                {/* <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong>Video Link:</strong>
+                    <span>{props.video}</span>
+                  </span>
+                </Typography>
+                <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong>Image Link:</strong>
+                    <span>{props.extraImages}</span>
+                  </span>
+                </Typography> */}
               </CardContent>
             </Grid>
 
             <Grid item style={{ width: "26.50%", border: "1px dotted grey" }}>
               <EventsInfo
-                prerequisites={props.prerequisites}
-                tools={props.tools}
-                targetAudience={props.targetAudience}
-                whatToLearn={props.whatToLearn}
-                venueLink={props.venueLink}
                 categoryId={props.category}
-                productId={props.courseId}
+                eventId={props.eventId}
                 slug={props.slug}
-                categorySlug={props.categorySlug}
               />
             </Grid>
           </Grid>

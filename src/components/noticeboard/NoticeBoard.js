@@ -386,6 +386,7 @@ const NoticeBoard = (props) => {
         <Grid container direction="row">
           {noticesList.map((notice, index) => (
             <AllNoticeboard
+              noticeId={notice.id}
               title={notice.title}
               key={`${notice.id}${index}`}
               headline={notice.headline}
@@ -420,6 +421,7 @@ const NoticeBoard = (props) => {
         >
           {noticesList.map((notice, index) => (
             <AllNoticeboard
+              noticeId={notice.id}
               title={notice.title}
               key={`${notice.id}${index}`}
               headline={notice.headline}

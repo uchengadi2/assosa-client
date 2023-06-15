@@ -413,6 +413,7 @@ const Membership = (props) => {
         <Grid container direction="row">
           {membershipList.map((membership, index) => (
             <AllMembership
+              membershipId={membership.id}
               user={membership.user}
               key={`${membership.id}${index}`}
               membershipNo={membership.membershipNo}
@@ -463,6 +464,7 @@ const Membership = (props) => {
         >
           {membershipList.map((membership, index) => (
             <AllMembership
+              membershipId={membership.id}
               user={membership.user}
               key={`${membership.id}${index}`}
               membershipNo={membership.membershipNo}

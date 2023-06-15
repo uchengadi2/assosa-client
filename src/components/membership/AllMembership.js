@@ -32,6 +32,7 @@ import MembershipInfo from "./MembershipInfo";
 import { baseURL } from "./../../apis/util";
 
 import theme from "./../ui/Theme";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 //import CheckoutActionPage from "./CheckoutActionPage";
 
@@ -202,6 +203,10 @@ export default function AllMembership(props) {
   const [stateName, setStateName] = useState();
   const [product, setProduct] = useState({});
   const [vendorName, setVendorName] = useState();
+  const [memberName, setMemberName] = useState();
+  const [memberEmail, setMemberEmail] = useState();
+  const [memberRole, setMemberRole] = useState();
+  const [set, setSet] = useState();
 
   // const { token, setToken } = useToken();
   // const { userId, setUserId } = useUserId();
@@ -217,13 +222,55 @@ export default function AllMembership(props) {
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesMDUp = useMediaQuery(theme.breakpoints.up("md"));
 
-  let imageUrl = "";
-  if (product) {
-    imageUrl = `${baseURL}/images/membership/${props.image}`;
-  }
+  let imageUrl = `${baseURL}/images/membership/${props.image}`;
+  // if (product) {
+  //   imageUrl = `${baseURL}/images/membership/${props.image}`;
+  // }
   const imageMobileUrl = MobileCoverImage;
 
   const Str = require("@supercharge/strings");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let allData = [];
+      api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+      const response = await api.get(`/users/${props.user}`);
+      const user = response.data.data.data;
+      allData.push({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      });
+      setMemberEmail(allData[0].email);
+      setMemberName(allData[0].name);
+      setMemberRole(allData[0].role);
+    };
+
+    //call the function
+
+    fetchData().catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let allData = [];
+      api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+      const response = await api.get(`/categories/${props.category}`);
+      const category = response.data.data.data;
+      allData.push({
+        id: category._id,
+        name: category.name,
+        email: category.email,
+        role: category.role,
+      });
+      setSet(allData[0].name);
+    };
+
+    //call the function
+
+    fetchData().catch(console.error);
+  }, []);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -457,114 +504,72 @@ export default function AllMembership(props) {
             <Grid item style={{ width: "46.19%", border: "1px dotted grey" }}>
               <CardContent>
                 <Typography variant="h4" color="textSecondary" component="p">
-                  {props.title}
+                  {memberName}
+                  <span style={{ fontSize: 20, fontWeight: 500 }}>
+                    ({props.title})
+                  </span>
                 </Typography>
                 <Typography
                   variant="subtitle1"
                   color="textSecondary"
                   component="p"
+                  style={{ marginTop: 10, marginBottom: 15 }}
                 >
-                  {Str(props.shortDescription).limit(200, "...").get()}
+                  <ReactMarkdown>
+                    {Str(props.headline).limit(500, "...").get()}
+                  </ReactMarkdown>
                 </Typography>
                 <Typography
                   variant="h4"
                   color="textSecondary"
                   component="p"
-                  style={{ marginTop: 5, marginBottom: 15 }}
+                  style={{ marginTop: 10, marginBottom: 15 }}
                 >
                   <span style={{ marginLeft: 130 }}>
-                    <strong>
-                      {getCurrencyCode()}
-                      {props.price
-                        ? props.price
-                            .toFixed(2)
-                            .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                        : 0}
-                    </strong>
+                    <strong>{`${set}`}</strong>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10, marginTop: 20 }}>
-                    <strong>Delivery Method:</strong> &nbsp;
-                    <span>{props.deliveryMethod}</span>
+                    <strong>Website:</strong> &nbsp;
+                    <span>{props.website}</span>
                   </span>
                 </Typography>
 
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Venue:</strong>
-                    <span>{props.venue}</span>
+                    <strong> Facebook Profile:</strong>
+                    <span>{props.facebookPage}</span>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Total Course Duration:</strong>
-                    <span>{props.duration} </span>
+                    <strong> Instagram Profile:</strong>
+                    <span>{props.instagramPage} </span>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Coursework:</strong>
-                    <span>{props.lectureDuration}</span>
+                    <strong> YouTube Channel:</strong>
+                    <span>{props.youtubeChannel}</span>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong> Duration for Project:</strong>
-                    <span>{props.projectDuration}</span>
+                    <strong> Twitter Handle:</strong>
+                    <span>{props.twitterHandle}</span>
                   </span>
                 </Typography>
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Course Track:</strong>
-                    <span>{props.track}</span>
+                    <strong>linkedIn Profile:</strong>
+                    <span>{props.linkedInProfile}</span>
                   </span>
                 </Typography>
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekday Class Period:</strong>
-                      <span>{props.weekdaySessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong> Weekend Class Period:</strong>
-                      <span>{props.weekendSessionPeriod}</span>
-                    </span>
-                  </Typography>
-                )}
-
-                {(props.track === "weekdays" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekdays Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekdayStartDateText
-                        ? props.commencementWeekdaysDate.toString()
-                        : props.genericWeekdayStartDateText}
-                    </span>
-                  </Typography>
-                )}
-                {(props.track === "weekends" ||
-                  props.track === "weekdays/weekends") && (
-                  <Typography>
-                    <span style={{ fontSize: 14, marginLeft: 10 }}>
-                      <strong>Weekends Start Dates: </strong>&nbsp;&nbsp;
-                      {!props.showGenericWeekendStartDateText
-                        ? props.commencementWeekendsDate.toString()
-                        : props.genericWeekendStartDateText}
-                    </span>
-                  </Typography>
-                )}
                 <Typography>
                   <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Payment Options:</strong>
-                    <span>{props.paymentOptions}</span>
+                    <strong>Membership Number:</strong>
+                    <span>{props.membershipNo}</span>
                   </span>
                 </Typography>
               </CardContent>
@@ -572,15 +577,29 @@ export default function AllMembership(props) {
 
             <Grid item style={{ width: "26.50%", border: "1px dotted grey" }}>
               <MembershipInfo
-                prerequisites={props.prerequisites}
-                tools={props.tools}
-                targetAudience={props.targetAudience}
-                whatToLearn={props.whatToLearn}
-                venueLink={props.venueLink}
-                categoryId={props.category}
-                productId={props.courseId}
-                slug={props.slug}
-                categorySlug={props.categorySlug}
+                membershipNo={props.membershipNo}
+                membershipId={props.membershipId}
+                headline={props.headline}
+                title={props.title}
+                description={props.description}
+                profession={props.profession}
+                qualification={props.qualification}
+                experiences={props.experiences}
+                achievements={props.achievements}
+                bio={props.bio}
+                location={props.location}
+                canAddMeToNetwork={props.canAddMeToNetwork}
+                contactEmail={props.contactEmail}
+                contactPhoneNumber={props.contactPhoneNumber}
+                createdBy={props.createdBy}
+                totalConnection={props.totalConnection}
+                image={props.image}
+                defaultThumbnail={props.defaultThumbnail}
+                category={props.category}
+                user={props.user}
+                status={props.status}
+                slug={props.membershipId}
+                categorySlug={set}
               />
             </Grid>
           </Grid>
@@ -603,113 +622,104 @@ export default function AllMembership(props) {
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
                   <Typography variant="h4" color="textSecondary" component="p">
-                    {props.title}
+                    {memberName}
+                    <span style={{ fontSize: 20, fontWeight: 500 }}>
+                      ({props.title})
+                    </span>
                   </Typography>
                   <Typography
                     variant="subtitle1"
                     color="textSecondary"
                     component="p"
+                    style={{ marginTop: 10, marginBottom: 15 }}
                   >
-                    {Str(props.shortDescription).limit(200, "...").get()}
+                    <ReactMarkdown>
+                      {Str(props.headline).limit(500, "...").get()}
+                    </ReactMarkdown>
                   </Typography>
                   <Typography
-                    variant="h5"
+                    variant="h4"
                     color="textSecondary"
                     component="p"
-                    style={{ marginTop: 5, marginBottom: 15 }}
+                    style={{ marginTop: 10, marginBottom: 15 }}
                   >
                     <span style={{ marginLeft: 130 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {props.price
-                          ? props.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                      </strong>
+                      <strong>{`${set}`}</strong>
                     </span>
                   </Typography>
                   <Typography>
                     <span
-                      style={{ fontSize: 15, marginLeft: 10, marginTop: 20 }}
+                      style={{ fontSize: 14, marginLeft: 10, marginTop: 20 }}
                     >
-                      <strong>Delivery Method:</strong> &nbsp;
-                      <span>{props.deliveryMethod}</span>
+                      <strong>Website:</strong> &nbsp;
+                      <span>{props.website}</span>
                     </span>
                   </Typography>
 
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Venue:</strong>
-                      <span>{props.venue}</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Facebook Profile:</strong>
+                      <span>{props.facebookPage}</span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Total Course Duration:</strong>
-                      <span>{props.duration}</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Instagram Profile:</strong>
+                      <span>{props.instagramPage} </span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Lectures/Teaching:</strong>
-                      <span>{props.lectureDuration} days</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> YouTube Channel:</strong>
+                      <span>{props.youtubeChannel}</span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Project:</strong>
-                      <span>{props.projectDuration} days</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Twitter Handle:</strong>
+                      <span>{props.twitterHandle}</span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Duration:</strong>
-                      <span>{props.sessionDuration} hours per day</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong>linkedIn Profile:</strong>
+                      <span>{props.linkedInProfile}</span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Period:</strong>
-                      <span>{props.sessionPeriod}</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong>Membership Number:</strong>
+                      <span>{props.membershipNo}</span>
                     </span>
                   </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Study Days:</strong>
-                      <span>{props.studyPeriod}</span>
-                    </span>
-                  </Typography>
-
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Start Date:</strong>
-                      <span>
-                        {new Date(props.commencementDate).toDateString()}
-                      </span>
-                    </span>
-                  </Typography>
-
-                  {/* <Typography style={{ marginTop: 10 }}>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Vendor:</strong>
-                      <span>{vendorName}</span>
-                    </span>
-                  </Typography> */}
                 </CardContent>
               </Grid>
 
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <MembershipInfo
-                  prerequisites={props.prerequisites}
-                  tools={props.tools}
-                  targetAudience={props.targetAudience}
-                  whatToLearn={props.whatToLearn}
-                  venueLink={props.venueLink}
-                  categoryId={props.category}
-                  productId={props.courseId}
-                  slug={props.slug}
-                  categorySlug={props.categorySlug}
+                  membershipNo={props.membershipNo}
+                  membershipId={props.membershipId}
+                  headline={props.headline}
+                  title={props.title}
+                  description={props.description}
+                  profession={props.profession}
+                  qualification={props.qualification}
+                  experiences={props.experiences}
+                  achievements={props.achievements}
+                  bio={props.bio}
+                  location={props.location}
+                  canAddMeToNetwork={props.canAddMeToNetwork}
+                  contactEmail={props.contactEmail}
+                  contactPhoneNumber={props.contactPhoneNumber}
+                  createdBy={props.createdBy}
+                  totalConnection={props.totalConnection}
+                  image={props.image}
+                  defaultThumbnail={props.defaultThumbnail}
+                  category={props.category}
+                  user={props.user}
+                  status={props.status}
+                  slug={props.membershipId}
+                  categorySlug={set}
                 />
               </Grid>
             </Grid>

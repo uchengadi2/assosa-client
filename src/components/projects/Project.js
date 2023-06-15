@@ -400,6 +400,7 @@ const Project = (props) => {
         <Grid container direction="row">
           {projectsList.map((project, index) => (
             <AllProjects
+              projectId={project.id}
               title={project.title}
               key={`${project.id}${index}`}
               headline={project.headline}
@@ -440,6 +441,7 @@ const Project = (props) => {
         >
           {projectsList.map((project, index) => (
             <AllProjects
+              projectId={project.id}
               title={project.title}
               key={`${project.id}${index}`}
               headline={project.headline}

@@ -12,12 +12,14 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import ProjectDetails from "./ProjectDetails";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import ProductDetails from "../products/ProductDetails";
@@ -128,7 +130,7 @@ function ProjectInfo(props) {
   };
 
   return (
-    <form id="membershipInfo">
+    <form id="projectInfo">
       <Box
         sx={{
           width: 200,
@@ -146,24 +148,24 @@ function ProjectInfo(props) {
         ></Grid>
 
         <Typography style={{ width: 300, marginTop: 15 }}>
-          <strong>Prerequisites:</strong>&nbsp;
-          {prerequisites}&nbsp;
+          <strong>Beneficiaries:</strong>&nbsp;
+          <ReactMarkdown>{props.beneficiary}</ReactMarkdown>
         </Typography>
         <br />
-        <Typography style={{ width: 300, marginTop: 10 }}>
+        {/* <Typography style={{ width: 300, marginTop: 10 }}>
           <strong>Who should attend:</strong>&nbsp;
           {targetAudience}&nbsp;
-        </Typography>
+        </Typography> */}
 
-        {categorySlug && (
+        {props.slug && (
           <Button
             component={Link}
             // to="/mobileapps"
             // to={`/categories/${categoryId}/${productId}`}
-            to={`/categories/${categorySlug}/${slug}`}
+            to={`/projects/${slug}`}
             varaint="outlined"
             className={classes.submitButton}
-            onClick={() => <ProductDetails />}
+            onClick={() => <ProjectDetails />}
           >
             {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
             {loading ? (
@@ -184,5 +186,5 @@ function ProjectInfo(props) {
 }
 
 export default reduxForm({
-  form: "membershipInfo",
+  form: "projectInfo",
 })(ProjectInfo);

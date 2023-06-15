@@ -621,7 +621,7 @@ const AddEventForm = (props) => {
           </Grid>
           <Grid item>
             <Field
-              label="Event Video Link(YouTube Video Link)"
+              label="Event YouTube Video ID"
               id="video"
               name="video"
               type="text"

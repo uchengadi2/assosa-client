@@ -21,10 +21,13 @@ import Box from "@material-ui/core/Box";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import ProductDetails from "../products/ProductDetails";
+import MembershipDetail from "./MembershipDetail";
 import ButtonArrow from "../ui/ButtonArrow";
 import theme from "./../ui/Theme";
 import api from "./../../apis/local";
+
 import { CREATE_RATE, EDIT_RATE } from "../../actions/types";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 //import CheckoutPage from "./CheckoutPage";
 
@@ -40,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   submitButton: {
     borderRadius: 10,
     height: 40,
-    width: 130,
+    width: 160,
     marginLeft: 80,
     marginTop: 30,
     marginBottom: 15,
@@ -79,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
 
 function MembershipInfo(props) {
   const {
-    prerequisites,
-    tools,
+    profession,
+    categorySlug,
     targetAudience,
     whatToLearn,
     venueLink,
@@ -97,31 +100,33 @@ function MembershipInfo(props) {
   const classes = useStyles();
 
   const [loading, setLoading] = useState();
-  const [categorySlug, setCategorySlug] = useState();
+  // const [categorySlug, setCategorySlug] = useState();
+
+  const Str = require("@supercharge/strings");
 
   //get the category slug
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let allData = [];
-      api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
-      const response = await api.get(`/categories/${categoryId}`);
-      const items = response.data.data.data;
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     let allData = [];
+  //     api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+  //     const response = await api.get(`/categories/${categoryId}`);
+  //     const items = response.data.data.data;
 
-      allData.push({
-        id: items._id,
-        slug: items.slug,
-      });
+  //     allData.push({
+  //       id: items._id,
+  //       slug: items.slug,
+  //     });
 
-      if (allData) {
-        setCategorySlug(allData[0].slug);
-      }
-    };
+  //     if (allData) {
+  //       setCategorySlug(allData[0].slug);
+  //     }
+  //   };
 
-    //call the function
+  //   //call the function
 
-    fetchData().catch(console.error);
-  }, [categoryId, props]);
+  //   fetchData().catch(console.error);
+  // }, [categoryId, props]);
 
   const buttonContent = () => {
     return <React.Fragment>Show Details</React.Fragment>;
@@ -146,24 +151,26 @@ function MembershipInfo(props) {
         ></Grid>
 
         <Typography style={{ width: 300, marginTop: 15 }}>
-          <strong>Prerequisites:</strong>&nbsp;
-          {prerequisites}&nbsp;
+          <strong>Profession:</strong>&nbsp;
+          <ReactMarkdown>
+            {Str(profession).limit(500, "...").get()}
+          </ReactMarkdown>
         </Typography>
         <br />
-        <Typography style={{ width: 300, marginTop: 10 }}>
+        {/* <Typography style={{ width: 300, marginTop: 10 }}>
           <strong>Who should attend:</strong>&nbsp;
           {targetAudience}&nbsp;
-        </Typography>
+        </Typography> */}
 
-        {categorySlug && (
+        {props.slug && (
           <Button
             component={Link}
             // to="/mobileapps"
             // to={`/categories/${categoryId}/${productId}`}
-            to={`/categories/${categorySlug}/${slug}`}
+            to={`/membership/${slug}`}
             varaint="outlined"
             className={classes.submitButton}
-            onClick={() => <ProductDetails />}
+            onClick={() => <MembershipDetail />}
           >
             {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
             {loading ? (

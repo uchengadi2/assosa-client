@@ -395,6 +395,7 @@ const Events = (props) => {
         <Grid container direction="row">
           {eventsList.map((event, index) => (
             <AllEvents
+              eventId={event.id}
               title={event.title}
               key={`${event.id}${index}`}
               headline={event.headline}
@@ -432,6 +433,7 @@ const Events = (props) => {
         >
           {eventsList.map((event, index) => (
             <AllEvents
+              eventId={event.id}
               title={event.title}
               key={`${event.id}${index}`}
               headline={event.headline}

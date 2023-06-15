@@ -26,6 +26,10 @@ import VendorPartner from "./VendorPartner";
 import LogisticsPartner from "./LogisticsPartner";
 import Footer from "./ui/Footer";
 import CareerPage from "./career/CareerPage";
+import MembershipDetail from "../components/membership/MembershipDetail";
+import EventDetails from "./events/EventDetails";
+import ProjectDetails from "./projects/ProjectDetails";
+import NoticeboardDetails from "./noticeboard/NoticeboardDetails";
 
 import OrderPage from "./orders/OrderPage";
 import SearchPage from "./search/SearchPage";
@@ -148,6 +152,48 @@ function App() {
                 handleFailedSnackbar={handleFailedSnackbar}
               />
             </Route>
+            <Route path="/membership/:slug">
+              <MembershipDetail
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+                handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+                handleFailedSnackbar={handleFailedSnackbar}
+              />
+            </Route>
+
+            <Route path="/events/:slug">
+              <EventDetails
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+                handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+                handleFailedSnackbar={handleFailedSnackbar}
+              />
+            </Route>
+            <Route path="/projects/:slug">
+              <ProjectDetails
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+                handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+                handleFailedSnackbar={handleFailedSnackbar}
+              />
+            </Route>
+            <Route path="/notices/:slug">
+              <NoticeboardDetails
+                token={token}
+                userId={userId}
+                setToken={setToken ? setToken : {}}
+                setUserId={setUserId ? setUserId : {}}
+                handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+                handleFailedSnackbar={handleFailedSnackbar}
+              />
+            </Route>
+
             <Route path="/carts">
               <ShowCustomerCart
                 token={token}
