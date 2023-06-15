@@ -44,8 +44,8 @@ import { baseURL } from "./../apis/util";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    height: "80vh",
-    // height: "100%",
+    //height: "80vh",
+    height: "100%",
     position: "relative",
     "& video": {
       objectFit: "cover",
@@ -628,36 +628,23 @@ const Marketplace = (props) => {
                         }}
                       >
                         {" "}
-                        NextChamp is a learn-by-doing learning platform <br />
+                        We are old students of Adeolu Secondary School, <br />
                       </span>{" "}
                       <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
-                        that makes professionals from novices
+                        Tolu School Village, Lagos, bonded together
                       </span>
                       <br />
-                      <span style={{ marginLeft: matchesSM ? 30 : 110 }}>
-                        and experts from professionals
+                      <span style={{ marginLeft: matchesSM ? 50 : 110 }}>
+                        to make positive impacts on our
+                      </span>
+                      <br />
+                      <span style={{ marginLeft: matchesSM ? 70 : 120 }}>
+                        and our Members
                       </span>
                     </Typography>
                   )}
-
-                  {/* {matchesMD ? (
-                    <Grid
-                      container
-                      justifyContent="flex-start"
-                      direction={matchesSM ? "column" : "row"}
-                      // className={classes.topCover}
-                    >
-                      
-                    </Grid>
-                  ) : (
-                    
-                  )} */}
                 </Grid>
               </Box>
-              {/* </div> */}
-              {/* <Grid sm item className={classes.animation}>
-            <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
-          </Grid> */}
             </Grid>
           </Grid>
         </Grid>

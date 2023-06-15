@@ -127,6 +127,20 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
     },
   },
+  showButton: {
+    borderRadius: 10,
+    height: 40,
+    width: 130,
+    marginLeft: 80,
+    marginTop: 30,
+    marginBottom: 15,
+    color: "white",
+    backgroundColor: theme.palette.common.green,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+      color: "white",
+    },
+  },
 }));
 
 export default function HomeConnectionsSection(props) {
@@ -585,60 +599,60 @@ export default function HomeConnectionsSection(props) {
               </Grid> */}
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
-                  <Typography variant="h4" color="textSecondary" component="p">
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="textSecondary"
-                    component="p"
-                    style={{ marginTop: 10 }}
-                  >
-                    {Str(product.shortDescription).limit(200, "...").get()}
-                  </Typography>
                   <Typography
                     variant="h4"
                     color="textSecondary"
                     component="p"
                     style={{ marginTop: 5, marginBottom: 15 }}
                   >
-                    <span style={{ marginLeft: "5%", marginTop: 10 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {product.price
-                          ? product.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                        /person
-                      </strong>
+                    <span style={{ marginLeft: 5 }}>
+                      <strong>Connections</strong>
                     </span>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Course duration:</strong>&nbsp;&nbsp;
-                    {`${product.duration}`} days
+                    <ReactMarkdown>
+                      * Networking & Bonding is part of what we do as members of
+                      this great association. Among our members you will find
+                      professionals from all works of life, Artisans,
+                      Academicians, Musicians, Politicians,
+                      Enterprenuers,Religious Leaders etc, As a member, you can
+                      connect to any other member physically or via this
+                      platform for further engagement
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Start Date: </strong>&nbsp;&nbsp;
-                    {product.commencementDate
-                      ? new Date(product.commencementDate).toDateString()
-                      : "Coming Soon"}
+                    <ReactMarkdown>
+                      * The Connection Page on this platform is exclusively
+                      reserved for members to manage all their connections
+                      within the association
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Venue: </strong>&nbsp;&nbsp; {`${product.venue}`}
+                    <ReactMarkdown>
+                      * To explore all your connections, click on the Learn More
+                      button below,
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Delivery Method: </strong> &nbsp; &nbsp;
-                    {`${product.deliveryMethod}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Reference Number : </strong> &nbsp;
-                    {`${product.refNumber ? product.refNumber : ""}`}
-                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/connections`}
+                    varaint="outlined"
+                    className={classes.showButton}
+                    onClick={() => <Connection />}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
+              {/* <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <SearchPageAction
                   price={product.pricePerUnit}
                   minimumQuantity={minLearnerSlot}
@@ -661,7 +675,7 @@ export default function HomeConnectionsSection(props) {
                     props.handleCartItemForCheckoutBox
                   }
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

@@ -546,9 +546,6 @@ const AboutUs = (props) => {
                       variant={matchesSM ? "subtitle2" : "h1"}
                       align="left"
                       style={{ marginTop: "1rem" }}
-                      //   justifyContent="center"
-                      //   alignItems="center"
-                      //textAlign="center"
                     >
                       <span
                         style={{
@@ -559,57 +556,12 @@ const AboutUs = (props) => {
                         {" "}
                         Who We Are <br />
                       </span>{" "}
-                      {/* <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
-                        that makes professionals from novices
-                      </span> */}
-                      <br />
-                      {/* <span style={{ marginLeft: matchesSM ? 20 : 110 }}>
-                        and experts from professionals
-                      </span> */}
-                      <br />
-                      {/* <span style={{ marginLeft: matchesSM ? 20 : 130 }}></span> */}
-                      {/* <span style={{ marginLeft: matchesSM ? 20 : 100 }}>
-                        experts from professionals
-                      </span> */}
                     </Typography>
                   ) : (
-                    // <Typography
-                    //   variant={matchesSM ? "subtitle2" : "h2"}
-                    //   align="left"
-                    //   style={{ marginTop: "16rem" }}
-                    //   //justifyContent="center"
-                    //   //alignItems="center"
-                    // >
-                    //   <span
-                    //     style={{
-                    //       marginLeft: matchesSM ? 20 : 5,
-                    //     }}
-                    //   >
-                    //     {" "}
-                    //     E-Shield Africa is an online/e-commerce
-                    //     Marketplace(B2B). <br />
-                    //   </span>{" "}
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 20 }}>
-                    //     Our business is to provide a trusted and unified online
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 50 }}>
-                    //     portal for multiple manufacturers, distributors
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 130 }}>
-                    //     and vendors. We connect them to
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 130 }}>
-                    //     retailers for trade and services.
-                    //   </span>
-                    // </Typography>
-                    // <Typography></Typography>
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
-                      style={{ marginTop: "16rem", fontSize: "1.2rem" }}
+                      style={{ marginTop: "16rem", fontSize: "2.2rem" }}
                       justifyContent="center"
                       alignItems="center"
                     >
@@ -618,16 +570,16 @@ const AboutUs = (props) => {
                           marginLeft: matchesSM ? 7 : 5,
                         }}
                       >
-                        {" "}
-                        NextChamp is a learn-by-doing learning platform <br />
+                        Who We Are
+                        <br />
                       </span>{" "}
-                      <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
+                      {/* <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
                         that makes professionals from novices
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 30 : 110 }}>
                         and experts from professionals
-                      </span>
+                      </span> */}
                     </Typography>
                   )}
 

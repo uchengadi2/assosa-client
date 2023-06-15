@@ -567,60 +567,62 @@ export default function HomeNoticeBoardSection(props) {
               </Grid>
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
-                  <Typography variant="h4" color="textSecondary" component="p">
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="textSecondary"
-                    component="p"
-                    style={{ marginTop: 10 }}
-                  >
-                    {Str(product.shortDescription).limit(200, "...").get()}
-                  </Typography>
                   <Typography
                     variant="h4"
                     color="textSecondary"
                     component="p"
                     style={{ marginTop: 5, marginBottom: 15 }}
                   >
-                    <span style={{ marginLeft: "5%", marginTop: 10 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {product.price
-                          ? product.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                        /person
-                      </strong>
+                    <span style={{ marginLeft: 10 }}>
+                      <strong>Notice Board</strong>
                     </span>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Course duration:</strong>&nbsp;&nbsp;
-                    {`${product.duration}`} days
+                    <ReactMarkdown>
+                      * Notice board serve as a digital platforms used to
+                      display information, announcements, notices, and other
+                      relevant content for the members of the association The
+                      purpose of this notice board is to effectively communicate
+                      information to a targeted audience within the association.
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Start Date: </strong>&nbsp;&nbsp;
-                    {product.commencementDate
-                      ? new Date(product.commencementDate).toDateString()
-                      : "Coming Soon"}
+                    <ReactMarkdown>
+                      * Overall, this notice boards serve as information hubs,
+                      facilitating communication, promoting engagement, and
+                      providing a means to convey important messages to a
+                      targeted audience within the association. They are
+                      versatile tools that is provided on this platform to keep
+                      members of the association informed, connected, and
+                      engaged with their surrounding
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Venue: </strong>&nbsp;&nbsp; {`${product.venue}`}
+                    <ReactMarkdown>
+                      * To know more about the notice board, please click on the
+                      Learn More button below,
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Delivery Method: </strong> &nbsp; &nbsp;
-                    {`${product.deliveryMethod}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Reference Number : </strong> &nbsp;
-                    {`${product.refNumber ? product.refNumber : ""}`}
-                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/noticeboard`}
+                    varaint="outlined"
+                    className={classes.submitButton}
+                    onClick={() => <NoticeBoard />}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
+              {/* <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <SearchPageAction
                   price={product.pricePerUnit}
                   minimumQuantity={minLearnerSlot}
@@ -643,7 +645,7 @@ export default function HomeNoticeBoardSection(props) {
                     props.handleCartItemForCheckoutBox
                   }
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

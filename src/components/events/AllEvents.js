@@ -500,18 +500,6 @@ export default function AllEvents(props) {
                     <span>{new Date(props.date).toDateString()} </span>
                   </span>
                 </Typography>
-                {/* <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Video Link:</strong>
-                    <span>{props.video}</span>
-                  </span>
-                </Typography>
-                <Typography>
-                  <span style={{ fontSize: 14, marginLeft: 10 }}>
-                    <strong>Image Link:</strong>
-                    <span>{props.extraImages}</span>
-                  </span>
-                </Typography> */}
               </CardContent>
             </Grid>
 
@@ -549,92 +537,41 @@ export default function AllEvents(props) {
                     color="textSecondary"
                     component="p"
                   >
-                    {Str(props.shortDescription).limit(200, "...").get()}
+                    {Str(props.headline).limit(200, "...").get()}
                   </Typography>
-                  <Typography
-                    variant="h5"
-                    color="textSecondary"
-                    component="p"
-                    style={{ marginTop: 5, marginBottom: 15 }}
-                  >
-                    <span style={{ marginLeft: 130 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {props.price
-                          ? props.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                      </strong>
-                    </span>
-                  </Typography>
-                  <Typography>
+                  <Typography style={{ marginTop: 15 }}>
                     <span
-                      style={{ fontSize: 15, marginLeft: 10, marginTop: 20 }}
+                      style={{ fontSize: 14, marginLeft: 10, marginTop: 20 }}
                     >
-                      <strong>Delivery Method:</strong> &nbsp;
-                      <span>{props.deliveryMethod}</span>
+                      <strong>Event Type:</strong> &nbsp;
+                      <span>{props.type}</span>
+                    </span>
+                  </Typography>
+                  <Typography>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Event Number:</strong>
+                      <span>{props.eventNo}</span>
                     </span>
                   </Typography>
 
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Venue:</strong>
-                      <span>{props.venue}</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Event Location:</strong>
+                      <span>{props.location}</span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Total Course Duration:</strong>
-                      <span>{props.duration}</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Event Year:</strong>
+                      <span>{props.year} </span>
                     </span>
                   </Typography>
                   <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Lectures/Teaching:</strong>
-                      <span>{props.lectureDuration} days</span>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong> Event Date:</strong>
+                      <span>{new Date(props.date).toDateString()} </span>
                     </span>
                   </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Duration for Project:</strong>
-                      <span>{props.projectDuration} days</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Duration:</strong>
-                      <span>{props.sessionDuration} hours per day</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Session Period:</strong>
-                      <span>{props.sessionPeriod}</span>
-                    </span>
-                  </Typography>
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Study Days:</strong>
-                      <span>{props.studyPeriod}</span>
-                    </span>
-                  </Typography>
-
-                  <Typography>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Start Date:</strong>
-                      <span>
-                        {new Date(props.commencementDate).toDateString()}
-                      </span>
-                    </span>
-                  </Typography>
-
-                  {/* <Typography style={{ marginTop: 10 }}>
-                    <span style={{ fontSize: 15, marginLeft: 10 }}>
-                      <strong> Vendor:</strong>
-                      <span>{vendorName}</span>
-                    </span>
-                  </Typography> */}
                 </CardContent>
               </Grid>
 
@@ -646,8 +583,8 @@ export default function AllEvents(props) {
                   whatToLearn={props.whatToLearn}
                   venueLink={props.venueLink}
                   categoryId={props.category}
-                  productId={props.courseId}
-                  slug={props.slug}
+                  eventId={props.eventId}
+                  slug={props.eventId}
                   categorySlug={props.categorySlug}
                 />
               </Grid>

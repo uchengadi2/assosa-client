@@ -1110,32 +1110,6 @@ export default function MembershipDetailCard(props) {
             </Grid>
             <Grid item className={classes.thirdRowMobile}>
               <Box>
-                {/* <SendCourseToCheckoutForm
-                  price={price}
-                  currency={props.course.currency}
-                  courseId={props.course.id}
-                  token={props.token}
-                  userId={props.userId}
-                  handleMakeOpenSignUpDialogStatus={
-                    handleMakeOpenSignUpDialogStatus
-                  }
-                  handleMakeCloseSignUpDialogStatus={
-                    handleMakeCloseSignUpDialogStatus
-                  }
-                  handleMakeOpenLoginFormDialogStatus={
-                    handleMakeOpenLoginFormDialogStatus
-                  }
-                  handleMakeCloseForgotPasswordFormDialogStatus={
-                    handleMakeCloseForgotPasswordFormDialogStatus
-                  }
-                  handleSuccessfulCreateSnackbar={
-                    props.handleSuccessfulCreateSnackbar
-                  }
-                  handleFailedSnackbar={props.handleFailedSnackbar}
-                  handleFailedSignUpDialogOpenStatusWithSnackbar={
-                    handleFailedSignUpDialogOpenStatusWithSnackbar
-                  }
-                /> */}
                 {props.membership.bio !== undefined && (
                   <Typography
                     variant="h5"
@@ -1147,6 +1121,24 @@ export default function MembershipDetailCard(props) {
                     </span>
                     <ReactMarkdown>{props.membership.bio}</ReactMarkdown>
                   </Typography>
+                )}
+                {props.canAddMeToNetwork && (
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    // to={`/categories/${categoryId}/${productId}`}
+                    //to={`/membership/${slug}`}
+                    varaint="outlined"
+                    className={classes.connectButton}
+                    // onClick={() => <MembershipDetail />}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 )}
               </Box>
             </Grid>
@@ -1268,63 +1260,6 @@ export default function MembershipDetailCard(props) {
               </Typography>
             </Box>
           </Grid>
-          {/* <Grid item className={classes.forthColumnMobile}>
-            <Box>
-              <Typography>
-                <strong>Course Content:</strong>
-              </Typography>
-              <Typography
-                variant="h5"
-                style={{
-                  color: "black",
-                  marginTop: 20,
-                  marginBottom: 20,
-                  justifyContent: "center",
-                }}
-              >
-                {props.membership.contents}{" "}
-              </Typography>
-            </Box>
-          </Grid> */}
-          {/* <Grid item className={classes.fifthColumnMobile}>
-            <Box>
-              <Typography>
-                <strong>Capstone Project:</strong>
-              </Typography>
-              <Typography
-                variant="h5"
-                style={{
-                  color: "black",
-                  marginTop: 20,
-                  marginBottom: 20,
-                  justifyContent: "center",
-                }}
-              >
-                {props.membership.capstoneProject}{" "}
-              </Typography>
-            </Box>
-          </Grid> */}
-          {/* <Grid item className={classes.sixthColumnMobile}>
-            <Box>
-              <Typography>
-                <strong>
-                  What you need to become the NextChamp in this Course:
-                </strong>
-              </Typography>
-              <Typography
-                variant="h5"
-                style={{
-                  color: "black",
-                  marginTop: 20,
-                  marginBottom: 20,
-                  justifyContent: "center",
-                }}
-              >
-                {props.membership.successTips}{" "}
-              </Typography>
-            </Box>
-          </Grid> */}
-          {/* </Grid> */}
         </Grid>
       )}
       {renderLoginForm()}

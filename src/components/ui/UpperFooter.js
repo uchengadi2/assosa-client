@@ -304,12 +304,14 @@ function UpperFooter(props) {
                   ) : (
                     <Typography variant="subtitle2" style={{ fontSize: 14 }}>
                       <strong>
-                        Learning is easy but becoming a professional or an
-                        expert is not. <br />
-                        At NextChamp, we are all about making professionals{" "}
+                        Association of Old students of Adeolu Secondary School{" "}
                         <br />
-                        and experts through a combination of teaching, <br />
-                        practice, mentoring and assessment <br />
+                        (Assosa) are a group of people that attended Adeolu{" "}
+                        <br />
+                        Secondary School, Tolu School Complex, Olodi Apapa,
+                        Lagos who are bound together by same purpose, mission
+                        and vision to make a positive impacts on our alma mata,
+                        our community and most especially on our member <br />
                       </strong>
                     </Typography>
                   )}
@@ -371,13 +373,16 @@ function UpperFooter(props) {
                     <Typography variant="subtitle2">Say hello!</Typography>
                   ) : (
                     <Typography variant="subtitle2" style={{ fontSize: 14 }}>
-                      <span> 157 Adetola Street, Aguda, Surulere</span>
+                      <span>
+                        {" "}
+                        Adeolu Secondary School, Tolu School Complex, Lagos
+                      </span>
                       <br />
 
-                      <span>info@nextchamp.co</span>
+                      <span>info@assosa.ng</span>
                       <br />
 
-                      <span>+234 803 201 5819, +234 803 200 5819</span>
+                      <span>+234 808 773 5317</span>
                     </Typography>
                   )}
                   {matchesMD ? (

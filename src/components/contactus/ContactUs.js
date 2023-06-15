@@ -15,6 +15,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Snackbar from "@material-ui/core/Snackbar";
 import ReactPlayer from "react-player";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import data from "./../../apis/local";
 import CallToAction from "./../ui/CallToAction";
@@ -607,7 +608,7 @@ const ContactUs = (props) => {
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
-                      style={{ marginTop: "16rem", fontSize: "1.2rem" }}
+                      style={{ marginTop: "16rem", fontSize: "2.2rem" }}
                       justifyContent="center"
                       alignItems="center"
                     >
@@ -616,16 +617,21 @@ const ContactUs = (props) => {
                           marginLeft: matchesSM ? 7 : 5,
                         }}
                       >
-                        {" "}
-                        NextChamp is a learn-by-doing learning platform <br />
+                        Contact Us
+                        <br />
                       </span>{" "}
-                      <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
-                        that makes professionals from novices
+                      {/* <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
+                        <ReactMarkdown>
+                          * Phone Number: 0808 773 5317
+                        </ReactMarkdown>
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 30 : 110 }}>
-                        and experts from professionals
-                      </span>
+                        <ReactMarkdown>
+                          * Adeolu Secondary School, Tolu School Complex, Olodi
+                          Apapa, Lagos, Nigeria
+                        </ReactMarkdown>
+                      </span> */}
                     </Typography>
                   )}
 

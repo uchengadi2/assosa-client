@@ -543,7 +543,7 @@ const Project = (props) => {
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
-                      style={{ marginTop: "16rem", fontSize: "1.2rem" }}
+                      style={{ marginTop: "16rem", fontSize: "2.2rem" }}
                       justifyContent="center"
                       alignItems="center"
                     >
@@ -553,15 +553,15 @@ const Project = (props) => {
                         }}
                       >
                         {" "}
-                        NextChamp is a learn-by-doing learning platform <br />
+                        Projects <br />
                       </span>{" "}
-                      <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
+                      {/* <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
                         that makes professionals from novices
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 30 : 110 }}>
                         and experts from professionals
-                      </span>
+                      </span> */}
                     </Typography>
                   )}
                 </Grid>

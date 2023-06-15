@@ -212,21 +212,22 @@ export default function MembershipHeader() {
               <CardContent disableRipple>
                 <Typography variant="h5" color="textSecondary" component="p">
                   <ReactMarkdown>
-                    * Our strenght is a our Members who are all Old Students of
+                    Our strenght is our Members who are all Old Students of
                     **Adeolu Secondary School, Tolu School Complex, Olodi
                     Apapa**. These Men and Women that though from same Alma Mata
                     had gone ahead to become professionals, Artisans,
                     Academicians, Enterprenuers, Politicians, Entertainers,
                     Religious Leaders etc and are currently dominating their
-                    world in their chosen fields. However, new members are
-                    always welcomed to join us
+                    world in their chosen fields.
                   </ReactMarkdown>
                 </Typography>
                 <br />
                 <Typography variant="h5" color="textSecondary" component="p">
-                  A certificate of attendance will be awarded to all students at
-                  the completion of a course. However the students that meet the
-                  NextChamp grade mark on that course will become a NextChamp.
+                  <ReactMarkdown>
+                    Though we are the national association, we as members are
+                    free to caucus at the set level while we pool resources
+                    together at the national level to meet our objectives.
+                  </ReactMarkdown>
                 </Typography>
               </CardContent>
             </Grid>
@@ -242,11 +243,20 @@ export default function MembershipHeader() {
             >
               <CardContent disableRipple>
                 <Typography variant="h5" color="textSecondary" component="p">
-                  Corporations and Institutions that need trusted and competent
-                  hands in their workforce or as part of a project could hire
-                  from the pool of the professional NextChamps (Next Champion).
-                  However Academic NextChamps will have the confidence they need
-                  to overcome further challenges on that study domain.
+                  <ReactMarkdown>
+                    To join, every potential member will first belong to his or
+                    her set sub-association and that will automatically
+                    qualifies the member to the National association membership.
+                    You can start today by signing up on this platform
+                  </ReactMarkdown>
+                </Typography>
+
+                <br />
+                <Typography variant="h5" color="textSecondary" component="p">
+                  <ReactMarkdown>
+                    Below are a list of members that are currently in the
+                    association
+                  </ReactMarkdown>
                 </Typography>
               </CardContent>
             </Grid>

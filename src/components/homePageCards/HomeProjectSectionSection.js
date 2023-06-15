@@ -564,60 +564,66 @@ export default function HomeProjectSectionSection(props) {
               </Grid>
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
-                  <Typography variant="h4" color="textSecondary" component="p">
-                    {product.name}
-                  </Typography>
                   <Typography
-                    variant="subtitle1"
+                    variant="h4"
                     color="textSecondary"
                     component="p"
-                    style={{ marginTop: 10 }}
+                    style={{ marginTop: 5, marginBottom: 15 }}
                   >
-                    {Str(product.shortDescription).limit(200, "...").get()}
+                    <span style={{ marginLeft: 10 }}>
+                      <strong>Projects</strong>
+                    </span>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
                     <ReactMarkdown>
-                      * Members of the Association of Old Students of Adeolu
-                      Secondary School(Assosa) are all Men and Women that though
-                      from same Alma Mata had gone ahead to become
-                      professionals, Artisans, Academicians, Enterprenuers,
-                      Politicians, Religious Leaders and are currently
-                      dominating their world in their chosen fields. However,
-                      new members are always welcomed to join us
+                      * To give back to our Community and Alma Mata, we
+                      frequently embark on projects. Projects could either be
+                      implemented by a certain set or by the National body
                     </ReactMarkdown>
                   </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * In carrying out these projects, we often liase with
+                      outside bodies that share our interest or raise the fund
+                      internally among fellow members
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * Furthermore, individual members can also liaise with the
+                      association to start a project of interest that will
+                      benefit the Community, our Alma Mata and other Members
+                      alike
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * To know more about past and ongoing projects by the
+                      association, kindly click on the learn more button below
+                    </ReactMarkdown>
+                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/projects`}
+                    varaint="outlined"
+                    className={classes.submitButton}
+                    onClick={() => <Project />}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
-                <Typography variant="h5" color="textSecondary" component="p">
-                  <ReactMarkdown>
-                    * To know more about this great association membership
-                    related issues, please click the button below to learn more,
-                  </ReactMarkdown>
-                </Typography>
-                <Button
-                  component={Link}
-                  // to="/mobileapps"
-                  to={`/projects`}
-                  varaint="outlined"
-                  className={classes.submitButton}
-                  onClick={() => <Project />}
-                  style={{ marginBottom: 10 }}
-                >
-                  {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
-                  {loading ? (
-                    <CircularProgress size={30} color="inherit" />
-                  ) : (
-                    buttonContent()
-                  )}
-                  {/* <ButtonArrow
-            height={10}
-            width={10}
-            fill={theme.palette.common.blue}
-          /> */}
-                </Button>
-              </Grid>
+              {/* <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
+                
+              </Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

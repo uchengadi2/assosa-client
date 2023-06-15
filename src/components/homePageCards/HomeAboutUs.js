@@ -54,9 +54,10 @@ const useStyles = makeStyles((theme) => ({
   },
   rootMobile: {
     maxWidth: "100%",
-    //height: 440,
+    //height: 940,
     height: "100%",
     width: "100%",
+    // height: 600,
 
     // marginLeft: "10px",
     //borderRadius: 30,
@@ -120,6 +121,21 @@ const useStyles = makeStyles((theme) => ({
     width: 130,
     marginLeft: "75em",
     marginTop: 30,
+    color: "white",
+    backgroundColor: theme.palette.common.green,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+      color: "white",
+    },
+  },
+
+  showButton: {
+    borderRadius: 10,
+    height: 40,
+    width: 130,
+    marginLeft: 80,
+    marginTop: 30,
+    marginBottom: 15,
     color: "white",
     backgroundColor: theme.palette.common.green,
     "&:hover": {
@@ -602,20 +618,18 @@ export default function HomeAboutUs(props) {
         <Card className={classes.rootMobile} disableRipple>
           <CardActionArea disableRipple>
             <Grid container direction="row">
-              <Grid item style={{ width: "100%" }}>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={product.name}
-                  image={imageUrl}
-                  //title={product.name}
-                  crossOrigin="anonymous"
-                />
-              </Grid>
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
-                <CardContent disableRipple>
+              <Grid
+                item
+                style={{
+                  width: "100%",
+                  height: "100%",
+
+                  border: "1px dotted grey",
+                }}
+              >
+                <CardContent disableRipple style={{ height: "100%" }}>
                   <Typography variant="h4" color="textSecondary" component="p">
-                    {product.name}
+                    Who We Are
                   </Typography>
                   <Typography
                     variant="subtitle1"
@@ -623,74 +637,73 @@ export default function HomeAboutUs(props) {
                     component="p"
                     style={{ marginTop: 10 }}
                   >
-                    {Str(product.shortDescription).limit(200, "...").get()}
+                    <ReactMarkdown>
+                      * Association of Old students of Adeolu Secondary School
+                      (Assosa) are a group of people that attended Adeolu
+                      Secondary School, Tolu School Complex, Lagos who are
+                      binded together by same purpose, mission and vision to
+                      make a positive impacts on our alma mata, our community
+                      and most especially on our members
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * Our Vision is to promote a platform for collaboration,
+                      networking, engagement and outreach among old students of
+                      adeolu secondary school
+                    </ReactMarkdown>
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     color="textSecondary"
                     component="p"
-                    style={{ marginTop: 5, marginBottom: 15 }}
+                    //style={{ marginLeft: 20 }}
                   >
-                    <span style={{ marginLeft: "5%", marginTop: 10 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {product.price
-                          ? product.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                        /person
-                      </strong>
-                    </span>
+                    <ReactMarkdown>
+                      * Our Mission is to harness our collective strength and
+                      uniqueness to elevate our Alma mater, encourage and assist
+                      current students , care for one another as members and
+                      impact the society at large
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Course duration:</strong>&nbsp;&nbsp;
-                    {`${product.duration}`} days
+
+                  <Typography
+                    variant="h5"
+                    color="textSecondary"
+                    component="p"
+                    style={{ marginTop: 20 }}
+                  >
+                    <ReactMarkdown>
+                      * From the graduation of the first of batch of students in
+                      1986, Adeolu Secondary Secondary, Tolu School Village,
+                      Lagos had produced graduants till this day. These
+                      graduants are scattered all over the world dominating
+                      their world in various fields
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Start Date: </strong>&nbsp;&nbsp;
-                    {product.commencementDate
-                      ? new Date(product.commencementDate).toDateString()
-                      : "Coming Soon"}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Venue: </strong>&nbsp;&nbsp; {`${product.venue}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Delivery Method: </strong> &nbsp; &nbsp;
-                    {`${product.deliveryMethod}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Reference Number : </strong> &nbsp;
-                    {`${product.refNumber ? product.refNumber : ""}`}
-                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/aboutus`}
+                    varaint="outlined"
+                    className={classes.showButton}
+                    onClick={() => <AboutUs />}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
-                <SearchPageAction
-                  price={product.pricePerUnit}
-                  minimumQuantity={minLearnerSlot}
-                  remainingTotalUnits={product.remainingTotalUnits}
-                  weight={product.weightPerUnit}
-                  productId={product.id}
-                  categoryId={product.category}
-                  token={props.token}
-                  userId={props.userId}
-                  currency={product.currency}
-                  handleMakeOpenLoginFormDialogStatus={
-                    handleMakeOpenLoginFormDialogStatus
-                  }
-                  handleFailedSnackbar={handleFailedSnackbar}
-                  handleSuccessfulCreateSnackbar={
-                    handleSuccessfulCreateSnackbar
-                  }
-                  getCurrencyCode={getCurrencyCode}
-                  handleCartItemForCheckoutBox={
-                    props.handleCartItemForCheckoutBox
-                  }
-                />
-              </Grid>
+              {/* <Grid
+                item
+                style={{ width: "100%", border: "1px dotted grey" }}
+              ></Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

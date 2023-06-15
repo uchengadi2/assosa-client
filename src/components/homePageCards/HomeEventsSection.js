@@ -127,6 +127,20 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
     },
   },
+  showButton: {
+    borderRadius: 10,
+    height: 40,
+    width: 130,
+    marginLeft: 80,
+    marginTop: 30,
+    marginBottom: 15,
+    color: "white",
+    backgroundColor: theme.palette.common.green,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+      color: "white",
+    },
+  },
 }));
 
 export default function HomeEventsSection(props) {
@@ -577,7 +591,7 @@ export default function HomeEventsSection(props) {
         <Card className={classes.rootMobile} disableRipple>
           <CardActionArea disableRipple>
             <Grid container direction="row">
-              <Grid item style={{ width: "100%" }}>
+              {/* <Grid item style={{ width: "100%" }}>
                 <CardMedia
                   className={classes.mediaMobile}
                   component="img"
@@ -586,63 +600,65 @@ export default function HomeEventsSection(props) {
                   //title={product.name}
                   crossOrigin="anonymous"
                 />
-              </Grid>
+              </Grid> */}
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
-                  <Typography variant="h4" color="textSecondary" component="p">
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="textSecondary"
-                    component="p"
-                    style={{ marginTop: 10 }}
-                  >
-                    {Str(product.shortDescription).limit(200, "...").get()}
-                  </Typography>
                   <Typography
                     variant="h4"
                     color="textSecondary"
                     component="p"
                     style={{ marginTop: 5, marginBottom: 15 }}
                   >
-                    <span style={{ marginLeft: "5%", marginTop: 10 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {product.price
-                          ? product.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                        /person
-                      </strong>
+                    <span style={{ marginLeft: 10 }}>
+                      <strong>Events & Gallary</strong>
                     </span>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Course duration:</strong>&nbsp;&nbsp;
-                    {`${product.duration}`} days
+                    <ReactMarkdown>
+                      * Events can refer to a wide range of occurrences or
+                      happenings that take place within a specific time and
+                      context. They can be small or large, simple or complex,
+                      and can happen in various domains, including social,
+                      cultural, political, sports, entertainment, or scientific
+                      realms. As an association we occasionally carry out
+                      various types of events for mutual benefits of all.
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Start Date: </strong>&nbsp;&nbsp;
-                    {product.commencementDate
-                      ? new Date(product.commencementDate).toDateString()
-                      : "Coming Soon"}
+                    <ReactMarkdown>
+                      * Such events include but not limited to the End of the
+                      Year get together, occassional meetups, meetings,
+                      ceremonies and celebration
+                    </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Venue: </strong>&nbsp;&nbsp; {`${product.venue}`}
+                    <ReactMarkdown>
+                      * The Event Page is provided to keep members abreast of
+                      all events organiazed or promoted by the association. To
+                      know more about both past and current events please click
+                      on the Learn More button below,
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Delivery Method: </strong> &nbsp; &nbsp;
-                    {`${product.deliveryMethod}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Reference Number : </strong> &nbsp;
-                    {`${product.refNumber ? product.refNumber : ""}`}
-                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/events`}
+                    varaint="outlined"
+                    className={classes.showButton}
+                    onClick={() => <Event />}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
+              {/* <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <SearchPageAction
                   price={product.pricePerUnit}
                   minimumQuantity={minLearnerSlot}
@@ -665,7 +681,7 @@ export default function HomeEventsSection(props) {
                     props.handleCartItemForCheckoutBox
                   }
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

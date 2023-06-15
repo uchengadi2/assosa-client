@@ -258,8 +258,19 @@ export default function ContactUsBody() {
             }}
           >
             <CardContent>
-              <Typography variant="h4" color="textSecondary" component="p">
-                Executive Members
+              <Typography variant="h5" color="textSecondary" component="p">
+                <ReactMarkdown>* Email: info@assosa.ng</ReactMarkdown>
+              </Typography>
+
+              <Typography variant="h5" color="textSecondary" component="p">
+                <ReactMarkdown>* Phone Number: 0808 773 5317</ReactMarkdown>
+              </Typography>
+
+              <Typography variant="h5" color="textSecondary" component="p">
+                <ReactMarkdown>
+                  * Adeolu Secondary School, Tolu School Complex, Olodi Apapa,
+                  Lagos, Nigeria
+                </ReactMarkdown>
               </Typography>
             </CardContent>
           </Grid>

@@ -573,7 +573,7 @@ export default function EventDetailsCard(props) {
                 >
                   <ReactMarkdown>{props.event.headline}</ReactMarkdown>
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant="h4"
                   style={{
                     fontSize: "2.0em",
@@ -583,7 +583,7 @@ export default function EventDetailsCard(props) {
                   }}
                 >
                   {set}
-                </Typography>
+                </Typography> */}
 
                 {props.event.eventNo !== undefined && (
                   <Typography
@@ -1036,60 +1036,53 @@ export default function EventDetailsCard(props) {
                   <ReactMarkdown>{props.event.headline}</ReactMarkdown>
                 </Typography>
 
-                <Typography
-                  variant="h5"
-                  style={{ fontSize: "2.0em", marginTop: 10, marginBottom: 10 }}
-                >
-                  <ReactMarkdown>{set}</ReactMarkdown>
-                </Typography>
-
-                {props.event.eventNo !== "undefined" && (
+                {props.event.eventNo !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
-                    <span style={{ marginRight: 10 }}>
+                    <span style={{ marginRight: 20 }}>
                       {" "}
                       <strong>Event Number:</strong>
                     </span>
-                    {props.event.membershipNo}
+                    {props.event.eventNo}
                   </Typography>
                 )}
-                {props.event.website !== undefined && (
+                {props.event.type !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 20 }}>
                       {" "}
-                      <strong>Website:</strong>
+                      <strong>Event Type:</strong>
                     </span>
-                    {props.event.website}
+                    {props.event.type}
                   </Typography>
                 )}
 
-                {props.event.facebookPage !== undefined && (
+                {props.event.year !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 20 }}>
                       {" "}
-                      <strong>Facebook Profile:</strong>
+                      <strong>Event Year:</strong>
                     </span>
-                    {props.event.facebookPage}
+                    {props.event.year}
                   </Typography>
                 )}
-                {props.event.instagramPage !== undefined && (
+                {props.event.date !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 20 }}>
                       {" "}
-                      <strong>Instagram Profile:</strong>
+                      <strong>Event Date:</strong>
                     </span>
-                    {props.event.instagramPage}
+                    {new Date(props.event.date).toDateString()}
                   </Typography>
                 )}
                 {props.event.youtubeChannel !== undefined && (
@@ -1099,135 +1092,17 @@ export default function EventDetailsCard(props) {
                   >
                     <span style={{ marginRight: 20 }}>
                       {" "}
-                      <strong>Youtube Channel:</strong>
-                    </span>
-                    <span style={{ marginLeft: 3, textAlign: "center" }}>
-                      {props.event.youtubeChannel}
-                    </span>
-                  </Typography>
-                )}
-                {props.event.twitterHandle !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Twitter Handle:</strong>
-                    </span>
-                    <span style={{ marginLeft: 3, textAlign: "center" }}>
-                      {props.event.twitterHandle}
-                    </span>
-                  </Typography>
-                )}
-                {props.event.linkedInProfile !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>LinkedIn Profile:</strong>
-                    </span>
-                    {props.event.linkedInProfile}
-                  </Typography>
-                )}
-                {props.event.location !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Business Address:</strong>
+                      <strong>Event Location:</strong>
                     </span>
                     {props.event.location}
-                  </Typography>
-                )}
-                {props.event.contactEmail !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Contact Email:</strong>
-                    </span>
-                    {props.event.contactEmail}
-                  </Typography>
-                )}
-                {props.event.contactPhoneNumber !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Contact Phone Number:</strong>
-                    </span>
-                    {props.event.contactPhoneNumber}
                   </Typography>
                 )}
               </Box>
             </Grid>
             <Grid item className={classes.thirdRowMobile}>
               <Box>
-                {/* <SendCourseToCheckoutForm
-                  price={price}
-                  currency={props.course.currency}
-                  courseId={props.course.id}
-                  token={props.token}
-                  userId={props.userId}
-                  handleMakeOpenSignUpDialogStatus={
-                    handleMakeOpenSignUpDialogStatus
-                  }
-                  handleMakeCloseSignUpDialogStatus={
-                    handleMakeCloseSignUpDialogStatus
-                  }
-                  handleMakeOpenLoginFormDialogStatus={
-                    handleMakeOpenLoginFormDialogStatus
-                  }
-                  handleMakeCloseForgotPasswordFormDialogStatus={
-                    handleMakeCloseForgotPasswordFormDialogStatus
-                  }
-                  handleSuccessfulCreateSnackbar={
-                    props.handleSuccessfulCreateSnackbar
-                  }
-                  handleFailedSnackbar={props.handleFailedSnackbar}
-                  handleFailedSignUpDialogOpenStatusWithSnackbar={
-                    handleFailedSignUpDialogOpenStatusWithSnackbar
-                  }
-                /> */}
-                {props.event.bio !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Bio:</strong>
-                    </span>
-                    <ReactMarkdown>{props.event.bio}</ReactMarkdown>
-                  </Typography>
-                )}
-              </Box>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Box>
                 <Typography>
-                  <strong>Profession:</strong>
+                  <strong>Sponsor:</strong>
                 </Typography>
                 <Typography
                   variant="h5"
@@ -1238,79 +1113,12 @@ export default function EventDetailsCard(props) {
                     justifyContent: "center",
                   }}
                 >
-                  <ReactMarkdown>{props.event.profession}</ReactMarkdown>
-                </Typography>
-              </Box>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Box>
-                <Typography>
-                  <strong>Experiences:</strong>
-                </Typography>
-                <Typography
-                  variant="h5"
-                  style={{
-                    color: "black",
-                    marginTop: 20,
-                    marginBottom: 20,
-                    justifyContent: "center",
-                  }}
-                >
-                  <ReactMarkdown>{props.event.experiences}</ReactMarkdown>
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Box>
-                <Typography>
-                  <strong>Achievements:</strong>
-                </Typography>
-                <Typography
-                  variant="h5"
-                  style={{
-                    color: "black",
-                    marginTop: 20,
-                    marginBottom: 20,
-                    justifyContent: "center",
-                  }}
-                >
-                  <ReactMarkdown>{props.event.achievements}</ReactMarkdown>
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Box>
-                <Typography>
-                  <strong>Qualification:</strong>
-                </Typography>
-                <Typography
-                  variant="h5"
-                  style={{
-                    color: "black",
-                    marginTop: 20,
-                    marginBottom: 20,
-                    justifyContent: "center",
-                  }}
-                >
-                  <ReactMarkdown>{props.event.qualification}</ReactMarkdown>
+                  <ReactMarkdown>{props.event.sponsor}</ReactMarkdown>
                 </Typography>
               </Box>
             </Grid>
           </Grid>
-          <Grid item className={classes.thirdColumnMobile}>
+          <Grid item className={classes.thirdColumn}>
             <Box>
               <Typography>
                 <strong>Description:</strong>
@@ -1326,6 +1134,315 @@ export default function EventDetailsCard(props) {
               >
                 <ReactMarkdown>{props.event.description}</ReactMarkdown>
               </Typography>
+            </Box>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            style={{ width: "100%" }}
+            justifyContent="center"
+          >
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "2%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            style={{ width: "100%" }}
+            justifyContent="center"
+          >
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "2%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            style={{ width: "100%" }}
+            justifyContent="center"
+          >
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "2%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            direction="column"
+            style={{ width: "100%" }}
+            justifyContent="center"
+          >
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "2%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+            <Grid
+              item
+              className={classes.secondColumnMobile}
+              style={{ marginLeft: "0.5%" }}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.media}
+                  component="img"
+                  alt={props.event.title}
+                  image={imageUrl}
+                  //   title={props.name}
+                  crossOrigin="anonymous"
+                />
+              </Card>
+            </Grid>
+          </Grid>
+          {/**This is the end */}
+          <Grid item className={classes.thirdColumnMobile}>
+            <Box>
+              <Card>
+                <CardMedia
+                  className={classes.videoMedia}
+                  component="iframe"
+                  alt={props.event.title}
+                  height="140"
+                  src={`https://www.youtube.com/embed/${props.event.video}`}
+                  //allow="autoPlay"
+                  allowfullscreen="allowfullscreen"
+                  controls
+                />
+              </Card>
             </Box>
           </Grid>
           {/* <Grid item className={classes.forthColumnMobile}>

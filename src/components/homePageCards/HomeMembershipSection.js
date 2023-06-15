@@ -578,8 +578,18 @@ export default function HomeMembershipSection(props) {
               </Grid>
               <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
                 <CardContent disableRipple>
-                  <Typography variant="h4" color="textSecondary" component="p">
+                  {/* <Typography variant="h4" color="textSecondary" component="p">
                     {product.name}
+                  </Typography> */}
+                  <Typography
+                    variant="h4"
+                    color="textSecondary"
+                    component="p"
+                    style={{ marginTop: 5, marginBottom: 15 }}
+                  >
+                    <span style={{ marginLeft: 5 }}>
+                      <strong>Membership</strong>
+                    </span>
                   </Typography>
                   <Typography
                     variant="subtitle1"
@@ -587,74 +597,70 @@ export default function HomeMembershipSection(props) {
                     component="p"
                     style={{ marginTop: 10 }}
                   >
-                    {Str(product.shortDescription).limit(200, "...").get()}
+                    <ReactMarkdown>
+                      * Our strenght is our Members who are all Old Students of
+                      **Adeolu Secondary School, Tolu School Complex, Olodi
+                      Apapa**. These Men and Women that though from same Alma
+                      Mata had gone ahead to become professionals, Artisans,
+                      Academicians, Enterprenuers, Politicians, Entertainers,
+                      Religious Leaders etc and are currently dominating their
+                      world in their chosen fields. However, new members are
+                      always welcomed to join us
+                    </ReactMarkdown>
                   </Typography>
-                  <Typography
-                    variant="h4"
-                    color="textSecondary"
-                    component="p"
-                    style={{ marginTop: 5, marginBottom: 15 }}
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * So irrespective of your year of graduation, provided
+                      that you attended Adeolu Secondary School, Tolu School
+                      Complex, Olodi Apapa, Lagos, you are a potential member of
+                      this great association
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * To join, every potential member will first belong to his
+                      or her set sub-association and that will automatically
+                      qualifies the member to the National association
+                      membership. You can start today by signing up on this
+                      platform
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * On this platform, both new and old members are required
+                      to sign up to fully utilise all the features on the
+                      platform
+                    </ReactMarkdown>
+                  </Typography>
+                  <Typography variant="h5" color="textSecondary" component="p">
+                    <ReactMarkdown>
+                      * To know more about this great association membership
+                      related issues, please click the button below to learn
+                      more,
+                    </ReactMarkdown>
+                  </Typography>
+                  <Button
+                    component={Link}
+                    // to="/mobileapps"
+                    to={`/membership`}
+                    varaint="outlined"
+                    className={classes.submitButton}
+                    onClick={() => <Membership />}
+                    style={{ marginBottom: 10 }}
                   >
-                    <span style={{ marginLeft: "5%", marginTop: 10 }}>
-                      <strong>
-                        {getCurrencyCode()}
-                        {product.price
-                          ? product.price
-                              .toFixed(2)
-                              .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                          : 0}
-                        /person
-                      </strong>
-                    </span>
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Course duration:</strong>&nbsp;&nbsp;
-                    {`${product.duration}`} days
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Start Date: </strong>&nbsp;&nbsp;
-                    {product.commencementDate
-                      ? new Date(product.commencementDate).toDateString()
-                      : "Coming Soon"}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Venue: </strong>&nbsp;&nbsp; {`${product.venue}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Delivery Method: </strong> &nbsp; &nbsp;
-                    {`${product.deliveryMethod}`}
-                  </Typography>
-                  <Typography variant="h5" color="textSecondary" component="p">
-                    <strong>Reference Number : </strong> &nbsp;
-                    {`${product.refNumber ? product.refNumber : ""}`}
-                  </Typography>
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
                 </CardContent>
               </Grid>
 
-              <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
-                <SearchPageAction
-                  price={product.pricePerUnit}
-                  minimumQuantity={minLearnerSlot}
-                  remainingTotalUnits={product.remainingTotalUnits}
-                  weight={product.weightPerUnit}
-                  productId={product.id}
-                  categoryId={product.category}
-                  token={props.token}
-                  userId={props.userId}
-                  currency={product.currency}
-                  handleMakeOpenLoginFormDialogStatus={
-                    handleMakeOpenLoginFormDialogStatus
-                  }
-                  handleFailedSnackbar={handleFailedSnackbar}
-                  handleSuccessfulCreateSnackbar={
-                    handleSuccessfulCreateSnackbar
-                  }
-                  getCurrencyCode={getCurrencyCode}
-                  handleCartItemForCheckoutBox={
-                    props.handleCartItemForCheckoutBox
-                  }
-                />
-              </Grid>
+              {/* <Grid item style={{ width: "100%", border: "1px dotted grey" }}>
+                
+              </Grid> */}
             </Grid>
           </CardActionArea>
         </Card>

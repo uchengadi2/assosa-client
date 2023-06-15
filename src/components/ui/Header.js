@@ -247,7 +247,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     backgroundColor: theme.palette.common.green,
-    marginLeft: "0px",
+    marginRight: "20px",
   },
   drawerItem: {
     ...theme.typography.tab,
@@ -1386,7 +1386,7 @@ const Header = (props) => {
                     className={classes.logoMobile}
                   />
                 </Button>
-                <Box
+                {/* <Box
                   sx={{
                     backgroundColor: "white",
                     padding: 1,
@@ -1421,7 +1421,7 @@ const Header = (props) => {
                       Search
                     </span>
                   </Button>
-                </Box>
+                </Box> */}
 
                 {matches ? drawer : tabs}
               </Toolbar>
