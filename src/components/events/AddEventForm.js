@@ -251,6 +251,29 @@ const renderThumbnailField = ({
   );
 };
 
+const renderImagesField = ({
+  input,
+  label,
+  meta: { touched, error, invalid },
+  type,
+  id,
+  ...custom
+}) => {
+  return (
+    <TextField
+      error={touched && invalid}
+      helperText={label}
+      variant="outlined"
+      id={input.name}
+      fullWidth
+      type={type}
+      defaultValue={input.value}
+      {...custom}
+      onChange={input.onChange}
+    />
+  );
+};
+
 const renderExtraImagesField = ({
   input,
   label,
@@ -452,6 +475,9 @@ const AddEventForm = (props) => {
     if (formValues.thumbnail) {
       form.append("thumbnail", formValues.thumbnail[0]);
     }
+    if (formValues.images) {
+      form.append("images", formValues.images[0]);
+    }
 
     if (formValues) {
       const createForm = async () => {
@@ -642,17 +668,17 @@ const AddEventForm = (props) => {
             />
           </Grid>
 
-          {/* <Grid item>
+          <Grid item>
             <Field
-              label="Photo"
-              id="image"
-              name="image"
+              label="Images"
+              id="images"
+              name="images"
               type="file"
               //defaultValue={props.user.name}
-              component={renderExtraImagesField}
+              component={renderImagesField}
               style={{ marginTop: 3, width: 500 }}
             />
-          </Grid> */}
+          </Grid>
 
           <Button
             variant="contained"
