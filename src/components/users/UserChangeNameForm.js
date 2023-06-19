@@ -11,6 +11,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
+
 import { TextField, Typography } from "@material-ui/core";
 import background from "./../../logistic_assets/cover_image_1.png";
 import history from "./../../history";
@@ -52,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
       // backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "inherit",
     },
+  },
+  rootMobile: {
+    maxWidth: 300,
+    marginTop: 10,
+    width: "65%",
   },
 }));
 
@@ -110,6 +117,7 @@ const UserChangeNameForm = (props) => {
 
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesMD = useMediaQuery(theme.breakpoints.up("md"));
   const [loading, setLoading] = useState(null);
 
   function telephoneCheck(phoneNumber) {
@@ -151,76 +159,169 @@ const UserChangeNameForm = (props) => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Grid item container justifyContent="center">
-        <FormLabel
-          style={{ color: "blue", fontSize: "1.5em" }}
-          component="legend"
-        >
-          <Typography variant="h5">Update User Details</Typography>
-        </FormLabel>
-      </Grid>
-      <Box
-        component="div"
-        id="userChangeNameForm"
-        // onSubmit={onSubmit}
-        sx={{
-          width: 300,
-          //height: 200,
-        }}
-        noValidate
-        autoComplete="off"
-        // style={{ marginTop: 20 }}
-      >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          style={{ marginTop: 15 }}
-        >
-          <Grid item>
-            <Field
-              label="Name"
-              id="name"
-              name="name"
-              type="text"
-              defaultValue={props.user.name}
-              component={renderTextField}
-              style={{ marginTop: 10, width: 280 }}
-            />
+    <>
+      {matchesMD ? (
+        <Box className={classes.root}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 300,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleMakeChangeNameDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5">Update User Details</Typography>
+            </FormLabel>
           </Grid>
-          <Grid item>
-            <Field
-              label="Phone Number (country code when used should have a space between it and other numbers)"
-              id="phoneNumber"
-              name="phoneNumber"
-              defaultValue={props.user.phoneNumber}
-              type="text"
-              component={renderPhoneNumberField}
-              style={{ marginTop: 10, width: 280 }}
-            />
-          </Grid>
-          <Button
-            variant="contained"
-            className={classes.sendButton}
-            onClick={props.handleSubmit(onSubmit)}
-            // onClick={() => [
-            //   props.handleMakeChangeNameDialogForm(),
-            //   props.handleSubmit(onSubmit),
-
-            //   history.push("/profile"),
-            // ]}
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 300,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
           >
-            {loading ? (
-              <CircularProgress size={30} color="inherit" />
-            ) : (
-              buttonContent()
-            )}
-          </Button>
-        </Grid>
-      </Box>
-    </Box>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label="Name"
+                  id="name"
+                  name="name"
+                  type="text"
+                  defaultValue={props.user.name}
+                  component={renderTextField}
+                  style={{ marginTop: 10, width: 280 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Phone Number (country code when used should have a space between it and other numbers)"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  defaultValue={props.user.phoneNumber}
+                  type="text"
+                  component={renderPhoneNumberField}
+                  style={{ marginTop: 10, width: 280 }}
+                />
+              </Grid>
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      ) : (
+        <Box className={classes.rootMobile}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 250,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleMakeChangeNameDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5">Update User Details</Typography>
+            </FormLabel>
+          </Grid>
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 250,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
+          >
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label="Name"
+                  id="name"
+                  name="name"
+                  type="text"
+                  defaultValue={props.user.name}
+                  component={renderTextField}
+                  style={{ marginTop: 10, width: 220 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Phone Number (country code when used should have a space between it and other numbers)"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  defaultValue={props.user.phoneNumber}
+                  type="text"
+                  component={renderPhoneNumberField}
+                  style={{ marginTop: 10, width: 220 }}
+                />
+              </Grid>
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 

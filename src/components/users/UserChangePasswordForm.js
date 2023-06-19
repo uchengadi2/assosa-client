@@ -17,6 +17,7 @@ import background from "./../../logistic_assets/cover_image_1.png";
 import history from "./../../history";
 import api from "./../../apis/local";
 import { CHANGE_OWN_PASSWORD } from "../../actions/types";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 
 const useStyles = makeStyles((theme) => ({
   sendButton: {
@@ -54,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
       // backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "inherit",
     },
+  },
+  rootMobile: {
+    maxWidth: 300,
+    marginTop: 10,
+    width: "75%",
   },
 }));
 
@@ -182,6 +188,15 @@ const UserChangePasswordForm = (props) => {
     <>
       {matchesMD ? (
         <Box className={classes.root}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 350,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleMakeChangePasswordDialogForm()]}
+          />
           <Grid item container justifyContent="center">
             <FormLabel
               style={{ color: "blue", fontSize: "1.5em" }}
@@ -257,7 +272,16 @@ const UserChangePasswordForm = (props) => {
         </Box>
       ) : (
         <>
-          <Box className={classes.root}>
+          <Box className={classes.rootMobile}>
+            <CancelRoundedIcon
+              style={{
+                marginLeft: 300,
+                fontSize: 30,
+                marginTop: "-20px",
+                cursor: "pointer",
+              }}
+              onClick={() => [props.handleMakeChangePasswordDialogForm()]}
+            />
             <Grid item container justifyContent="center">
               <FormLabel
                 style={{ color: "blue", fontSize: "1.5em" }}
@@ -285,16 +309,16 @@ const UserChangePasswordForm = (props) => {
                 alignItems="center"
                 style={{ marginTop: 15 }}
               >
-                <Grid item>
+                {/* <Grid item>
                   <Field
                     label="Current Password"
                     id="passwordCurrent"
                     name="passwordCurrent"
                     type="password"
                     component={renderTextField}
-                    style={{ marginTop: 10, width: 340 }}
+                    style={{ marginTop: 10, width: 300 }}
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Field
                     label="New Password"
@@ -303,7 +327,7 @@ const UserChangePasswordForm = (props) => {
                     //value={user.email || ""}
                     type="password"
                     component={renderTextField}
-                    style={{ marginTop: 10, width: 340 }}
+                    style={{ marginTop: 10, width: 300 }}
                   />
                 </Grid>
                 <Grid item>
@@ -314,7 +338,7 @@ const UserChangePasswordForm = (props) => {
                     //value={user.email || ""}
                     type="password"
                     component={renderTextField}
-                    style={{ marginTop: 10, width: 340 }}
+                    style={{ marginTop: 10, width: 300 }}
                   />
                 </Grid>
                 <Button

@@ -11,6 +11,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -49,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,
     marginTop: 10,
+  },
+  rootMobile: {
+    maxWidth: 600,
+    marginTop: 10,
+    width: "75%",
   },
   background: {
     backgroundImage: `url(${background})`,
@@ -544,196 +550,411 @@ const AddEventForm = (props) => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Grid item container justifyContent="center">
-        <FormLabel
-          style={{ color: "blue", fontSize: "1.5em" }}
-          component="legend"
-        >
-          <Typography variant="h5">New Event Form</Typography>
-        </FormLabel>
-      </Grid>
-      <Box
-        component="div"
-        id="userChangeNameForm"
-        // onSubmit={onSubmit}
-        sx={{
-          width: 580,
-          //height: 200,
-        }}
-        noValidate
-        autoComplete="off"
-        // style={{ marginTop: 20 }}
-      >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          style={{ marginTop: 15 }}
-        >
-          <Grid item>
-            <Field
-              label=""
-              id="type"
-              name="type"
-              type="text"
-              component={renderEventTypeField}
-              //style={{ marginTop: 3, width: 500 }}
-            />
+    <>
+      {matchesMD ? (
+        <Box className={classes.root}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 520,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleNewEventDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5">New Event Form</Typography>
+            </FormLabel>
           </Grid>
-
-          <Grid item>
-            <Field
-              label=""
-              id="year"
-              name="year"
-              type="text"
-              component={renderEventYearField}
-              //style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Enter the Date of the Event"
-              id="date"
-              name="date"
-              type="date"
-              component={renderEventDateField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Title"
-              id="title"
-              name="title"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderTitleField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Headline"
-              id="headline"
-              name="headline"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderHeaderField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Description"
-              id="description"
-              name="description"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderDescriptionField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Event Location"
-              id="location"
-              name="location"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderLocationField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Event Sponsor"
-              id="sponsor"
-              name="sponsor"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderSponsorField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Thumbnail"
-              id="thumbnail"
-              name="thumbnail"
-              type="file"
-              //defaultValue={props.user.name}
-              component={renderThumbnailField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Event YouTube Video ID"
-              id="video"
-              name="video"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderVideoField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Extra Event Images Link"
-              id="extraImages"
-              name="extraImages"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderExtraImagesField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Upload Images"
-              id="images"
-              name="images"
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleFileEvent}
-              component={renderImagesField}
-              style={{ marginTop: 3, width: 500 }}
-              disabled={fileLimit}
-            />
-
-            {uploadedFiles.map((file) => [<br />, file.name])}
-          </Grid>
-
-          <Button
-            variant="contained"
-            className={classes.sendButton}
-            onClick={props.handleSubmit(onSubmit)}
-            // onClick={() => [
-            //   props.handleMakeChangeNameDialogForm(),
-            //   props.handleSubmit(onSubmit),
-
-            //   history.push("/profile"),
-            // ]}
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 580,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
           >
-            {loading ? (
-              <CircularProgress size={30} color="inherit" />
-            ) : (
-              buttonContent()
-            )}
-          </Button>
-        </Grid>
-      </Box>
-    </Box>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label=""
+                  id="type"
+                  name="type"
+                  type="text"
+                  component={renderEventTypeField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label=""
+                  id="year"
+                  name="year"
+                  type="text"
+                  component={renderEventYearField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Enter the Date of the Event"
+                  id="date"
+                  name="date"
+                  type="date"
+                  component={renderEventDateField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Event Location"
+                  id="location"
+                  name="location"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderLocationField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Event Sponsor"
+                  id="sponsor"
+                  name="sponsor"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderSponsorField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Thumbnail"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  //defaultValue={props.user.name}
+                  component={renderThumbnailField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Event YouTube Video ID"
+                  id="video"
+                  name="video"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderVideoField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Extra Event Images Link"
+                  id="extraImages"
+                  name="extraImages"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderExtraImagesField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Upload Images"
+                  id="images"
+                  name="images"
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileEvent}
+                  component={renderImagesField}
+                  style={{ marginTop: 3, width: 500 }}
+                  disabled={fileLimit}
+                />
+
+                {uploadedFiles.map((file) => [<br />, file.name])}
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      ) : (
+        <Box className={classes.rootMobile}>
+          <Grid item container justifyContent="center">
+            <CancelRoundedIcon
+              style={{
+                marginLeft: 370,
+                fontSize: 30,
+                marginTop: "-20px",
+                cursor: "pointer",
+              }}
+              onClick={() => [props.handleNewEventDialogForm()]}
+            />
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5" style={{ marginLeft: 25 }}>
+                New Event Form
+              </Typography>
+            </FormLabel>
+          </Grid>
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 350,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
+          >
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label=""
+                  id="type"
+                  name="type"
+                  type="text"
+                  component={renderEventTypeField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label=""
+                  id="year"
+                  name="year"
+                  type="text"
+                  component={renderEventYearField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Enter the Date of the Event"
+                  id="date"
+                  name="date"
+                  type="date"
+                  component={renderEventDateField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Event Location"
+                  id="location"
+                  name="location"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderLocationField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Event Sponsor"
+                  id="sponsor"
+                  name="sponsor"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderSponsorField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Thumbnail"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  //defaultValue={props.user.name}
+                  component={renderThumbnailField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Event YouTube Video ID"
+                  id="video"
+                  name="video"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderVideoField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Extra Event Images Link"
+                  id="extraImages"
+                  name="extraImages"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderExtraImagesField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Upload Images"
+                  id="images"
+                  name="images"
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileEvent}
+                  component={renderImagesField}
+                  style={{ marginTop: 3, width: 300 }}
+                  disabled={fileLimit}
+                />
+
+                {uploadedFiles.map((file) => [<br />, file.name])}
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 

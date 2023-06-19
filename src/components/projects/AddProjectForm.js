@@ -11,6 +11,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -49,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 600,
     marginTop: 10,
+  },
+  rootMobile: {
+    maxWidth: 600,
+    marginTop: 10,
+    width: "75%",
   },
   background: {
     backgroundImage: `url(${background})`,
@@ -610,230 +616,479 @@ const AddProjectForm = (props) => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Grid item container justifyContent="center">
-        <FormLabel
-          style={{ color: "blue", fontSize: "1.5em" }}
-          component="legend"
-        >
-          <Typography variant="h5">New Project Form</Typography>
-        </FormLabel>
-      </Grid>
-      <Box
-        component="div"
-        id="addProjectForm"
-        // onSubmit={onSubmit}
-        sx={{
-          width: 580,
-          //height: 200,
-        }}
-        noValidate
-        autoComplete="off"
-        // style={{ marginTop: 20 }}
-      >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          style={{ marginTop: 15 }}
-        >
-          <Grid item>
-            <Field
-              label="Title"
-              id="title"
-              name="title"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderTitleField}
-              style={{ marginTop: 3, width: 500 }}
-            />
+    <>
+      {matchesMD ? (
+        <Box className={classes.root}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 500,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleNewProjectDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5">New Project Form</Typography>
+            </FormLabel>
           </Grid>
-          <Grid item>
-            <Field
-              label="Headline"
-              id="headline"
-              name="headline"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderHeaderField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Description"
-              id="description"
-              name="description"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderDescriptionField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Project Objective"
-              id="objective"
-              name="objective"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderObjectiveField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Project Sponsor"
-              id="sponsor"
-              name="sponsor"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderSponsorField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Thumbnail"
-              id="thumbnail"
-              name="thumbnail"
-              type="file"
-              //defaultValue={props.user.name}
-              component={renderThumbnailField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Project Video Link(YouTube Video Link)"
-              id="video"
-              name="video"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderVideoField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Project Image Link"
-              id="imageLink"
-              name="imageLink"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderImageLinkField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Estimated Cost"
-              id="estimatedCost"
-              name="estimatedCost"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderEstimatedCostField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Project Duration"
-              id="duration"
-              name="duration"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderDurationField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Beneficiaries"
-              id="beneficiary"
-              name="beneficiary"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderBeneficiaryField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Wiil Donations be Need"
-              id="willNeedDonations"
-              name="willNeedDonations"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderWillNeedDonationsField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Contact Person"
-              id="contactPersonDetails"
-              name="contactPersonDetails"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderContactPersonField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Project Status"
-              id="status"
-              name="status"
-              type="text"
-              //defaultValue={props.user.name}
-              component={renderProjectStatusField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Upload Images"
-              id="images"
-              name="images"
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleFileEvent}
-              component={renderImagesField}
-              style={{ marginTop: 3, width: 500 }}
-              disabled={fileLimit}
-            />
-            {uploadedFiles.map((file) => [<br />, file.name])}
-          </Grid>
-
-          <Button
-            variant="contained"
-            className={classes.sendButton}
-            onClick={props.handleSubmit(onSubmit)}
-            // onClick={() => [
-            //   props.handleMakeChangeNameDialogForm(),
-            //   props.handleSubmit(onSubmit),
-
-            //   history.push("/profile"),
-            // ]}
+          <Box
+            component="div"
+            id="addProjectForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 580,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
           >
-            {loading ? (
-              <CircularProgress size={30} color="inherit" />
-            ) : (
-              buttonContent()
-            )}
-          </Button>
-        </Grid>
-      </Box>
-    </Box>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Objective"
+                  id="objective"
+                  name="objective"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderObjectiveField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Sponsor"
+                  id="sponsor"
+                  name="sponsor"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderSponsorField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Thumbnail"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  //defaultValue={props.user.name}
+                  component={renderThumbnailField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Video Link(YouTube Video Link)"
+                  id="video"
+                  name="video"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderVideoField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Image Link"
+                  id="imageLink"
+                  name="imageLink"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderImageLinkField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Estimated Cost"
+                  id="estimatedCost"
+                  name="estimatedCost"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderEstimatedCostField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Duration"
+                  id="duration"
+                  name="duration"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDurationField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Beneficiaries"
+                  id="beneficiary"
+                  name="beneficiary"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderBeneficiaryField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Wiil Donations be Need"
+                  id="willNeedDonations"
+                  name="willNeedDonations"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderWillNeedDonationsField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Contact Person"
+                  id="contactPersonDetails"
+                  name="contactPersonDetails"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderContactPersonField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Status"
+                  id="status"
+                  name="status"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderProjectStatusField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Upload Images"
+                  id="images"
+                  name="images"
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileEvent}
+                  component={renderImagesField}
+                  style={{ marginTop: 3, width: 500 }}
+                  disabled={fileLimit}
+                />
+                {uploadedFiles.map((file) => [<br />, file.name])}
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      ) : (
+        <Box className={classes.rootMobile}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 300,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleNewProjectDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5" style={{ marginLeft: 53 }}>
+                New Project Form
+              </Typography>
+            </FormLabel>
+          </Grid>
+          <Box
+            component="div"
+            id="addProjectForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 350,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
+          >
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Objective"
+                  id="objective"
+                  name="objective"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderObjectiveField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Sponsor"
+                  id="sponsor"
+                  name="sponsor"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderSponsorField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Thumbnail"
+                  id="thumbnail"
+                  name="thumbnail"
+                  type="file"
+                  //defaultValue={props.user.name}
+                  component={renderThumbnailField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Video Link(YouTube Video Link)"
+                  id="video"
+                  name="video"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderVideoField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Image Link"
+                  id="imageLink"
+                  name="imageLink"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderImageLinkField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Estimated Cost"
+                  id="estimatedCost"
+                  name="estimatedCost"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderEstimatedCostField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Project Duration"
+                  id="duration"
+                  name="duration"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderDurationField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Beneficiaries"
+                  id="beneficiary"
+                  name="beneficiary"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderBeneficiaryField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Wiil Donations be Need"
+                  id="willNeedDonations"
+                  name="willNeedDonations"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderWillNeedDonationsField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Contact Person"
+                  id="contactPersonDetails"
+                  name="contactPersonDetails"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderContactPersonField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Project Status"
+                  id="status"
+                  name="status"
+                  type="text"
+                  //defaultValue={props.user.name}
+                  component={renderProjectStatusField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Upload Images"
+                  id="images"
+                  name="images"
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileEvent}
+                  component={renderImagesField}
+                  style={{ marginTop: 3, width: 300 }}
+                  disabled={fileLimit}
+                />
+                {uploadedFiles.map((file) => [<br />, file.name])}
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 

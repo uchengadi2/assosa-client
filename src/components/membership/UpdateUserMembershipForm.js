@@ -11,7 +11,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-
+import CancelRoundedIcon from "@material-ui/icons/CancelRounded";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Select from "@material-ui/core/Select";
@@ -62,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
       // backgroundImage: `url(${mobileBackground})`,
       backgroundAttachment: "inherit",
     },
+  },
+  rootMobile: {
+    maxWidth: 600,
+    marginTop: 10,
+    width: "75%",
   },
 }));
 
@@ -870,276 +875,571 @@ const UpdateUserMembershipForm = (props) => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Grid item container justifyContent="center">
-        <FormLabel
-          style={{ color: "blue", fontSize: "1.5em" }}
-          component="legend"
-        >
-          <Typography variant="h5">Update Membership Form</Typography>
-        </FormLabel>
-      </Grid>
-      <Box
-        component="div"
-        id="userChangeNameForm"
-        // onSubmit={onSubmit}
-        sx={{
-          width: 580,
-          //height: 200,
-        }}
-        noValidate
-        autoComplete="off"
-        // style={{ marginTop: 20 }}
-      >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          style={{ marginTop: 15 }}
-        >
-          <Grid item>
-            <Field
-              label=""
-              id="category"
-              name="category"
-              defaultValue={membership && membership.category}
-              type="text"
-              component={renderCategoryField}
-              //style={{ marginTop: 3, width: 500 }}
-            />
+    <>
+      {matchesMD ? (
+        <Box className={classes.root}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 500,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleUpdatedMembershipDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5">Update Membership Form</Typography>
+            </FormLabel>
           </Grid>
-
-          <Grid item>
-            <Field
-              label="Title"
-              id="title"
-              name="title"
-              type="text"
-              defaultValue={membership && membership.title}
-              component={renderTitleField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Headline"
-              id="headline"
-              name="headline"
-              type="text"
-              defaultValue={membership && membership.headline}
-              component={renderHeaderField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Bio"
-              id="bio"
-              name="bio"
-              type="text"
-              defaultValue={membership && membership.bio}
-              component={renderBioField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Description"
-              id="description"
-              name="description"
-              type="text"
-              defaultValue={membership && membership.description}
-              component={renderDescriptionField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Profession"
-              id="profession"
-              name="profession"
-              type="text"
-              defaultValue={membership && membership.profession}
-              component={renderProfessionField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Qualification"
-              id="qualification"
-              name="qualification"
-              type="text"
-              defaultValue={membership && membership.qualification}
-              component={renderQualificationField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Experiences"
-              id="experiences"
-              name="experiences"
-              type="text"
-              defaultValue={membership && membership.experiences}
-              component={renderExperiencesField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Achievements"
-              id="achievements"
-              name="achievements"
-              type="text"
-              defaultValue={membership && membership.achievements}
-              component={renderAchievementsField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Website"
-              id="website"
-              name="website"
-              type="text"
-              defaultValue={membership && membership.website}
-              component={renderWebsiteField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Facebook Profile"
-              id="facebookPage"
-              name="facebookPage"
-              type="text"
-              defaultValue={membership && membership.facebookPage}
-              component={renderFacebookPageField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Instagram Profile"
-              id="instagramPage"
-              name="instagramPage"
-              type="text"
-              defaultValue={membership && membership.instagramPage}
-              component={renderInstagramPageField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Youtube Channel"
-              id="youtubeChannel"
-              name="youtubeChannel"
-              type="text"
-              defaultValue={membership && membership.youtubeChannel}
-              component={renderYoutubeChannelField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Twitter Handle"
-              id="twitterHandle"
-              name="twitterHandle"
-              type="text"
-              defaultValue={membership && membership.twitterHandle}
-              component={renderTwitterHandleField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="LinkedIn Profile"
-              id="linkedInProfile"
-              name="linkedInProfile"
-              type="text"
-              defaultValue={membership && membership.linkedInProfile}
-              component={renderLinkedInProfileField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Address Location"
-              id="location"
-              name="location"
-              type="text"
-              defaultValue={membership && membership.location}
-              component={renderLocationField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Grid item>
-            <Field
-              label="Contact Email"
-              id="contactEmail"
-              name="contactEmail"
-              type="text"
-              defaultValue={membership && membership.contactEmail}
-              component={renderContactEmailField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Contact Phone Number"
-              id="contactPhoneNumber"
-              name="contactPhoneNumber"
-              type="text"
-              defaultValue={membership && membership.contactPhoneNumber}
-              component={renderContactPhoneNumberField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label=""
-              id="canAddMeToNetwork"
-              name="canAddMeToNetwork"
-              type="text"
-              component={renderConnectionAvailabilityField}
-              //style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-          <Grid item>
-            <Field
-              label="Photo"
-              id="image"
-              name="image"
-              type="file"
-              defaultValue={membership && membership.image}
-              component={renderImageField}
-              style={{ marginTop: 3, width: 500 }}
-            />
-          </Grid>
-
-          <Button
-            variant="contained"
-            className={classes.sendButton}
-            onClick={props.handleSubmit(onSubmit)}
-            // onClick={() => [
-            //   props.handleMakeChangeNameDialogForm(),
-            //   props.handleSubmit(onSubmit),
-
-            //   history.push("/profile"),
-            // ]}
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 580,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
           >
-            {loading ? (
-              <CircularProgress size={30} color="inherit" />
-            ) : (
-              buttonContent()
-            )}
-          </Button>
-        </Grid>
-      </Box>
-    </Box>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label=""
+                  id="category"
+                  name="category"
+                  defaultValue={membership && membership.category}
+                  type="text"
+                  component={renderCategoryField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  defaultValue={membership && membership.title}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  defaultValue={membership && membership.headline}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Bio"
+                  id="bio"
+                  name="bio"
+                  type="text"
+                  defaultValue={membership && membership.bio}
+                  component={renderBioField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  defaultValue={membership && membership.description}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Profession"
+                  id="profession"
+                  name="profession"
+                  type="text"
+                  defaultValue={membership && membership.profession}
+                  component={renderProfessionField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Qualification"
+                  id="qualification"
+                  name="qualification"
+                  type="text"
+                  defaultValue={membership && membership.qualification}
+                  component={renderQualificationField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Experiences"
+                  id="experiences"
+                  name="experiences"
+                  type="text"
+                  defaultValue={membership && membership.experiences}
+                  component={renderExperiencesField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Achievements"
+                  id="achievements"
+                  name="achievements"
+                  type="text"
+                  defaultValue={membership && membership.achievements}
+                  component={renderAchievementsField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Website"
+                  id="website"
+                  name="website"
+                  type="text"
+                  defaultValue={membership && membership.website}
+                  component={renderWebsiteField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Facebook Profile"
+                  id="facebookPage"
+                  name="facebookPage"
+                  type="text"
+                  defaultValue={membership && membership.facebookPage}
+                  component={renderFacebookPageField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Instagram Profile"
+                  id="instagramPage"
+                  name="instagramPage"
+                  type="text"
+                  defaultValue={membership && membership.instagramPage}
+                  component={renderInstagramPageField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Youtube Channel"
+                  id="youtubeChannel"
+                  name="youtubeChannel"
+                  type="text"
+                  defaultValue={membership && membership.youtubeChannel}
+                  component={renderYoutubeChannelField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Twitter Handle"
+                  id="twitterHandle"
+                  name="twitterHandle"
+                  type="text"
+                  defaultValue={membership && membership.twitterHandle}
+                  component={renderTwitterHandleField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="LinkedIn Profile"
+                  id="linkedInProfile"
+                  name="linkedInProfile"
+                  type="text"
+                  defaultValue={membership && membership.linkedInProfile}
+                  component={renderLinkedInProfileField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Address Location"
+                  id="location"
+                  name="location"
+                  type="text"
+                  defaultValue={membership && membership.location}
+                  component={renderLocationField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Contact Email"
+                  id="contactEmail"
+                  name="contactEmail"
+                  type="text"
+                  defaultValue={membership && membership.contactEmail}
+                  component={renderContactEmailField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Contact Phone Number"
+                  id="contactPhoneNumber"
+                  name="contactPhoneNumber"
+                  type="text"
+                  defaultValue={membership && membership.contactPhoneNumber}
+                  component={renderContactPhoneNumberField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label=""
+                  id="canAddMeToNetwork"
+                  name="canAddMeToNetwork"
+                  type="text"
+                  component={renderConnectionAvailabilityField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Photo"
+                  id="image"
+                  name="image"
+                  type="file"
+                  defaultValue={membership && membership.image}
+                  component={renderImageField}
+                  style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      ) : (
+        <Box className={classes.rootMobile}>
+          <CancelRoundedIcon
+            style={{
+              marginLeft: 300,
+              fontSize: 30,
+              marginTop: "-20px",
+              cursor: "pointer",
+            }}
+            onClick={() => [props.handleUpdatedMembershipDialogForm()]}
+          />
+          <Grid item container justifyContent="center">
+            <FormLabel
+              style={{ color: "blue", fontSize: "1.5em" }}
+              component="legend"
+            >
+              <Typography variant="h5" style={{ marginLeft: 35 }}>
+                Update Membership
+              </Typography>
+            </FormLabel>
+          </Grid>
+          <Box
+            component="div"
+            id="userChangeNameForm"
+            // onSubmit={onSubmit}
+            sx={{
+              width: 350,
+              //height: 200,
+            }}
+            noValidate
+            autoComplete="off"
+            // style={{ marginTop: 20 }}
+          >
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              style={{ marginTop: 15 }}
+            >
+              <Grid item>
+                <Field
+                  label=""
+                  id="category"
+                  name="category"
+                  defaultValue={membership && membership.category}
+                  type="text"
+                  component={renderCategoryField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Title"
+                  id="title"
+                  name="title"
+                  type="text"
+                  defaultValue={membership && membership.title}
+                  component={renderTitleField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Headline"
+                  id="headline"
+                  name="headline"
+                  type="text"
+                  defaultValue={membership && membership.headline}
+                  component={renderHeaderField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Bio"
+                  id="bio"
+                  name="bio"
+                  type="text"
+                  defaultValue={membership && membership.bio}
+                  component={renderBioField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Description"
+                  id="description"
+                  name="description"
+                  type="text"
+                  defaultValue={membership && membership.description}
+                  component={renderDescriptionField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Profession"
+                  id="profession"
+                  name="profession"
+                  type="text"
+                  defaultValue={membership && membership.profession}
+                  component={renderProfessionField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Qualification"
+                  id="qualification"
+                  name="qualification"
+                  type="text"
+                  defaultValue={membership && membership.qualification}
+                  component={renderQualificationField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Experiences"
+                  id="experiences"
+                  name="experiences"
+                  type="text"
+                  defaultValue={membership && membership.experiences}
+                  component={renderExperiencesField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Achievements"
+                  id="achievements"
+                  name="achievements"
+                  type="text"
+                  defaultValue={membership && membership.achievements}
+                  component={renderAchievementsField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Website"
+                  id="website"
+                  name="website"
+                  type="text"
+                  defaultValue={membership && membership.website}
+                  component={renderWebsiteField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Facebook Profile"
+                  id="facebookPage"
+                  name="facebookPage"
+                  type="text"
+                  defaultValue={membership && membership.facebookPage}
+                  component={renderFacebookPageField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Instagram Profile"
+                  id="instagramPage"
+                  name="instagramPage"
+                  type="text"
+                  defaultValue={membership && membership.instagramPage}
+                  component={renderInstagramPageField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Youtube Channel"
+                  id="youtubeChannel"
+                  name="youtubeChannel"
+                  type="text"
+                  defaultValue={membership && membership.youtubeChannel}
+                  component={renderYoutubeChannelField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Twitter Handle"
+                  id="twitterHandle"
+                  name="twitterHandle"
+                  type="text"
+                  defaultValue={membership && membership.twitterHandle}
+                  component={renderTwitterHandleField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="LinkedIn Profile"
+                  id="linkedInProfile"
+                  name="linkedInProfile"
+                  type="text"
+                  defaultValue={membership && membership.linkedInProfile}
+                  component={renderLinkedInProfileField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Address Location"
+                  id="location"
+                  name="location"
+                  type="text"
+                  defaultValue={membership && membership.location}
+                  component={renderLocationField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Grid item>
+                <Field
+                  label="Contact Email"
+                  id="contactEmail"
+                  name="contactEmail"
+                  type="text"
+                  defaultValue={membership && membership.contactEmail}
+                  component={renderContactEmailField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Contact Phone Number"
+                  id="contactPhoneNumber"
+                  name="contactPhoneNumber"
+                  type="text"
+                  defaultValue={membership && membership.contactPhoneNumber}
+                  component={renderContactPhoneNumberField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label=""
+                  id="canAddMeToNetwork"
+                  name="canAddMeToNetwork"
+                  type="text"
+                  component={renderConnectionAvailabilityField}
+                  //style={{ marginTop: 3, width: 500 }}
+                />
+              </Grid>
+              <Grid item>
+                <Field
+                  label="Photo"
+                  id="image"
+                  name="image"
+                  type="file"
+                  defaultValue={membership && membership.image}
+                  component={renderImageField}
+                  style={{ marginTop: 3, width: 300 }}
+                />
+              </Grid>
+
+              <Button
+                variant="contained"
+                className={classes.sendButton}
+                onClick={props.handleSubmit(onSubmit)}
+                // onClick={() => [
+                //   props.handleMakeChangeNameDialogForm(),
+                //   props.handleSubmit(onSubmit),
+
+                //   history.push("/profile"),
+                // ]}
+              >
+                {loading ? (
+                  <CircularProgress size={30} color="inherit" />
+                ) : (
+                  buttonContent()
+                )}
+              </Button>
+            </Grid>
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };
 
