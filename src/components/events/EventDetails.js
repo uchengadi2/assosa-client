@@ -276,6 +276,7 @@ function EventDetails(props) {
         date: event.date,
         sponsor: event.sponsor,
         image: event.thumbnail,
+        images: event.images,
         defaultThumbnail: event.defaultThumbnail,
         createdBy: event.createdBy,
         video: event.video,
@@ -297,6 +298,7 @@ function EventDetails(props) {
         date: allData[0].date,
         sponsor: allData[0].sponsor,
         image: allData[0].image,
+        images: allData[0].images,
         defaultThumbnail: allData[0].defaultThumbnail,
         createdBy: allData[0].createdBy,
         video: allData[0].video,
@@ -332,6 +334,7 @@ function EventDetails(props) {
             date={event.date}
             sponsor={event.sponsor}
             image={event.image}
+            images={event.images}
             defaultThumbnail={event.bio}
             createdBy={event.createdBy}
             video={event.video}
@@ -373,6 +376,7 @@ function EventDetails(props) {
             date={event.date}
             sponsor={event.sponsor}
             image={event.image}
+            images={event.images}
             defaultThumbnail={event.bio}
             createdBy={event.createdBy}
             video={event.video}

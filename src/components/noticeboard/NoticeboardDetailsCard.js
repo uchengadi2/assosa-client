@@ -269,6 +269,7 @@ export default function NoticeboardDetailsCard(props) {
   const [memberRole, setMemberRole] = useState();
   const [set, setSet] = useState();
   const [loading, setLoading] = useState();
+  const [images, setImages] = useState([]);
 
   // const { token, setToken } = useToken();
   // const { userId, setUserId } = useUserId();
@@ -289,9 +290,17 @@ export default function NoticeboardDetailsCard(props) {
 
   const Str = require("@supercharge/strings");
 
-  //   useEffect(() => {
-  //     setPrice(props.membership.price);
-  //   }, [props.membership]);
+  useEffect(() => {
+    setImages(props.images);
+  }, [props]);
+
+  console.log("images are:", images);
+
+  let imageLength = 0;
+
+  if (props.images) {
+    imageLength = props.images.length;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -689,329 +698,117 @@ export default function NoticeboardDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[0] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[0]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[1] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[1]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[2] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[2]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[3] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[3]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
+          {props.video && (
+            <Grid item className={classes.thirdColumn}>
               <Card>
                 <CardMedia
-                  className={classes.media}
-                  component="img"
+                  className={classes.videoMedia}
+                  component="iframe"
                   alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
+                  height="140"
+                  src={`https://www.youtube.com/embed/${props.notice.video}`}
+                  //allow="autoPlay"
+                  allowfullscreen="allowfullscreen"
+                  controls
                 />
               </Card>
             </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid item className={classes.thirdColumn}>
-            <Card>
-              <CardMedia
-                className={classes.videoMedia}
-                component="iframe"
-                alt={props.notice.title}
-                height="140"
-                src={`https://www.youtube.com/embed/${props.notice.video}`}
-                //allow="autoPlay"
-                allowfullscreen="allowfullscreen"
-                controls
-              />
-            </Card>
-          </Grid>
+          )}
         </Grid>
       ) : (
         <Grid container direction="column" className={classes.rootMobile}>
           <Grid item container direction="column">
-            <Grid item>
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {
+              <Grid item>
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.notice.title}
+                    image={imageUrl}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            }
             <Grid item className={classes.secondRowMobile}>
               <Box>
                 {/* <Typography variant="h5" style={{ fontSize: "2.0em" }}>
@@ -1032,41 +829,28 @@ export default function NoticeboardDetailsCard(props) {
                   <ReactMarkdown>{props.notice.headline}</ReactMarkdown>
                 </Typography>
 
-                {props.notice.projectRefNo !== "undefined" && (
+                {props.notice.noticeRefNo !== "undefined" && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 10 }}>
                       {" "}
-                      <strong>Project Number:</strong>
+                      <strong>Notice Number:</strong>
                     </span>
-                    {props.notice.projectRefNo}
+                    {props.notice.noticeRefNo}
                   </Typography>
                 )}
-                {props.notice.status !== undefined && (
+                {props.notice.type !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 20 }}>
                       {" "}
-                      <strong>Project Status:</strong>
+                      <strong>Notice Type:</strong>
                     </span>
-                    {props.notice.status}
-                  </Typography>
-                )}
-
-                {props.notice.duration !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Project Duration:</strong>
-                    </span>
-                    {props.notice.duration}
+                    {props.notice.type}
                   </Typography>
                 )}
               </Box>
@@ -1084,29 +868,15 @@ export default function NoticeboardDetailsCard(props) {
                     <ReactMarkdown>{props.notice.sponsor}</ReactMarkdown>
                   </Typography>
                 )}
-                {props.notice.beneficiary !== undefined && (
+                {props.notice.targetAudience !== undefined && (
                   <Typography
                     variant="h5"
                     style={{ color: "black", fontSize: 15 }}
                   >
                     <span style={{ marginRight: 20 }}>
-                      <strong>Beneficiary:</strong>
+                      <strong>Target Audience:</strong>
                     </span>
-                    <ReactMarkdown>{props.notice.beneficiary}</ReactMarkdown>
-                  </Typography>
-                )}
-                {props.notice.contactPersonDetails !== undefined && (
-                  <Typography
-                    variant="h5"
-                    style={{ color: "black", fontSize: 15 }}
-                  >
-                    <span style={{ marginRight: 20 }}>
-                      {" "}
-                      <strong>Contact Person's Details:</strong>
-                    </span>
-                    <ReactMarkdown>
-                      {props.notice.contactPersonDetails}
-                    </ReactMarkdown>
+                    <ReactMarkdown>{props.notice.targetAudience}</ReactMarkdown>
                   </Typography>
                 )}
               </Box>
@@ -1131,20 +901,22 @@ export default function NoticeboardDetailsCard(props) {
               </Typography>
             </Box>
           </Grid>
-          <Grid item className={classes.thirdColumnMobile}>
-            <Card>
-              <CardMedia
-                className={classes.videoMedia}
-                component="iframe"
-                alt={props.notice.title}
-                height="140"
-                src={`https://www.youtube.com/embed/${props.notice.video}`}
-                //allow="autoPlay"
-                allowfullscreen="allowfullscreen"
-                controls
-              />
-            </Card>
-          </Grid>
+          {props.video && (
+            <Grid item className={classes.thirdColumnMobile}>
+              <Card>
+                <CardMedia
+                  className={classes.videoMedia}
+                  component="iframe"
+                  alt={props.notice.title}
+                  height="140"
+                  src={`https://www.youtube.com/embed/${props.notice.video}`}
+                  //allow="autoPlay"
+                  allowfullscreen="allowfullscreen"
+                  controls
+                />
+              </Card>
+            </Grid>
+          )}
 
           <Grid
             item
@@ -1153,290 +925,79 @@ export default function NoticeboardDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[0] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[0]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.notice.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[1] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[1]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[2] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[2]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[3] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.notice.title}
+                    image={`${baseURL}/images/noticeboards/${props.notice.images[3]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
         </Grid>
       )}

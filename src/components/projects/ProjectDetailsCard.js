@@ -255,6 +255,7 @@ export default function ProjectDetailsCard(props) {
   const [memberRole, setMemberRole] = useState();
   const [set, setSet] = useState();
   const [loading, setLoading] = useState();
+  const [images, setImages] = useState([]);
 
   // const { token, setToken } = useToken();
   // const { userId, setUserId } = useUserId();
@@ -275,11 +276,9 @@ export default function ProjectDetailsCard(props) {
 
   const Str = require("@supercharge/strings");
 
-  //   useEffect(() => {
-  //     setPrice(props.membership.price);
-  //   }, [props.membership]);
-
-  console.log("will need donation:", props.willNeedDonations);
+  useEffect(() => {
+    setImages(props.images);
+  }, [props]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -740,73 +739,81 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[0] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[0]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[1] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[1]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[2] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[2]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[3] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[3]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
           <Grid
             item
@@ -815,73 +822,81 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[4] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[4]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[5] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[5]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[6] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[6]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[7] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[7]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
           <Grid
             item
@@ -890,163 +905,99 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[8] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[8]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[9] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[9]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[10] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[10]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[11] && (
+              <Grid
+                item
+                className={classes.secondColumn}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.media}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[11]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
 
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
+          {props.video && (
+            <Grid item className={classes.thirdColumn}>
               <Card>
                 <CardMedia
-                  className={classes.media}
-                  component="img"
+                  className={classes.videoMedia}
+                  component="iframe"
                   alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
+                  height="140"
+                  src={`https://www.youtube.com/embed/${props.project.video}`}
+                  //allow="autoPlay"
+                  allowfullscreen="allowfullscreen"
+                  controls
                 />
               </Card>
             </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumn}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.media}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid item className={classes.thirdColumn}>
-            <Card>
-              <CardMedia
-                className={classes.videoMedia}
-                component="iframe"
-                alt={props.project.title}
-                height="140"
-                src={`https://www.youtube.com/embed/${props.project.video}`}
-                //allow="autoPlay"
-                allowfullscreen="allowfullscreen"
-                controls
-              />
-            </Card>
-          </Grid>
+          )}
         </Grid>
       ) : (
         <Grid container direction="column" className={classes.rootMobile}>
@@ -1220,20 +1171,22 @@ export default function ProjectDetailsCard(props) {
               </Typography>
             </Box>
           </Grid>
-          <Grid item className={classes.thirdColumnMobile}>
-            <Card>
-              <CardMedia
-                className={classes.videoMedia}
-                component="iframe"
-                alt={props.project.title}
-                height="140"
-                src={`https://www.youtube.com/embed/${props.project.video}`}
-                //allow="autoPlay"
-                allowfullscreen="allowfullscreen"
-                controls
-              />
-            </Card>
-          </Grid>
+          {props.video && (
+            <Grid item className={classes.thirdColumnMobile}>
+              <Card>
+                <CardMedia
+                  className={classes.videoMedia}
+                  component="iframe"
+                  alt={props.project.title}
+                  height="140"
+                  src={`https://www.youtube.com/embed/${props.project.video}`}
+                  //allow="autoPlay"
+                  allowfullscreen="allowfullscreen"
+                  controls
+                />
+              </Card>
+            </Grid>
+          )}
 
           <Grid
             item
@@ -1242,71 +1195,79 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[0] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[0]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[1] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[1]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[2] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[2]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[3] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[3]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
           <Grid
             item
@@ -1315,71 +1276,79 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[4] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[4]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[5] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[5]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[6] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[6]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[7] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[7]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
           <Grid
             item
@@ -1388,144 +1357,79 @@ export default function ProjectDetailsCard(props) {
             style={{ width: "100%" }}
             justifyContent="center"
           >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[8] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "2%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[8]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
 
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="column"
-            style={{ width: "100%" }}
-            justifyContent="center"
-          >
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "2%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
-            <Grid
-              item
-              className={classes.secondColumnMobile}
-              style={{ marginLeft: "0.5%" }}
-            >
-              <Card>
-                <CardMedia
-                  className={classes.mediaMobile}
-                  component="img"
-                  alt={props.project.title}
-                  image={imageUrl}
-                  //   title={props.name}
-                  crossOrigin="anonymous"
-                />
-              </Card>
-            </Grid>
+            {images[9] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[9]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[10] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[10]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
+            {images[11] && (
+              <Grid
+                item
+                className={classes.secondColumnMobile}
+                style={{ marginLeft: "0.5%" }}
+              >
+                <Card>
+                  <CardMedia
+                    className={classes.mediaMobile}
+                    component="img"
+                    alt={props.project.title}
+                    image={`${baseURL}/images/projects/${images[11]}`}
+                    //   title={props.name}
+                    crossOrigin="anonymous"
+                  />
+                </Card>
+              </Grid>
+            )}
           </Grid>
         </Grid>
       )}

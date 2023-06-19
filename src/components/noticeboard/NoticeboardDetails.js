@@ -278,6 +278,7 @@ function NoticeboardDetails(props) {
         imageLink: notice.imageLink,
         slug: notice.slug,
         dateCreated: notice.dateCreated,
+        images: notice.images,
       });
 
       setNotice({
@@ -296,6 +297,7 @@ function NoticeboardDetails(props) {
         imageLink: allData[0].imageLink,
         dateCreated: allData[0].dateCreated,
         slug: allData[0].slug,
+        images: allData[0].images,
       });
 
       setIsLoading(false);
@@ -323,6 +325,7 @@ function NoticeboardDetails(props) {
             targetAudience={notice.targetAudience}
             sponsor={notice.sponsor}
             image={notice.image}
+            images={notice.images}
             defaultThumbnail={notice.defaultThumbnail}
             createdBy={notice.createdBy}
             video={notice.video}
@@ -362,6 +365,7 @@ function NoticeboardDetails(props) {
             targetAudience={notice.targetAudience}
             sponsor={notice.sponsor}
             image={notice.image}
+            images={notice.images}
             defaultThumbnail={notice.defaultThumbnail}
             createdBy={notice.createdBy}
             video={notice.video}

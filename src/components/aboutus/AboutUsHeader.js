@@ -253,7 +253,7 @@ export default function AboutUsHeader(props) {
                   <ReactMarkdown>
                     Our Vision is to promote a platform for collaboration,
                     networking, engagement and outreach among old students of
-                    adeolu secondary school
+                    Adeolu Secondary School
                   </ReactMarkdown>
                 </Typography>
               </CardContent>
@@ -314,7 +314,7 @@ export default function AboutUsHeader(props) {
                   <ReactMarkdown>
                     Our Vision is to promote a platform for collaboration,
                     networking, engagement and outreach among old students of
-                    adeolu secondary school
+                    Adeolu Secondary School
                   </ReactMarkdown>
                 </Typography>
               </CardContent>

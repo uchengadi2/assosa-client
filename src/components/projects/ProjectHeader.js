@@ -20,6 +20,7 @@ import ReactMarkdown from "react-markdown";
 import history from "./../../history";
 import AddProjectForm from "./AddProjectForm";
 import UpdateProjectForm from "./UpdateProjectForm";
+import api from "./../../apis/local";
 
 import { baseURL } from "./../../apis/util";
 
@@ -117,6 +118,20 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
     },
   },
+  addMobileButton: {
+    borderRadius: 10,
+    height: 40,
+    width: 145,
+    marginLeft: "6rem",
+
+    marginTop: 30,
+    color: "white",
+    backgroundColor: theme.palette.common.green,
+    "&:hover": {
+      backgroundColor: theme.palette.common.orange,
+      color: "white",
+    },
+  },
 }));
 
 export default function ProjectHeader(props) {
@@ -135,6 +150,35 @@ export default function ProjectHeader(props) {
   const [loading, setLoading] = useState();
   const [addProject, setAddProject] = useState(false);
   const [updateProject, setUpdateProject] = useState(false);
+  const [userRole, setUserRole] = useState();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let allData = [];
+      api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+      const response = await api.get(`/users/${props.userId}`);
+      const user = response.data.data.data;
+
+      allData.push({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      });
+      setUserRole(allData[0].role);
+
+      if (allData[0].role === "admin" || allData[0].role === "set-admin") {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    //call the function
+
+    fetchData().catch(console.error);
+  }, [props]);
 
   const handleSuccessfulCreateSnackbar = (message) => {
     //setBecomePartnerOpen(false);
@@ -230,6 +274,10 @@ export default function ProjectHeader(props) {
     return <React.Fragment>Add Project</React.Fragment>;
   };
 
+  const buttonContentIgnore = () => {
+    return <React.Fragment>Add Project</React.Fragment>;
+  };
+
   const Str = require("@supercharge/strings");
 
   return (
@@ -291,18 +339,38 @@ export default function ProjectHeader(props) {
                     association
                   </ReactMarkdown>
                 </Typography>
-                <Button
-                  variant="contained"
-                  className={classes.addButton}
-                  onClick={() => [setAddProject(true)]}
-                >
-                  {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
-                  {loading ? (
-                    <CircularProgress size={30} color="inherit" />
-                  ) : (
-                    buttonContent()
-                  )}
-                </Button>
+                {isVisible && (
+                  <Button
+                    variant="contained"
+                    className={classes.addButton}
+                    onClick={() => [setAddProject(true)]}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
+                )}
+                {!isVisible && (
+                  <Button
+                    variant="contained"
+                    className={classes.addButton}
+                    onClick={() => [
+                      handleSuccessfulCreateSnackbar(
+                        "You do not have sufficient rights to add Projects on this site, Please contact your set admin"
+                      ),
+                    ]}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContentIgnore()
+                    )}
+                  </Button>
+                )}
               </CardContent>
             </Grid>
           </Grid>
@@ -357,6 +425,38 @@ export default function ProjectHeader(props) {
                   However Academic NextChamps will have the confidence they need
                   to overcome further challenges on that study domain.
                 </Typography>
+                {isVisible && (
+                  <Button
+                    variant="contained"
+                    className={classes.addMobileButton}
+                    onClick={() => [setAddProject(true)]}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContent()
+                    )}
+                  </Button>
+                )}
+                {!isVisible && (
+                  <Button
+                    variant="contained"
+                    className={classes.addMobileButton}
+                    onClick={() => [
+                      handleSuccessfulCreateSnackbar(
+                        "You do not have sufficient rights to add Projects on this site, Please contact your set admin"
+                      ),
+                    ]}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContentIgnore()
+                    )}
+                  </Button>
+                )}
               </CardContent>
             </Grid>
           </Grid>

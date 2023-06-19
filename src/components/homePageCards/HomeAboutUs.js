@@ -524,7 +524,7 @@ export default function HomeAboutUs(props) {
                   <ReactMarkdown>
                     * Our Vision is to promote a platform for collaboration,
                     networking, engagement and outreach among old students of
-                    adeolu secondary school
+                    Adeolu Secondary School
                   </ReactMarkdown>
                 </Typography>
                 <Typography
@@ -548,7 +548,7 @@ export default function HomeAboutUs(props) {
                 >
                   <ReactMarkdown>
                     * From the graduation of the first of batch of students in
-                    1986, Adeolu Secondary Secondary, Tolu School Village, Lagos
+                    1986, Adeolu Secondary Secondary, Tolu School Complex, Lagos
                     had produced graduants till this day. These graduants are
                     scattered all over the world dominating their world in
                     various fields
@@ -650,7 +650,7 @@ export default function HomeAboutUs(props) {
                     <ReactMarkdown>
                       * Our Vision is to promote a platform for collaboration,
                       networking, engagement and outreach among old students of
-                      adeolu secondary school
+                      Adeolu Secondary School
                     </ReactMarkdown>
                   </Typography>
                   <Typography
@@ -675,7 +675,7 @@ export default function HomeAboutUs(props) {
                   >
                     <ReactMarkdown>
                       * From the graduation of the first of batch of students in
-                      1986, Adeolu Secondary Secondary, Tolu School Village,
+                      1986, Adeolu Secondary Secondary, Tolu School Complex,
                       Lagos had produced graduants till this day. These
                       graduants are scattered all over the world dominating
                       their world in various fields

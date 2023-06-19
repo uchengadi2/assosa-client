@@ -561,7 +561,7 @@ const Marketplace = (props) => {
                         We are old students of Adeolu Secondary School, <br />
                       </span>{" "}
                       <span style={{ marginLeft: matchesSM ? 20 : 50 }}>
-                        Tolu School Village, Lagos, bonded together
+                        Tolu School Complex, Lagos, bonded together
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 20 : 90 }}>
@@ -631,7 +631,7 @@ const Marketplace = (props) => {
                         We are old students of Adeolu Secondary School, <br />
                       </span>{" "}
                       <span style={{ marginLeft: matchesSM ? 20 : 60 }}>
-                        Tolu School Village, Lagos, bonded together
+                        Tolu School Complex, Lagos, bonded together
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 50 : 110 }}>

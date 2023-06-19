@@ -146,6 +146,29 @@ const renderContactPersonField = ({
   );
 };
 
+const renderImagesField = ({
+  input,
+  label,
+  meta: { touched, error, invalid },
+  type,
+  id,
+  ...custom
+}) => {
+  return (
+    <TextField
+      error={touched && invalid}
+      helperText={label}
+      variant="outlined"
+      id={input.name}
+      fullWidth
+      type={type}
+      defaultValue={input.value}
+      {...custom}
+      onChange={input.onChange}
+    />
+  );
+};
+
 const renderDescriptionField = ({
   input,
   label,
@@ -386,6 +409,8 @@ const renderImageLinkField = ({
     />
   );
 };
+
+const MAX_COUNT = 12;
 const AddProjectForm = (props) => {
   const classes = useStyles();
 
@@ -397,6 +422,8 @@ const AddProjectForm = (props) => {
   const [categoryList, setCategoryList] = useState([]);
   const [category, setCategory] = useState();
   const [connectionAvailability, setConnectionAvailability] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [fileLimit, setFileLimit] = useState(false);
 
   const [type, setType] = useState("party");
   const [eventType, setEventType] = useState("party");
@@ -415,6 +442,29 @@ const AddProjectForm = (props) => {
 
   const handleNeedDonationsChange = (event) => {
     setNeedDonations(event.target.value);
+  };
+
+  const handleUploadFiles = (files) => {
+    const uploaded = [...uploadedFiles];
+    let limitExceeded = false;
+    files.some((file) => {
+      if (uploaded.findIndex((f) => f.name === file.name) === -1) {
+        uploaded.push(file);
+        if (uploaded.length === MAX_COUNT) setFileLimit(true);
+        if (uploaded.length > MAX_COUNT) {
+          alert(`You can only add a maximum of ${MAX_COUNT} files`);
+          setFileLimit(false);
+          limitExceeded = true;
+          return true;
+        }
+      }
+    });
+    if (!limitExceeded) setUploadedFiles(uploaded);
+  };
+
+  const handleFileEvent = (e) => {
+    const chosenFiles = Array.prototype.slice.call(e.target.files);
+    handleUploadFiles(chosenFiles);
   };
 
   const renderWillNeedDonationsField = ({
@@ -519,6 +569,9 @@ const AddProjectForm = (props) => {
     form.append("createdBy", props.userId);
     if (formValues.thumbnail) {
       form.append("thumbnail", formValues.thumbnail[0]);
+    }
+    for (let i = 0; i < uploadedFiles.length; i++) {
+      form.append(`images`, uploadedFiles[i]);
     }
 
     if (formValues) {
@@ -744,6 +797,21 @@ const AddProjectForm = (props) => {
               component={renderProjectStatusField}
               style={{ marginTop: 3, width: 500 }}
             />
+          </Grid>
+          <Grid item>
+            <Field
+              label="Upload Images"
+              id="images"
+              name="images"
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleFileEvent}
+              component={renderImagesField}
+              style={{ marginTop: 3, width: 500 }}
+              disabled={fileLimit}
+            />
+            {uploadedFiles.map((file) => [<br />, file.name])}
           </Grid>
 
           <Button

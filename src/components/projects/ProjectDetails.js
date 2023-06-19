@@ -277,6 +277,7 @@ function ProjectDetails(props) {
         status: project.status,
         sponsor: project.sponsor,
         image: project.thumbnail,
+        images: project.images,
         defaultThumbnail: project.defaultThumbnail,
         createdBy: project.createdBy,
         video: project.video,
@@ -300,6 +301,7 @@ function ProjectDetails(props) {
         status: allData[0].status,
         sponsor: allData[0].sponsor,
         image: allData[0].image,
+        images: allData[0].images,
         defaultThumbnail: allData[0].defaultThumbnail,
         createdBy: allData[0].createdBy,
         video: allData[0].video,
@@ -338,6 +340,7 @@ function ProjectDetails(props) {
             status={project.status}
             sponsor={project.sponsor}
             image={project.image}
+            images={project.images}
             defaultThumbnail={project.bio}
             createdBy={project.createdBy}
             video={project.video}
@@ -382,6 +385,7 @@ function ProjectDetails(props) {
             status={project.status}
             sponsor={project.sponsor}
             image={project.image}
+            images={project.images}
             defaultThumbnail={project.bio}
             createdBy={project.createdBy}
             video={project.video}
