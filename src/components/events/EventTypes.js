@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     //height: 440,
     //height: "100%",
-    width: "100%",
+    width: "70%",
 
     marginLeft: "0px",
     //borderRadius: 30,
@@ -316,11 +316,11 @@ export default function EventTypes(props) {
               width: "100%",
               //border: "1px dotted white",
               // backgroundColor: "white",
-              marginLeft: 10,
+              marginLeft: 5,
             }}
           >
-            {/* <CardContent>{renderCategoryField()}</CardContent> */}
-            <CardContent></CardContent>
+            <CardContent>{renderEventTypeField()}</CardContent>
+            {/* <CardContent></CardContent> */}
           </Grid>
         </Grid>
         //</Card>

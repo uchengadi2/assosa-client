@@ -589,7 +589,13 @@ const Project = (props) => {
           />
         )}
         {!isLoading && projectsList.length === 0 && (
-          <p style={{ marginLeft: 170, marginTop: 40, fontSize: 18 }}>
+          <p
+            style={{
+              marginLeft: matchesMD ? 170 : 30,
+              marginTop: matchesMD ? 40 : 5,
+              fontSize: 18,
+            }}
+          >
             There are no projects with this status
           </p>
         )}

@@ -257,6 +257,7 @@ const Events = (props) => {
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesMD = useMediaQuery(theme.breakpoints.up("md"));
+  const matchesMDUp = useMediaQuery(theme.breakpoints.up("md"));
   const [aboutUsOpen, setAboutUsOpen] = useState(false);
   const [contactUsOpen, setContactUsOpen] = useState(false);
   const [becomePartnerOpen, setBecomePartnerOpen] = useState(false);
@@ -560,7 +561,13 @@ const Events = (props) => {
           />
         )}
         {!isLoading && eventsList.length === 0 && (
-          <p style={{ marginLeft: 170, marginTop: 40, fontSize: 18 }}>
+          <p
+            style={{
+              marginLeft: matchesMD ? 170 : 30,
+              marginTop: matchesMD ? 40 : 5,
+              fontSize: 18,
+            }}
+          >
             There are no Events for this Event Type
           </p>
         )}

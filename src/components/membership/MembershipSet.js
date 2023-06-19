@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     //height: 440,
     //height: "100%",
-    width: "100%",
+    width: "75%",
 
     marginLeft: "0px",
     //borderRadius: 30,
@@ -308,8 +308,7 @@ export default function MembershipSet(props) {
               marginLeft: 10,
             }}
           >
-            {/* <CardContent>{renderCategoryField()}</CardContent> */}
-            <CardContent></CardContent>
+            <CardContent>{renderLearningPathField()}</CardContent>
           </Grid>
         </Grid>
         //</Card>
