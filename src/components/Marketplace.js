@@ -582,39 +582,6 @@ const Marketplace = (props) => {
                       </span> */}
                     </Typography>
                   ) : (
-                    // <Typography
-                    //   variant={matchesSM ? "subtitle2" : "h2"}
-                    //   align="left"
-                    //   style={{ marginTop: "16rem" }}
-                    //   //justifyContent="center"
-                    //   //alignItems="center"
-                    // >
-                    //   <span
-                    //     style={{
-                    //       marginLeft: matchesSM ? 20 : 5,
-                    //     }}
-                    //   >
-                    //     {" "}
-                    //     E-Shield Africa is an online/e-commerce
-                    //     Marketplace(B2B). <br />
-                    //   </span>{" "}
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 20 }}>
-                    //     Our business is to provide a trusted and unified online
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 50 }}>
-                    //     portal for multiple manufacturers, distributors
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 130 }}>
-                    //     and vendors. We connect them to
-                    //   </span>
-                    //   <br />
-                    //   <span style={{ marginLeft: matchesSM ? 20 : 130 }}>
-                    //     retailers for trade and services.
-                    //   </span>
-                    // </Typography>
-                    // <Typography></Typography>
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
@@ -639,6 +606,10 @@ const Marketplace = (props) => {
                       </span>
                       <br />
                       <span style={{ marginLeft: matchesSM ? 70 : 120 }}>
+                        Alma Mata, our Community
+                      </span>
+                      <br />
+                      <span style={{ marginLeft: matchesSM ? 90 : 120 }}>
                         and our Members
                       </span>
                     </Typography>
