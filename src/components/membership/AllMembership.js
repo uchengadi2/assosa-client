@@ -250,7 +250,7 @@ export default function AllMembership(props) {
     //call the function
 
     fetchData().catch(console.error);
-  }, []);
+  }, [props.user]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -481,9 +481,9 @@ export default function AllMembership(props) {
     }
   };
 
-  if (!product) {
-    return <></>;
-  }
+  // if (!product) {
+  //   return <></>;
+  // }
 
   return (
     <>
@@ -572,6 +572,12 @@ export default function AllMembership(props) {
                     <span>{props.membershipNo}</span>
                   </span>
                 </Typography>
+                <Typography>
+                  <span style={{ fontSize: 14, marginLeft: 10 }}>
+                    <strong>Membership Status:</strong>
+                    <span>{props.status}</span>
+                  </span>
+                </Typography>
               </CardContent>
             </Grid>
 
@@ -597,9 +603,17 @@ export default function AllMembership(props) {
                 defaultThumbnail={props.defaultThumbnail}
                 category={props.category}
                 user={props.user}
+                token={props.token}
+                userId={props.userId}
                 status={props.status}
                 slug={props.membershipId}
                 categorySlug={set}
+                memberRole={memberRole}
+                handleFailedSnackbar={props.handleFailedSnackbar}
+                handleSuccessfulCreateSnackbar={
+                  props.handleSuccessfulCreateSnackbar
+                }
+                updateUserInfoHandler={props.updateUserInfoHandler}
               />
             </Grid>
           </Grid>
@@ -692,6 +706,12 @@ export default function AllMembership(props) {
                       <span>{props.membershipNo}</span>
                     </span>
                   </Typography>
+                  <Typography>
+                    <span style={{ fontSize: 14, marginLeft: 10 }}>
+                      <strong>Membership Status:</strong>
+                      <span>{props.status}</span>
+                    </span>
+                  </Typography>
                 </CardContent>
               </Grid>
 
@@ -717,9 +737,17 @@ export default function AllMembership(props) {
                   defaultThumbnail={props.defaultThumbnail}
                   category={props.category}
                   user={props.user}
+                  token={props.token}
+                  userId={props.userId}
                   status={props.status}
                   slug={props.membershipId}
                   categorySlug={set}
+                  memberRole={memberRole}
+                  handleFailedSnackbar={props.handleFailedSnackbar}
+                  handleSuccessfulCreateSnackbar={
+                    props.handleSuccessfulCreateSnackbar
+                  }
+                  updateUserInfoHandler={props.updateUserInfoHandler}
                 />
               </Grid>
             </Grid>

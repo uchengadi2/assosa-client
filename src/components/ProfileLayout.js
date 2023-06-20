@@ -95,11 +95,11 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.estimate,
     borderRadius: 10,
     height: 40,
-    width: 380,
+    width: 400,
     marginLeft: 10,
     marginTop: 30,
     marginBottom: 10,
-    fontSize: "1.25rem",
+    fontSize: "0.85rem",
     backgroundColor: theme.palette.common.grey,
     color: "white",
     "&:hover": {
@@ -115,11 +115,11 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.estimate,
     borderRadius: 10,
     height: 40,
-    width: 350,
+    width: 400,
     marginLeft: 15,
     marginTop: 30,
     marginBottom: 10,
-    fontSize: "1.25rem",
+    fontSize: "0.85rem",
     backgroundColor: theme.palette.common.green,
     color: "white",
     "&:hover": {
@@ -581,6 +581,13 @@ const ProfileLayout = (props) => {
                           </Typography>
                         </Grid>
                       )}
+                      {user.isAMember && (
+                        <Grid item>
+                          <Typography variant="subtitle1">
+                            Membership Status: {user.membershipStatus}
+                          </Typography>
+                        </Grid>
+                      )}
                     </Grid>
 
                     {!user.isAMember && (
@@ -707,6 +714,13 @@ const ProfileLayout = (props) => {
                             </Typography>
                           </Grid>
                         )}
+                        {user.isAMember && (
+                          <Grid item>
+                            <Typography variant="subtitle1">
+                              Membership Status: {user.membershipStatus}
+                            </Typography>
+                          </Grid>
+                        )}
                       </Grid>
 
                       {!user.isAMember && (
@@ -728,7 +742,7 @@ const ProfileLayout = (props) => {
                             className={classes.updateMembershipMobileButton}
                             onClick={() => [setUpdateMembershipInfo(true)]}
                           >
-                            Update Membership
+                            Update Membership Form
                           </Button>
                         </Grid>
                       )}

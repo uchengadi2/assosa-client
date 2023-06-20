@@ -678,15 +678,6 @@ const UserMembershipForm = (props) => {
   const onSubmit = (formValues) => {
     setLoading(true);
 
-    // if (
-    //   !formValues["name"] ||
-    //   formValues["name"].replace(/\s/g, "").length === 0
-    // ) {
-    //   props.handleFailedSnackbar("The category name field cannot be empty");
-    //   setLoading(false);
-    //   return;
-    // }
-
     const Str = require("@supercharge/strings");
 
     const form = new FormData();
@@ -731,6 +722,7 @@ const UserMembershipForm = (props) => {
           //update the user model
           const userData = {
             isAMember: true,
+            membershipStatus: "in-process",
             membershipNo: membershipNumber,
             membership: response.data.data.data.id,
           };
@@ -1025,12 +1017,6 @@ const UserMembershipForm = (props) => {
                 variant="contained"
                 className={classes.sendButton}
                 onClick={props.handleSubmit(onSubmit)}
-                // onClick={() => [
-                //   props.handleMakeChangeNameDialogForm(),
-                //   props.handleSubmit(onSubmit),
-
-                //   history.push("/profile"),
-                // ]}
               >
                 {loading ? (
                   <CircularProgress size={30} color="inherit" />

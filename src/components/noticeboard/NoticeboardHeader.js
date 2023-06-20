@@ -153,6 +153,8 @@ export default function NoticeboardHeader(props) {
   const [updateNotice, setUpdateNotice] = useState(false);
   const [userRole, setUserRole] = useState();
   const [isVisible, setIsVisible] = useState(false);
+  const [isAMember, setIsAMember] = useState(false);
+  const [membershipStatus, setMembershipStatus] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -166,8 +168,14 @@ export default function NoticeboardHeader(props) {
         name: user.name,
         email: user.email,
         role: user.role,
+        membershipStatus: user.membershipStatus,
       });
       setUserRole(allData[0].role);
+
+      setMembershipStatus(allData[0].membershipStatus);
+      if (allData[0].membershipStatus === "member") {
+        setIsAMember(true);
+      }
 
       if (props.userId) {
         setIsVisible(true);
@@ -336,7 +344,7 @@ export default function NoticeboardHeader(props) {
                     members of our association
                   </ReactMarkdown>
                 </Typography>
-                {isVisible && (
+                {isVisible && isAMember && (
                   <Button
                     variant="contained"
                     className={classes.addButton}
@@ -356,7 +364,25 @@ export default function NoticeboardHeader(props) {
                     className={classes.addButton}
                     onClick={() => [
                       handleSuccessfulCreateSnackbar(
-                        "Only logged in user can post notices. Please login and try agin"
+                        "Only logged-in validated members can post notices. Please ensure you meet the requirements and try agin"
+                      ),
+                    ]}
+                  >
+                    {/* <span style={{ marginRight: 10 }}>Show Details </span> */}
+                    {loading ? (
+                      <CircularProgress size={30} color="inherit" />
+                    ) : (
+                      buttonContentIgnore()
+                    )}
+                  </Button>
+                )}
+                {isVisible && !isAMember && (
+                  <Button
+                    variant="contained"
+                    className={classes.addButton}
+                    onClick={() => [
+                      handleSuccessfulCreateSnackbar(
+                        "Only logged-in validated members can post notices. Please ensure you meet the requirements and try agin"
                       ),
                     ]}
                   >

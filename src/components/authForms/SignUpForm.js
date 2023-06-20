@@ -321,15 +321,7 @@ const SignUpForm = (props) => {
       return;
     }
 
-    if (
-      // formValues["phoneNumber"].match(/\d/g)
-      // formValues["phoneNumber"].match(
-      //   /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-      // ).length <=
-      //   14 ===
-      // false
-      !telephoneCheck(formValues["phoneNumber"])
-    ) {
+    if (!telephoneCheck(formValues["phoneNumber"])) {
       props.handleFailedSignUpDialogOpenStatusWithSnackbar(
         "Your entered an invalid phone number. Please correct this and try again"
       );
@@ -337,7 +329,6 @@ const SignUpForm = (props) => {
 
       return;
     }
-    console.log("");
 
     if (formValues) {
       const createForm = async () => {

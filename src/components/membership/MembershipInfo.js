@@ -28,6 +28,7 @@ import api from "./../../apis/local";
 
 import { CREATE_RATE, EDIT_RATE } from "../../actions/types";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { EDIT_MEMBERSHIP } from "../../actions/types";
 
 //import CheckoutPage from "./CheckoutPage";
 
@@ -89,6 +90,12 @@ function MembershipInfo(props) {
     venueLink,
     categoryId,
     productId,
+    status,
+    user,
+    memberRole,
+    membershipId,
+    handleFailedSnackbar,
+    handleSuccessfulCreateSnackbar,
 
     slug,
   } = props;
@@ -100,36 +107,111 @@ function MembershipInfo(props) {
   const classes = useStyles();
 
   const [loading, setLoading] = useState();
-  // const [categorySlug, setCategorySlug] = useState();
+  const [showValidate, setShowValidate] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const Str = require("@supercharge/strings");
 
+  const dispatch = useDispatch();
+
   //get the category slug
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     let allData = [];
-  //     api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
-  //     const response = await api.get(`/categories/${categoryId}`);
-  //     const items = response.data.data.data;
-
-  //     allData.push({
-  //       id: items._id,
-  //       slug: items.slug,
-  //     });
-
-  //     if (allData) {
-  //       setCategorySlug(allData[0].slug);
-  //     }
-  //   };
-
-  //   //call the function
-
-  //   fetchData().catch(console.error);
-  // }, [categoryId, props]);
+  useEffect(() => {
+    if (user === props.userId) {
+      setShowDetails(true);
+      setShowValidate(false);
+    } else if (status === "inactive" && user !== props.userId) {
+      setShowDetails(false);
+      setShowValidate(true);
+    } else if (status === "active") {
+      setShowDetails(true);
+      setShowValidate(false);
+    } else if (!props.userId && status === "inactive") {
+      setShowDetails(false);
+      setShowValidate(true);
+    } else if (!props.userId && status === "active") {
+      setShowDetails(true);
+      setShowValidate(false);
+    }
+  }, [props]);
 
   const buttonContent = () => {
     return <React.Fragment>Show Details</React.Fragment>;
+  };
+
+  const buttonValidateContent = () => {
+    return <React.Fragment>Validate</React.Fragment>;
+  };
+
+  const onSubmit = (formValues) => {
+    setLoading(true);
+
+    if (!props.userId) {
+      handleFailedSnackbar("You are not logged-in. Please login and try again");
+      setLoading(false);
+      return;
+    }
+    if (!memberRole) {
+      handleFailedSnackbar(
+        "You do not sufficient rights to validate a member. Please contact your set admin"
+      );
+      setLoading(false);
+      return;
+    }
+
+    if (
+      memberRole === "old-student" ||
+      memberRole === "student" ||
+      memberRole === "others"
+    ) {
+      handleFailedSnackbar(
+        "You do not sufficient rights to validate a member. Please contact your set admin"
+      );
+      setLoading(false);
+      return;
+    }
+
+    const data = {
+      status: "active",
+    };
+
+    if (formValues) {
+      const createForm = async () => {
+        api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+        const response = await api.patch(`/memberships/${membershipId}`, data);
+
+        if (response.data.status === "success") {
+          dispatch({
+            type: EDIT_MEMBERSHIP,
+            payload: response.data.data.data,
+          });
+
+          //update the user model
+          const userData = {
+            membershipStatus: "member",
+          };
+          const res = await api.patch(`/users/${props.userId}`, userData);
+
+          handleSuccessfulCreateSnackbar(
+            `Validation is complete and successful!!`
+          );
+          props.updateUserInfoHandler();
+
+          setLoading(false);
+        } else {
+          handleFailedSnackbar("Something went wrong, please try again!!!");
+          setLoading(false);
+        }
+      };
+      createForm().catch((err) => {
+        handleFailedSnackbar();
+        console.log("err:", err.message);
+        setLoading(false);
+      });
+    } else {
+      handleFailedSnackbar("Something went wrong, please try again!!!");
+      setLoading(false);
+    }
   };
 
   return (
@@ -157,12 +239,8 @@ function MembershipInfo(props) {
           </ReactMarkdown>
         </Typography>
         <br />
-        {/* <Typography style={{ width: 300, marginTop: 10 }}>
-          <strong>Who should attend:</strong>&nbsp;
-          {targetAudience}&nbsp;
-        </Typography> */}
 
-        {props.slug && (
+        {props.slug && showDetails && (
           <Button
             component={Link}
             // to="/mobileapps"
@@ -178,11 +256,20 @@ function MembershipInfo(props) {
             ) : (
               buttonContent()
             )}
-            {/* <ButtonArrow
-            height={10}
-            width={10}
-            fill={theme.palette.common.blue}
-          /> */}
+          </Button>
+        )}
+
+        {props.slug && showValidate && (
+          <Button
+            variant="contained"
+            className={classes.submitButton}
+            onClick={props.handleSubmit(onSubmit)}
+          >
+            {loading ? (
+              <CircularProgress size={30} color="inherit" />
+            ) : (
+              buttonValidateContent()
+            )}
           </Button>
         )}
       </Box>

@@ -7,12 +7,13 @@ import Typography from "@material-ui/core/Typography";
 import ButtonArrow from "./../ui/ButtonArrow";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Card from "@material-ui/core/Card";
+import Snackbar from "@material-ui/core/Snackbar";
 import Box from "@material-ui/core/Box";
 import CardContent from "@material-ui/core/CardContent";
 import { Link } from "react-router-dom";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import Snackbar from "@material-ui/core/Snackbar";
+
 import ReactPlayer from "react-player";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AllMembership from "./AllMembership";
@@ -266,6 +267,7 @@ const Membership = (props) => {
   const [membershipList, setMembershipList] = useState([]);
   const [membership, setMembership] = useState();
   const [set, setSet] = useState("all");
+  const [updateUser, setUpdateUser] = useState(false);
 
   const [alert, setAlert] = useState({
     open: false,
@@ -281,26 +283,29 @@ const Membership = (props) => {
     },
   };
 
-  const handleBecomeAPartnerOpenDialogBox = () => {
-    setBecomePartnerOpen(false);
+  const updateUserInfoHandler = () => {
+    setUpdateUser((prevState) => !prevState);
   };
 
-  const handleSuccessfulBecomeAPartnerOpenDialogBoxWithSnackbar = () => {
-    setBecomePartnerOpen(false);
+  const handleSuccessfulCreateSnackbar = (message) => {
+    //setBecomePartnerOpen(false);
     setAlert({
       open: true,
-      message: "Application successfully submitted",
-      backgroundColor: "#4BB543",
+      message: message,
+      //backgroundColor: "#4BB543",
+      backgroundColor: "#FF731D",
+      marginTop: 50,
     });
   };
 
-  const handleFailedBecomeAPartnerOpenDialogBoxWithSnackbar = () => {
+  const handleFailedSnackbar = (message) => {
     setAlert({
       open: true,
-      message: "Something went wrong somewhere",
+      message: message,
       backgroundColor: "#FF3232",
+      marginTop: 50,
     });
-    setBecomePartnerOpen(true);
+    //setBecomePartnerOpen(true);
   };
 
   useEffect(() => {
@@ -394,7 +399,7 @@ const Membership = (props) => {
     //call the function
 
     fetchData().catch(console.error);
-  }, [set]);
+  }, [set, updateUser]);
 
   useEffect(() => {
     // 👇️ scroll to top on page load
@@ -448,6 +453,9 @@ const Membership = (props) => {
               setToken={props.setToken}
               setUserId={props.setUserId}
               membershipLenght={membershipList.length}
+              handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+              handleFailedSnackbar={handleFailedSnackbar}
+              updateUserInfoHandler={updateUserInfoHandler}
             />
           ))}
         </Grid>
@@ -499,6 +507,9 @@ const Membership = (props) => {
               setToken={props.setToken}
               setUserId={props.setUserId}
               membershipLenght={membershipList.length}
+              handleSuccessfulCreateSnackbar={handleSuccessfulCreateSnackbar}
+              handleFailedSnackbar={handleFailedSnackbar}
+              updateUserInfoHandler={updateUserInfoHandler}
             />
           ))}
         </Grid>
@@ -611,6 +622,16 @@ const Membership = (props) => {
           <UpperFooter />
         </Grid>
       </Grid>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{
+          style: { backgroundColor: alert.backgroundColor },
+        }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={4000}
+      />
     </>
   );
 };
