@@ -44,9 +44,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     //height: 440,
     //height: "100%",
-    width: "100%",
+    width: "90%",
 
-    marginLeft: "0px",
+    marginLeft: "5px",
     //borderRadius: 30,
     marginTop: "2.5em",
     marginBottom: "0.5em",

@@ -35,20 +35,20 @@ const useStyles = makeStyles((theme) => ({
 
     marginLeft: "13em",
     //borderRadius: 30,
-    marginTop: "5em",
-    marginBottom: "1em",
+    marginTop: "3em",
+    marginBottom: "0.5em",
     padding: 0,
   },
   rootMobile: {
     maxWidth: "100%",
     //height: 440,
     //height: "100%",
-    width: "100%",
+    width: "80%",
 
     marginLeft: "0px",
     //borderRadius: 30,
-    marginTop: 50,
-    marginBottom: "3em",
+    marginTop: 40,
+    marginBottom: "1em",
     padding: 0,
     backgroundColor: "#FFFFFF",
 
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   mediaMobile: {
     height: 150,
     width: 150,
-    marginLeft: "80px",
+    marginLeft: "0px",
   },
   media: {
     height: "100%",

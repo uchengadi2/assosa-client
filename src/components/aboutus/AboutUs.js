@@ -29,10 +29,31 @@ import TopCover from "./../homePageCards/TopCover";
 import LearningPath from "./../homePageCards/LearningPath";
 import AboutUsHeader from "./AboutUsHeader";
 import AboutUsExecTitle from "./AboutUsExecTitle";
+import AboutUsBotTitle from "./AboutUsBotTitle";
+import ExcoMembersCard from "./ExcoMembersCard";
+import AlmaMataHistoryTitle from "./AlmaMataHistoryTitle";
 
 //import mobileBackground from "./../../assets/mobileBackground.jpg";
 
 import AllCourses from "./../homePageCards/AllCourses";
+import BotChairmanCard from "./BotChairmanCard";
+import BotMembersCard from "./BotMembersCard";
+import botDefaultImage from "./../../assets/images/bot/default-user.jpg";
+import excoDefaultImage from "../../assets/images/exco/default-user.jpg";
+import bunmi from "../../assets/images/exco/bunmi.jpg";
+import taju from "../../assets/images/exco/taju.png";
+import joe from "../../assets/images/exco/joe.jpg";
+import lauretta from "../../assets/images/exco/lauretta.jpg";
+import ndi from "../../assets/images/exco/ndi.jpg";
+import victoria from "../../assets/images/exco/victoria.jpg";
+import udeme from "../../assets/images/exco/udeme.jpg";
+import austin from "../../assets/images/exco/austin.jpg";
+import kolawale from "../../assets/images/exco/kola.jpg";
+import felix from "../../assets/images/exco/felix.jpg";
+import joeBot from "../../assets/images/bot/joe.jpg";
+import mary from "../../assets/images/exco/mary.jpg";
+import gloria from "../../assets/images/bot/gloria.jpg";
+import efe from "../../assets/images/bot/efe.jpg";
 
 import { baseURL } from "./../../apis/util";
 import { Usb } from "@material-ui/icons";
@@ -262,7 +283,7 @@ const AboutUs = (props) => {
   const [becomePartnerOpen, setBecomePartnerOpen] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [coursesList, setCourseList] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [alert, setAlert] = useState({
     open: false,
@@ -301,122 +322,154 @@ const AboutUs = (props) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      let allData = [];
-      //data.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const response = await data.get("/courses?sort=asc");
-      const workingData = response.data.data.data;
-      workingData.map((course) => {
-        allData.push({
-          id: course._id,
-          title: course.title,
-          image: course.imageCover,
-          features: course.features,
-          shortDescription: course.shortDescription,
-          longDescription: course.longDescription,
-          deliveryMethod: course.deliveryMethod,
-          duration: course.duration,
-          commencementDate: course.commencementDate,
-          price: course.price,
-          venue: course.venue,
-          instructor: course.instructor,
-          sessionDuration: course.sessionDuration,
-          sessionPeriod: course.sessionPeriod,
-          studyPeriod: course.studyPeriod,
-          lectureDuration: course.lectureDuration,
-          projectDuration: course.projectDuration,
-          category: course.category,
-          image: course.imageCover,
-          prerequisites: course.prerequisites,
-          tools: course.tools,
-          targetAudience: course.targetAudience,
-          whatToLearn: course.whatToLearn,
-          venueLink: course.venueLink,
-          track: course.track,
-          status: course.status,
-          commencementWeekdaysDate: course.commencementWeekdaysDate,
-          commencementWeekendsDate: course.commencementWeekendsDate,
-          channel: course.channel,
-          programme: course.programme,
-          showGenericWeekdayStartDateText:
-            course.showGenericWeekdayStartDateText,
-          showGenericWeekendStartDateText:
-            course.showGenericWeekendStartDateText,
-          genericWeekdayStartDateText: course.genericWeekdayStartDateText,
-          genericWeekendStartDateText: course.genericWeekendStartDateText,
-          weekdaySessionPeriod: course.weekdaySessionPeriod,
-          weekendSessionPeriod: course.weekendSessionPeriod,
-          paymentOptions: course.paymentOptions,
-          slug: course.slug,
-        });
-      });
-      setCourseList(allData);
-      setIsLoading(false);
-    };
-
-    //call the function
-
-    fetchData().catch(console.error);
-  }, []);
-
-  useEffect(() => {
     // 👇️ scroll to top on page load
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  const dataList = [
+    {
+      id: "bot1",
+      name: "Bayagbon Efe",
+      title: "Chairman /President",
+      image: efe,
+      alt: "efe bayahbon",
+    },
+    {
+      id: "bot2",
+      name: "Ojebuovboh Joseph Omoniyi ",
+      title: "Secretary",
+      image: joeBot,
+      alt: "Joseph Omoniyi",
+    },
+    {
+      id: "bot3",
+      name: "Okoloko-Ideh Glory Alokpo",
+      title: "Member",
+      image: gloria,
+      alt: "Glory Alokpo",
+    },
+    {
+      id: "bot4",
+      name: "Omikunle Babatunde Douglas ",
+      title: "Member",
+      image: botDefaultImage,
+      alt: "Babatunde Douglas",
+    },
+    {
+      id: "bot5",
+      name: "Okubowei Uzezi Gladys",
+      title: "Member",
+      image: botDefaultImage,
+      alt: "Uzezi Gladys",
+    },
+  ];
+
+  const excoList = [
+    {
+      id: "exco1",
+      name: "Ojeniyi Tajudeen Collins",
+      title: "National President",
+      image: taju,
+      alt: "Ojeniyi Tajudeen Collins",
+    },
+    {
+      id: "exco2",
+      name: "Mary Nwanze Ejor",
+      title: "1st Vice President",
+      image: mary,
+      alt: "Mary Nwanze Ejor",
+    },
+    {
+      id: "exco3",
+      name: "Austin Nduba",
+      title: "2nd Vice President",
+      image: austin,
+      alt: "Austin Nduba",
+    },
+    {
+      id: "exco4",
+      name: "Lauretta Emaguna",
+      title: "Secretary General",
+      image: lauretta,
+      alt: "Lauretta Emaguna",
+    },
+    {
+      id: "exco5",
+      name: "Helen Ogonegbu",
+      title: "Assistant Secretary General",
+      image: excoDefaultImage,
+      alt: "Helen Ogonegbu Assistant",
+    },
+    {
+      id: "exco6",
+      name: "Oluwabunmi Precious Ikuomola",
+      title: "Treasurer",
+      image: bunmi,
+      alt: "Oluwabunmi Precious Ikuomola",
+    },
+    {
+      id: "exco7",
+      name: "Joseph Ojebuovboh",
+      title: "Assistant Treasurer",
+      image: joe,
+      alt: "Joseph Ojebuovboh",
+    },
+    {
+      id: "exco8",
+      name: "Kolawole Gabriel",
+      title: "Financial Secretary General",
+      image: kolawale,
+      alt: "Kolawole Gabriel",
+    },
+    {
+      id: "exco9",
+      name: "Epereyi Fano",
+      title: "Assistant Financial Secretary General",
+      image: excoDefaultImage,
+      alt: "Epereyi Fano",
+    },
+    {
+      id: "exco10",
+      name: "Victoria Woniebi",
+      title: "Publicity Secretary",
+      image: victoria,
+      alt: "Victoria Woniebi",
+    },
+    {
+      id: "exco11",
+      name: "Ndifreke Akpan Ettong",
+      title: "Assistant Publicity Secretary",
+      image: ndi,
+      alt: "Ndifreke Akpan Ettong",
+    },
+    {
+      id: "exco12",
+      name: "Udeme Essien",
+      title: "Welfare Officer",
+      image: udeme,
+      alt: "Udeme Essien",
+    },
+    {
+      id: "exco13",
+      name: "Felix Nwaogu",
+      title: "Assistant Welfare Officer",
+      image: felix,
+      alt: "Felix Nwaogu",
+    },
+  ];
+
   const Str = require("@supercharge/strings");
 
-  const allCoursesList = matchesMD ? (
+  const allBotList = matchesMD ? (
     <React.Fragment>
       {
         <Grid container direction="row">
-          {coursesList.map((course, index) => (
-            <AllCourses
-              title={course.title}
-              key={`${course.id}${index}`}
-              shortDescription={Str(course.shortDescription)
-                .limit(500, "...")
-                .get()}
-              longDescription={course.longDescription}
-              features={course.features}
-              deliveryMethod={course.deliveryMethod}
-              duration={course.duration}
-              commencementDate={course.commencementDate}
-              price={course.price}
-              instructor={course.instructor}
-              venue={course.venue}
-              sessionDuration={course.sessionDuration}
-              lectureDuration={course.lectureDuration}
-              projectDuration={course.projectDuration}
-              sessionPeriod={course.sessionPeriod}
-              studyPeriod={course.studyPeriod}
-              category={course.category}
-              prerequisites={course.prerequisites}
-              tools={course.tools}
-              targetAudience={course.targetAudience}
-              whatToLearn={course.whatToLearn}
-              venueLink={course.venueLink}
-              track={course.track}
-              status={course.status}
-              commencementWeekdaysDate={course.commencementWeekdaysDate}
-              commencementWeekendsDate={course.commencementWeekendsDate}
-              showGenericWeekdayStartDateText={
-                course.showGenericWeekdayStartDateText
-              }
-              showGenericWeekendStartDateText={
-                course.showGenericWeekendStartDateText
-              }
-              genericWeekdayStartDateText={course.genericWeekdayStartDateText}
-              genericWeekendStartDateText={course.genericWeekendStartDateText}
-              channel={course.channel}
-              programme={course.programme}
-              weekdaySessionPeriod={course.weekdaySessionPeriod}
-              weekendSessionPeriod={course.weekendSessionPeriod}
-              paymentOptions={course.paymentOptions}
-              image={course.image}
-              courseId={course.id}
-              slug={course.slug}
+          {dataList.map((data, index) => (
+            <BotMembersCard
+              name={data.name}
+              key={`${data.id}${index}`}
+              title={data.title}
+              image={data.image}
               token={props.token}
               userId={props.userId}
               setToken={props.setToken}
@@ -435,52 +488,57 @@ const AboutUs = (props) => {
           justifyContent="center"
           alignItems="center"
         >
-          {coursesList.map((course, index) => (
-            <AllCourses
-              title={course.title}
-              key={`${course.id}${index}`}
-              shortDescription={Str(course.shortDescription)
-                .limit(500, "...")
-                .get()}
-              longDescription={course.longDescription}
-              features={course.features}
-              deliveryMethod={course.deliveryMethod}
-              duration={course.duration}
-              commencementDate={course.commencementDate}
-              price={course.price}
-              venue={course.venue}
-              instructor={course.instructor}
-              sessionDuration={course.sessionDuration}
-              lectureDuration={course.lectureDuration}
-              projectDuration={course.projectDuration}
-              sessionPeriod={course.sessionPeriod}
-              studyPeriod={course.studyPeriod}
-              category={course.category}
-              prerequisites={course.prerequisites}
-              tools={course.tools}
-              targetAudience={course.targetAudience}
-              whatToLearn={course.whatToLearn}
-              venueLink={course.venueLink}
-              track={course.track}
-              status={course.status}
-              commencementWeekdaysDate={course.commencementWeekdaysDate}
-              commencementWeekendsDate={course.commencementWeekendsDate}
-              showGenericWeekdayStartDateText={
-                course.showGenericWeekdayStartDateText
-              }
-              showGenericWeekendStartDateText={
-                course.showGenericWeekendStartDateText
-              }
-              genericWeekdayStartDateText={course.genericWeekdayStartDateText}
-              genericWeekendStartDateText={course.genericWeekendStartDateText}
-              channel={course.channel}
-              programme={course.programme}
-              weekdaySessionPeriod={course.weekdaySessionPeriod}
-              weekendSessionPeriod={course.weekendSessionPeriod}
-              paymentOptions={course.paymentOptions}
-              image={course.image}
-              courseId={course.id}
-              slug={course.slug}
+          {dataList.map((data, index) => (
+            <BotMembersCard
+              name={data.name}
+              key={`${data.id}${index}`}
+              title={data.title}
+              token={props.token}
+              image={data.image}
+              userId={props.userId}
+              setToken={props.setToken}
+              setUserId={props.setUserId}
+            />
+          ))}
+        </Grid>
+      }
+    </React.Fragment>
+  );
+
+  const allExcoList = matchesMD ? (
+    <React.Fragment>
+      {
+        <Grid container direction="row">
+          {excoList.map((data, index) => (
+            <ExcoMembersCard
+              name={data.name}
+              key={`${data.id}${index}`}
+              title={data.title}
+              image={data.image}
+              token={props.token}
+              userId={props.userId}
+              setToken={props.setToken}
+              setUserId={props.setUserId}
+            />
+          ))}
+        </Grid>
+      }
+    </React.Fragment>
+  ) : (
+    <React.Fragment>
+      {
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {excoList.map((data, index) => (
+            <ExcoMembersCard
+              name={data.name}
+              key={`${data.id}${index}`}
+              title={data.title}
+              image={data.image}
               token={props.token}
               userId={props.userId}
               setToken={props.setToken}
@@ -607,7 +665,9 @@ const AboutUs = (props) => {
         {/* </section> */}
 
         <AboutUsHeader />
-        <AboutUsExecTitle />
+        <AboutUsBotTitle />
+
+        {/* <BotChairmanCard /> */}
         {isLoading && (
           <CircularProgress
             size={100}
@@ -615,7 +675,10 @@ const AboutUs = (props) => {
             style={{ marginTop: 250, marginLeft: 650 }}
           />
         )}
-        {!isLoading && <Grid item>{allCoursesList}</Grid>}
+        {!isLoading && <Grid item>{allBotList}</Grid>}
+        <AboutUsExecTitle />
+        {!isLoading && <Grid item>{allExcoList}</Grid>}
+        <AlmaMataHistoryTitle />
 
         <Grid item className={classes.footer}>
           <UpperFooter />
