@@ -45,7 +45,7 @@ import taju from "../../assets/images/exco/taju.png";
 import joe from "../../assets/images/exco/joe.jpg";
 import lauretta from "../../assets/images/exco/lauretta.jpg";
 import ndi from "../../assets/images/exco/ndi.jpg";
-import victoria from "../../assets/images/exco/victoria.jpg";
+import helen from "../../assets/images/exco/helen.jpg";
 import udeme from "../../assets/images/exco/udeme.jpg";
 import austin from "../../assets/images/exco/austin.jpg";
 import kolawale from "../../assets/images/exco/kola.jpg";
@@ -54,6 +54,8 @@ import joeBot from "../../assets/images/bot/joe.jpg";
 import mary from "../../assets/images/exco/mary.jpg";
 import gloria from "../../assets/images/bot/gloria.jpg";
 import efe from "../../assets/images/bot/efe.jpg";
+import tunde from "../../assets/images/bot/tunde.jpg";
+import gladys from "../../assets/images/bot/gladys.jpg";
 
 import { baseURL } from "./../../apis/util";
 import { Usb } from "@material-ui/icons";
@@ -352,14 +354,14 @@ const AboutUs = (props) => {
       id: "bot4",
       name: "Omikunle Babatunde Douglas ",
       title: "Member",
-      image: botDefaultImage,
+      image: tunde,
       alt: "Babatunde Douglas",
     },
     {
       id: "bot5",
       name: "Okubowei Uzezi Gladys",
       title: "Member",
-      image: botDefaultImage,
+      image: gladys,
       alt: "Uzezi Gladys",
     },
   ];
@@ -397,7 +399,7 @@ const AboutUs = (props) => {
       id: "exco5",
       name: "Helen Ogonegbu",
       title: "Assistant Secretary General",
-      image: excoDefaultImage,
+      image: helen,
       alt: "Helen Ogonegbu Assistant",
     },
     {
@@ -432,7 +434,7 @@ const AboutUs = (props) => {
       id: "exco10",
       name: "Victoria Woniebi",
       title: "Publicity Secretary",
-      image: victoria,
+      image: excoDefaultImage,
       alt: "Victoria Woniebi",
     },
     {
