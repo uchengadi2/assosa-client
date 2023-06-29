@@ -376,10 +376,10 @@ const AboutUs = (props) => {
     },
     {
       id: "exco2",
-      name: "Mary Nwanze Ejor",
+      name: "Mary Ejoh",
       title: "1st Vice President",
       image: mary,
-      alt: "Mary Nwanze Ejor",
+      alt: "Mary Ejoh",
     },
     {
       id: "exco3",
