@@ -23,7 +23,7 @@ import ContactUs from "../contactus/ContactUs";
 import revolutionBackground from "./../../assets/repeatingBackground.svg";
 import infoBackground from "./../../assets/infoBackground.svg";
 
-import background from "./../../assets/images/footage/footage_image.png";
+import background from "./../../assets/images/footage/footage_image.jpg";
 
 import history from "../../history";
 import AboutUsFormContainer from "./../aboutus/AboutUsFormContainer";

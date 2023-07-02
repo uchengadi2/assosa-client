@@ -56,6 +56,7 @@ import gloria from "../../assets/images/bot/gloria.jpg";
 import efe from "../../assets/images/bot/efe.jpg";
 import tunde from "../../assets/images/bot/tunde.jpg";
 import gladys from "../../assets/images/bot/gladys.jpg";
+import epereyi from "../../assets/images/exco/epereyi.jpg";
 
 import { baseURL } from "./../../apis/util";
 import { Usb } from "@material-ui/icons";
@@ -427,7 +428,7 @@ const AboutUs = (props) => {
       id: "exco9",
       name: "Epereyi Fano",
       title: "Assistant Financial Secretary General",
-      image: excoDefaultImage,
+      image: epereyi,
       alt: "Epereyi Fano",
     },
     {

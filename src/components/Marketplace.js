@@ -23,7 +23,7 @@ import animationData from "./../animations/landinganimation/data";
 import revolutionBackground from "./../assets/repeatingBackground.svg";
 import infoBackground from "./../assets/infoBackground.svg";
 
-import background from "./../assets/images/headers/home.png";
+import background from "./../assets/images/headers/home.jpg";
 import UpperFooter from "./ui/UpperFooter";
 import TopCover from "./homePageCards/TopCover";
 import LearningPath from "./homePageCards/LearningPath";
@@ -560,19 +560,35 @@ const Marketplace = (props) => {
                         {" "}
                         We are old students of Adeolu Secondary School, <br />
                       </span>{" "}
-                      <span style={{ marginLeft: matchesSM ? 20 : 50 }}>
+                      <span
+                        style={{
+                          marginLeft: matchesSM ? 20 : 50,
+                        }}
+                      >
                         Tolu School Complex, Lagos, bonded together
                       </span>
                       <br />
-                      <span style={{ marginLeft: matchesSM ? 20 : 90 }}>
+                      <span
+                        style={{
+                          marginLeft: matchesSM ? 20 : 90,
+                        }}
+                      >
                         to make positive impacts on our
                       </span>
                       <br />
-                      <span style={{ marginLeft: matchesSM ? 20 : 110 }}>
+                      <span
+                        style={{
+                          marginLeft: matchesSM ? 20 : 110,
+                        }}
+                      >
                         Alma Mata, our Community
                       </span>
                       <br />
-                      <span style={{ marginLeft: matchesSM ? 20 : 180 }}>
+                      <span
+                        style={{
+                          marginLeft: matchesSM ? 20 : 180,
+                        }}
+                      >
                         and our Members
                       </span>
                       <br />

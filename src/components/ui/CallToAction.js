@@ -10,7 +10,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 
 //import background from "./../../assets/background.jpg";
-import background from "./../../assets/images/footage/footage_image.png";
+import background from "./../../assets/images/footage/footage_image.jpg";
 import mobileBackground from "./../../assets/mobileBackground.jpg";
 import history from "./../../history";
 import BecomePartnerFormContainer from "../partner/BecomePartnerFormContainer";
