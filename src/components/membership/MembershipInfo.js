@@ -93,6 +93,7 @@ function MembershipInfo(props) {
     status,
     user,
     memberRole,
+    currentMemberRole,
     membershipId,
     handleFailedSnackbar,
     handleSuccessfulCreateSnackbar,
@@ -143,6 +144,10 @@ function MembershipInfo(props) {
     return <React.Fragment>Validate</React.Fragment>;
   };
 
+  console.log("member role is:", memberRole);
+  console.log("props.userId is:", props.userId);
+  console.log("currentMemberRole:", currentMemberRole);
+
   const onSubmit = (formValues) => {
     setLoading(true);
 
@@ -151,21 +156,21 @@ function MembershipInfo(props) {
       setLoading(false);
       return;
     }
-    if (!memberRole) {
+    if (!currentMemberRole) {
       handleFailedSnackbar(
-        "You do not sufficient rights to validate a member. Please contact your set admin"
+        "You do not have sufficient rights to validate a member. Please contact your set admin"
       );
       setLoading(false);
       return;
     }
 
     if (
-      memberRole === "old-student" ||
-      memberRole === "student" ||
-      memberRole === "others"
+      currentMemberRole === "old-student" ||
+      currentMemberRole === "student" ||
+      currentMemberRole === "others"
     ) {
       handleFailedSnackbar(
-        "You do not sufficient rights to validate a member. Please contact your set admin"
+        "You do not have sufficient rights to validate a member. Please contact your set admin"
       );
       setLoading(false);
       return;

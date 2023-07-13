@@ -548,7 +548,11 @@ const Marketplace = (props) => {
                     <Typography
                       variant={matchesSM ? "subtitle2" : "h2"}
                       align="left"
-                      style={{ marginTop: "10rem" }}
+                      style={{
+                        marginTop: "10rem",
+                        color: "black",
+                        fontWeight: 700,
+                      }}
                       //justifyContent="center"
                       //alignItems="center"
                     >

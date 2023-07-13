@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     //height: 440,
     //height: 500,
+    //width: "80%",
 
     //marginLeft: "0.1%",
     borderRadius: 0,
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 400,
-    width: 400,
+    width: "100%",
   },
 
   learnButton: {
@@ -125,13 +126,21 @@ const useStyles = makeStyles((theme) => ({
   },
   secondRow: {
     marginLeft: "0.7",
-    width: 550,
+    //width: 600,
+    width: "50%",
     border: "1px dotted",
     padding: 20,
   },
   imageColumn: {
     //marginLeft: 5,
     width: 380,
+
+    border: "1px dotted",
+    //padding: 5,
+  },
+  imageColumn2: {
+    //marginLeft: 5,
+    width: "22.5%",
 
     border: "1px dotted",
     //padding: 5,
@@ -149,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
   thirdRow: {
     marginLeft: "0.9%",
-    width: 350,
+    width: "25%",
     border: "1px dotted",
     padding: 20,
   },
@@ -549,7 +558,7 @@ export default function MembershipDetailCard(props) {
       {matchesMDUp ? (
         <Grid container direction="column" className={classes.root}>
           <Grid item container direction="row">
-            <Grid item>
+            <Grid item className={classes.imageColumn2}>
               <Card>
                 <CardMedia
                   className={classes.media}

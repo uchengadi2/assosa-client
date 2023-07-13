@@ -206,6 +206,7 @@ export default function AllMembership(props) {
   const [memberName, setMemberName] = useState();
   const [memberEmail, setMemberEmail] = useState();
   const [memberRole, setMemberRole] = useState();
+  const [currentMemberRole, setCurrentMemberRole] = useState();
   const [set, setSet] = useState();
 
   // const { token, setToken } = useToken();
@@ -245,6 +246,27 @@ export default function AllMembership(props) {
       setMemberEmail(allData[0].email);
       setMemberName(allData[0].name);
       setMemberRole(allData[0].role);
+    };
+
+    //call the function
+
+    fetchData().catch(console.error);
+  }, [props.user]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let allData = [];
+      api.defaults.headers.common["Authorization"] = `Bearer ${props.token}`;
+      const response = await api.get(`/users/${props.userId}`);
+      const user = response.data.data.data;
+      allData.push({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      });
+
+      setCurrentMemberRole(allData[0].role);
     };
 
     //call the function
@@ -609,6 +631,7 @@ export default function AllMembership(props) {
                 slug={props.membershipId}
                 categorySlug={set}
                 memberRole={memberRole}
+                currentMemberRole={currentMemberRole}
                 handleFailedSnackbar={props.handleFailedSnackbar}
                 handleSuccessfulCreateSnackbar={
                   props.handleSuccessfulCreateSnackbar
@@ -743,6 +766,7 @@ export default function AllMembership(props) {
                   slug={props.membershipId}
                   categorySlug={set}
                   memberRole={memberRole}
+                  currentMemberRole={currentMemberRole}
                   handleFailedSnackbar={props.handleFailedSnackbar}
                   handleSuccessfulCreateSnackbar={
                     props.handleSuccessfulCreateSnackbar
