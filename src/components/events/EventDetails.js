@@ -232,8 +232,6 @@ function EventDetails(props) {
 
   const slug = params.slug;
 
-  console.log("the slug is:", slug);
-
   const handleBecomeAPartnerOpenDialogBox = () => {
     setBecomePartnerOpen(false);
   };

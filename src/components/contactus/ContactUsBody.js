@@ -212,7 +212,7 @@ export default function ContactUsBody() {
                   component="p"
                   style={{ marginLeft: 30 }}
                 >
-                  <ReactMarkdown>* Email: info@assosa.ng</ReactMarkdown>
+                  <ReactMarkdown>* Email: info@adosa.ng</ReactMarkdown>
                 </Typography>
                 <br />
                 <Typography
@@ -259,7 +259,7 @@ export default function ContactUsBody() {
           >
             <CardContent>
               <Typography variant="h5" color="textSecondary" component="p">
-                <ReactMarkdown>* Email: info@assosa.ng</ReactMarkdown>
+                <ReactMarkdown>* Email: info@adosa.ng</ReactMarkdown>
               </Typography>
 
               <Typography variant="h5" color="textSecondary" component="p">

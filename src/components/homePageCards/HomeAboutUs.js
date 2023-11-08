@@ -512,12 +512,12 @@ export default function HomeAboutUs(props) {
                 </Typography>
                 <Typography variant="h5" color="textSecondary" component="p">
                   <ReactMarkdown>
-                    * Association of Old students of Adeolu Secondary School
-                    (Assosa) are a group of people that attended Adeolu
-                    Secondary School, Tolu School Complex, Lagos who are binded
-                    together by same purpose, mission and vision to make a
-                    positive impacts on our alma mata, our community and most
-                    especially on our members
+                    * Adeolu Old Students Association Alumni (Adosaa) are a
+                    group of people that attended Adeolu Secondary School, Tolu
+                    School Complex, Lagos who are binded together by same
+                    purpose, mission and vision to make a positive impacts on
+                    our alma mata, our community and most especially on our
+                    members
                   </ReactMarkdown>
                 </Typography>
                 <Typography variant="h5" color="textSecondary" component="p">
@@ -638,12 +638,12 @@ export default function HomeAboutUs(props) {
                     style={{ marginTop: 10 }}
                   >
                     <ReactMarkdown>
-                      * Association of Old students of Adeolu Secondary School
-                      (Assosa) are a group of people that attended Adeolu
-                      Secondary School, Tolu School Complex, Lagos who are
-                      binded together by same purpose, mission and vision to
-                      make a positive impacts on our alma mata, our community
-                      and most especially on our members
+                      * Adeolu Old Students Association Alumni (Adosaa) are a
+                      group of people that attended Adeolu Secondary School,
+                      Tolu School Complex, Lagos who are binded together by same
+                      purpose, mission and vision to make a positive impacts on
+                      our alma mata, our community and most especially on our
+                      members
                     </ReactMarkdown>
                   </Typography>
                   <Typography variant="h5" color="textSecondary" component="p">

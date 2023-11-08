@@ -648,13 +648,13 @@ const Marketplace = (props) => {
         <HomeEventsSection />
         <HomeNoticeBoardSection />
         {/* <HomeContactUs /> */}
-        {isLoading && (
+        {/* {isLoading && (
           <CircularProgress
             size={100}
             color="inherit"
             style={{ marginTop: 250, marginLeft: 650 }}
           />
-        )}
+        )} */}
         {!isLoading && <Grid item>{allCoursesList}</Grid>}
 
         <Grid item className={classes.footer}>
