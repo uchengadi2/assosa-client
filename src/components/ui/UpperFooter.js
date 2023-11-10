@@ -304,9 +304,8 @@ function UpperFooter(props) {
                   ) : (
                     <Typography variant="subtitle2" style={{ fontSize: 14 }}>
                       <strong>
-                        Association of Old students of Adeolu Secondary School{" "}
-                        <br />
-                        (Assosa) are a group of people that attended Adeolu{" "}
+                        Adeolu Old Students Association Alumni <br />
+                        (Adosaa) are a group of people that attended Adeolu{" "}
                         <br />
                         Secondary School, Tolu School Complex, Olodi Apapa,
                         Lagos who are bound together by same purpose, mission
@@ -379,7 +378,7 @@ function UpperFooter(props) {
                       </span>
                       <br />
 
-                      <span>info@assosa.ng</span>
+                      <span>info@adosa.ng</span>
                       <br />
 
                       <span>+234 808 773 5317</span>
