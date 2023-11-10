@@ -333,7 +333,7 @@ const AboutUs = (props) => {
     {
       id: "bot1",
       name: "Bayagbon Efe",
-      title: "Chairman /President",
+      title: "Chairman",
       image: efe,
       alt: "efe bayahbon",
     },
